@@ -20,3 +20,4 @@ def fetchLive(id):
         for player in data[0]['players']:
             players.append(site + str(player['account_id']))
         return players
+    

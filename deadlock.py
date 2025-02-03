@@ -11,6 +11,11 @@ hist = "https://data.deadlock-api.com/v2/players/108601750/match-history"
 gfreek = 108601750
 durk = 336921993
 
+
+with open('hero.json') as f:
+    d = json.load(f)
+    print(d)
+
 response = requests.get(site)
 resp = requests.get(hist)
 
