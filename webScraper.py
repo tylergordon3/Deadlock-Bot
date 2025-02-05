@@ -4,9 +4,9 @@ from bs4 import BeautifulSoup
 import re
 import pandas as pd
 
-def getTwitchLive(ids):
+def getTwitchLive(links):
     streams = []
-    for id in ids:
+    for id in links:
         response = requests.get(id)
         soup = BeautifulSoup(response.content, 'html.parser')
 
@@ -23,10 +23,11 @@ def getTwitchLive(ids):
     return streams
 
 
-def getProfiles(ids, ranks, na_lb, eu_lb, hero):
+def getProfiles(df_players, ranks, na_lb, eu_lb, hero):
+    print(df_players)
     account_lst = []
     rank_imgs = getImages(ranks)
-    for id in ids:
+    for id in df_players['link']:
         response = requests.get(id)
         soup = BeautifulSoup(response.content, 'html.parser')
         name = soup.find('h1', class_ ='font-bold text-2xl text-white').text

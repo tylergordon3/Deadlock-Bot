@@ -2,8 +2,9 @@ import requests
 import json
 import numpy as np
 import pandas as pd
-'''
-def getLive(id):
+
+
+def fetchLive(id):
     active = "https://data.deadlock-api.com/v1/active-matches?account_id=" + str(id)
     live = requests.get(active)
     data = live.json()
@@ -16,7 +17,6 @@ def getLive(id):
         for player in data[0]['players']:
             players.append(site + str(player['account_id']))
         return players
-'''
     
 def getLive(id):
     active = "https://data.deadlock-api.com/v1/active-matches?account_id=" + str(id)
@@ -34,6 +34,12 @@ def getLive(id):
             hero = player['hero_id']
             players.append([tracklock,team,hero])
 
+    print(players)
     df_players = pd.DataFrame(players)
     df_players.columns= ['link', 'team', 'hero_id']
-    return df_players
+    print(df_players)
+    print(df_players['link'])
+
+
+
+getLive(105263588)
