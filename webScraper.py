@@ -23,34 +23,47 @@ def getTwitchLive(ids):
     return streams
 
 
-def getProfiles(ids, ranks, leaderboard, hero):
+def getProfiles(ids, ranks, na_lb, eu_lb, hero):
     account_lst = []
     rank_imgs = getImages(ranks)
-    print(rank_imgs)
     for id in ids:
         response = requests.get(id)
         soup = BeautifulSoup(response.content, 'html.parser')
         name = soup.find('h1', class_ ='font-bold text-2xl text-white').text
-        lb_check = leaderboard[leaderboard['account_name'] == name]
-        if len(lb_check) != 1:
-            description = ""
-            embed = discord.Embed(url=id, title=name, description=description)
-            account_lst.append(embed)
-        else: 
-            rank_num = lb_check.iloc[0]['rank']
-            rank =  lb_check.iloc[0]['ranked_rank']
+        na_lb_check = na_lb[na_lb['account_name'] == name]
+        eu_lb_check = eu_lb[eu_lb['account_name'] == name]
+
+        if len(na_lb_check) == 1:
+            rank_num = na_lb_check.iloc[0]['rank']
+            rank =  na_lb_check.iloc[0]['ranked_rank']
             rank_name = ranks[ranks['tier'] == rank].iloc[0]['name']
-            subrank = lb_check.iloc[0]['ranked_subrank']
+            subrank = na_lb_check.iloc[0]['ranked_subrank']
             description = "NA Leaderboard Rank: " + str(rank_num) + "\n" + rank_name + " " + str(subrank)
-            
             row = rank_imgs.iloc[rank]['IMAGES']
             key = list(row.keys())[subrank-1]
             img_url = row[key]
-
             embed = discord.Embed(url=id, title=name, description=description)
             embed.set_image(url=img_url)
             account_lst.append(embed)
-
+        elif len(eu_lb_check) == 1:
+            print(eu_lb_check)
+            rank_num = eu_lb_check.iloc[0]['rank']
+            print(rank_num)
+            rank =  eu_lb_check.iloc[0]['ranked_rank']
+            rank_name = ranks[ranks['tier'] == rank].iloc[0]['name']
+            subrank = eu_lb_check.iloc[0]['ranked_subrank']
+            description = "EU Leaderboard Rank: " + str(rank_num) + "\n" + rank_name + " " + str(subrank)
+            print(description)
+            row = rank_imgs.iloc[rank]['IMAGES']
+            key = list(row.keys())[subrank-1]
+            img_url = row[key]
+            embed = discord.Embed(url=id, title=name, description=description)
+            embed.set_image(url=img_url)
+            account_lst.append(embed)
+        else: 
+            description = ""
+            embed = discord.Embed(url=id, title=name,description=description)
+            account_lst.append(embed)
     return account_lst
 
 def getImages(ranks):
