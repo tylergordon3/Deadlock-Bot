@@ -1,7 +1,7 @@
 import discord
 import os
 from dotenv import load_dotenv
-import live
+import getActive
 import json
 import webScraper
 from discord.ext import commands
@@ -10,8 +10,6 @@ import initialize
 
 load_dotenv()
 
-with open('config.json', 'r') as f:
-    config = json.load(f)
 
 intents = discord.Intents.default()
 intents.members = True
@@ -34,11 +32,11 @@ async def on_ready():
 users = {"Dregley" : 1165359771, "Jack" : 436326420, "Gord" : 311616544, "Durk" : 336921993,
          "Gfreek" : 108601750, "Fraud" : 1845301134, "BigSqueep" : 1843363705, "CardboardBox" : 190690317,
          'eido' : 1676299122, 'crayon' : 84379844, 'duck' : 7100261, 'deathy' : 87624911, 'mikaels' : 385814004,
-         'nkd' : 34262576, 'jonas' : 74963221, 'pkmk' : 179489990}
+         'nkd' : 34262576, 'jonas' : 74963221, 'pkmk' : 179489990, 'eu?guy' : 901357991}
 
 @bot.command()
-async def liveMatch(ctx, arg):
-    user_id = live.fetchLive(users[arg])
+async def live(ctx, arg):
+    user_id = getActive.fetchLive(users[arg])
     if not user_id:
         await ctx.send('Player is not in an active game retard!')
     else:

@@ -1,6 +1,5 @@
 import requests
 import json
-import matplotlib.pyplot as plt
 import numpy as np
 
 users = {"Dregley" : 1165359771, "Jack" : 436326420, "Gord" : 311616544, "Durk" : 336921993,
