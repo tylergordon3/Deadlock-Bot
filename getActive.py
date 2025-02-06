@@ -26,7 +26,8 @@ def getLive(id):
     site = 'https://tracklock.gg/players/'
     
     if not live.json():
-        return players
+        empty = pd.DataFrame()
+        return empty
     else:
         for player in data[0]['players']:
             tracklock = site + str(player['account_id']);
