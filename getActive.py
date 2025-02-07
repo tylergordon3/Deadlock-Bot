@@ -2,22 +2,7 @@ import requests
 import json
 import numpy as np
 import pandas as pd
-'''
-def getLive(id):
-    active = "https://data.deadlock-api.com/v1/active-matches?account_id=" + str(id)
-    live = requests.get(active)
-    data = live.json()
-    players = []
-    site = 'https://tracklock.gg/players/'
 
-    if not live.json():
-        return players
-    else:
-        for player in data[0]['players']:
-            players.append(site + str(player['account_id']))
-        return players
-'''
-    
 def getLive(id):
     active = "https://data.deadlock-api.com/v1/active-matches?account_id=" + str(id)
     live = requests.get(active)
