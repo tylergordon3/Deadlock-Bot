@@ -22,6 +22,16 @@ async def getHTML(link):
                 soup = BeautifulSoup(content, 'html.parser')
                 return soup
 
+async def getMates(id): 
+    link = f'https://analytics.deadlock-api.com/v2/players/{id}/mate-stats'
+    async with aiohttp.ClientSession() as session:
+        async with session.get(link) as r:
+            if r.status == 200:
+                print('statussy')
+                return await r.json()
+
+
+
 def getLive(id):
     active = "https://data.deadlock-api.com/v1/active-matches?account_id=" + str(id)
     live = requests.get(active)

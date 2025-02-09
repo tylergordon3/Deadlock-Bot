@@ -3,6 +3,8 @@ import json
 
 from discord.ext import commands
 import tools.initialize as initialize
+import pandas as pd
+
 
 import tools.getData as gd
 import tools.useData as ud
@@ -43,6 +45,27 @@ class Deadlock(commands.Cog):
         for key in self.users.keys():
             lst.append(key)
         await ctx.send(lst)
+
+    @commands.command()
+    async def mates(self, ctx, arg):
+        id = self.users.get(arg)
+        if id == None:
+            await ctx.send("User does not exist. Use \\users to see users.")
+            return
+        req = await gd.getMates(id)
+        disc = gd.load_json('data/discordUsers.json')
+        df = pd.DataFrame(req)
+        df = df.drop(0)
+        df = df[df['mate_id'].isin(disc.values())]
+        df["names"] = ''
+        for key, value in disc.items():
+            df.loc[df['mate_id'] == value, "names"] = key
+        df = df.drop(columns=['matches', 'mate_id'])
+        df['win %'] = df['wins']/df['matches_played']
+        df['win %'] = (df['win %'] * 100).map('{:.2f}%'.format)
+        df_sort = df.sort_values(by='win %', ascending=False)
+        await ctx.send(arg + ' winrate with mates:')
+        await ctx.send(df_sort)
 
 async def setup(bot):
     await bot.add_cog(Deadlock(bot))
