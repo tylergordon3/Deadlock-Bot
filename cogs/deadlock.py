@@ -63,9 +63,21 @@ class Deadlock(commands.Cog):
         df = df.drop(columns=['matches', 'mate_id'])
         df['win %'] = df['wins']/df['matches_played']
         df['win %'] = (df['win %'] * 100).map('{:.2f}%'.format)
+        
         df_sort = df.sort_values(by='win %', ascending=False)
-        await ctx.send(arg + ' winrate with mates:')
-        await ctx.send(df_sort)
+
+        df_sort['loss'] = df_sort['matches_played']-df_sort['wins']
+        base = "{wins}-{loss}"
+        df_sort['W-L'] = [base.format(wins=x, loss=y)
+            for x,y in zip(df_sort['wins'], df_sort['loss'])]
+        print(df_sort)
+        
+        markdown = df_sort.to_markdown(index=False)
+        formatted = f"```\n{markdown}\n```"
+        df_sort = df_sort.drop(columns=['wins', 'matches_played', 'loss'])
+        markdown = df_sort.to_markdown(index=False)
+        formatted = f"```\n{markdown}\n```"
+        await ctx.send(formatted)
 
 async def setup(bot):
     await bot.add_cog(Deadlock(bot))

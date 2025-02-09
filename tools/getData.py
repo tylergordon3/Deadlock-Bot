@@ -27,7 +27,6 @@ async def getMates(id):
     async with aiohttp.ClientSession() as session:
         async with session.get(link) as r:
             if r.status == 200:
-                print('statussy')
                 return await r.json()
 
 
