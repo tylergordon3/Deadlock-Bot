@@ -70,10 +70,7 @@ class Deadlock(commands.Cog):
         base = "{wins}-{loss}"
         df_sort['W-L'] = [base.format(wins=x, loss=y)
             for x,y in zip(df_sort['wins'], df_sort['loss'])]
-        print(df_sort)
         
-        markdown = df_sort.to_markdown(index=False)
-        formatted = f"```\n{markdown}\n```"
         df_sort = df_sort.drop(columns=['wins', 'matches_played', 'loss'])
         markdown = df_sort.to_markdown(index=False)
         formatted = f"```\n{markdown}\n```"
