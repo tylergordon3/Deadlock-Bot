@@ -16,6 +16,7 @@ class Deadlock(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.users = gd.load_json('data/users.json')
+        self.disc_users = gd.load_json('data/discordUsers.json')
 
     @commands.command()
     async def live(self, ctx, arg):
@@ -41,10 +42,17 @@ class Deadlock(commands.Cog):
 
     @commands.command()
     async def users(self, ctx):
+        
         lst = []
+        lst_disc = []
         for key in self.users.keys():
             lst.append(key)
-        await ctx.send(lst)
+            if key in self.disc_users.keys():
+                lst_disc.append(key)
+        await ctx.send("## Case Sensitive Users for \\live")
+        await ctx.send('\n'.join(lst))
+        await ctx.send("## Case Sensitive Users for \\mates")
+        await ctx.send('\n'.join(lst_disc))
 
     @commands.command()
     async def mates(self, ctx, arg):
@@ -53,7 +61,7 @@ class Deadlock(commands.Cog):
             await ctx.send("User does not exist. Use \\users to see users.")
             return
         req = await gd.getMates(id)
-        disc = gd.load_json('data/discordUsers.json')
+        disc = self.disc_users
         df = pd.DataFrame(req)
         df = df.drop(0)
         df = df[df['mate_id'].isin(disc.values())]
