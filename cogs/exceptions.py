@@ -12,7 +12,7 @@ class ExceptionHandler(commands.Cog):
     async def on_command_error (self, ctx: commands.Context, error) -> None:
         embed = discord.Embed(title="Error")
         error_data = " ".join(traceback.format_exception(type(error), error, error.__traceback__))
-        embed.description = f"Error during execution:\n```py\n{error_data[:1000]}\n```"
+        embed.description = f"Error during execution:\n```py\n{error_data[:1500]}\n```"
         await ctx.send(embed=embed)
 
 async def setup(bot):

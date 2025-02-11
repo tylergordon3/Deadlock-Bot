@@ -82,6 +82,7 @@ async def getProfiles(df_players, ranks, na_lb, eu_lb, hero_df):
                 team1embeds.append(embed)
             case 1: 
                 team2embeds.append(embed)
+        
     print('Embeds being returned')
     return team1embeds, team2embeds
 
