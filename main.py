@@ -9,7 +9,7 @@ intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
 
-bot = commands.Bot(command_prefix='\\', intents=intents)
+bot = commands.Bot(command_prefix='/', intents=intents)
 
 async def load_cogs(bot):
     for file in os.listdir('cogs'):
@@ -25,6 +25,7 @@ async def load_cogs(bot):
 async def setup_hook():
     print(f'We have logged in as {bot.user}')
     await load_cogs(bot)
+    await bot.tree.sync()
     
 bot.setup_hook = setup_hook
 
