@@ -1,4 +1,5 @@
 import discord
+
 from discord.ext import commands
 from dotenv import load_dotenv
 import os
@@ -24,7 +25,6 @@ async def load_cogs(bot):
 async def setup_hook():
     print(f'We have logged in as {bot.user}')
     await load_cogs(bot)
-    
     
 bot.setup_hook = setup_hook
 
