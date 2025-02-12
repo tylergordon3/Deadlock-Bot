@@ -19,6 +19,10 @@ class Admin(commands.Cog):
                     exception = f"{type(e).__name__}: {e}"
                     print(f"Failed to reload extension {ext}\n{exception}")
 
+    @commands.command()
+    @commands.is_owner()
+    async def shutdown(ctx):
+        await ctx.bot.logout()
         
 
 async def setup(bot):
