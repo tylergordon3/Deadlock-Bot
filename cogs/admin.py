@@ -21,7 +21,7 @@ class Admin(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def shutdown(ctx):
+    async def shutdown(self, ctx):
         await ctx.bot.logout()
         
 
