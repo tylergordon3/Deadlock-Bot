@@ -100,7 +100,7 @@ class Deadlock(commands.Cog):
 
     @commands.command()
     async def shitters(self, ctx):
-        await ctx.send("a".join(self.bad))
+        await ctx.send("".join(self.bad))
 
 
 async def setup(bot):
