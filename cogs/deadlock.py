@@ -91,18 +91,6 @@ class Deadlock(commands.Cog):
         formatted = f"```\n{markdown}\n```"
         await ctx.send(formatted)
 
-    @commands.command()
-    async def addShitters(self, ctx, arg):
-        self.bad = self.bad + "\n" + arg
-        gd.write_txt("data/bad.txt", self.bad)
-        await ctx.send("Added: " +  arg)
-
-
-    @commands.command()
-    async def shitters(self, ctx):
-        await ctx.send("".join(self.bad))
-
-
 async def setup(bot):
     await bot.add_cog(Deadlock(bot))
 

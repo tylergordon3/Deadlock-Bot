@@ -20,7 +20,6 @@ class Admin(commands.Cog):
                     print(f"Failed to reload extension {ext}\n{exception}")
 
     @commands.command()
-    @commands.is_owner()
     async def shutdown(self, ctx):
         await ctx.bot.logout()
         
