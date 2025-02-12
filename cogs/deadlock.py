@@ -1,11 +1,12 @@
+import asyncio
 from discord.ext import commands
-from discord import app_commands
+import discord
+
 import tools.initialize as initialize
 import pandas as pd
 
 import tools.getData as gd
 import tools.useData as ud
-
 
 ranks, na_leaderboard, eu_leaderboard, hero = initialize.init()
 
@@ -13,19 +14,24 @@ class Deadlock(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.users = gd.load_json("data/users.json")
+        self.bad = gd.read_txt("data/bad.txt")
 
     @commands.command()
-    async def live(self, ctx, arg):
-        if arg in self.users['all']:
-            df_players = gd.getLive(self.users['all'][arg])
-        elif arg in self.users['discord']:
-            df_players = gd.getLive(self.users['discord'][arg])
+    async def live(self, ctx, arg1, arg2=0):    
+        print("Sleeping for " + str(arg2*60))
+        await asyncio.sleep(arg2*60)
+        print("Back from sleep.")
+        if arg1 in self.users['all']:
+            df_players = gd.getLive(self.users['all'][arg1])
+        elif arg1 in self.users['discord']:
+            df_players = gd.getLive(self.users['discord'][arg1])
         else:
             df_players == 0
-        
+       
         if df_players.empty:
             await ctx.send('Player not found. Check /users for available users.')
         else:
+           
             msg = await ctx.send('Fetching players in game.....')
             team1, team2= await ud.getProfiles(df_players, ranks, na_leaderboard, eu_leaderboard, hero)
             await msg.edit(content='PLAYERS IN GAME:')
@@ -40,8 +46,9 @@ class Deadlock(commands.Cog):
             else:
                 await msg2.edit(content="----------------------------------- LIVESTREAMS -----------------------------------")
                 await ctx.send('\n'.join(lives))
-        print('Live fetch for ' + str(arg) + ' complete.')
+        print('Live fetch for ' + str(arg1) + ' complete.')
 
+    
     @commands.command()
     async def users(self, ctx):
         lst = []
@@ -83,6 +90,18 @@ class Deadlock(commands.Cog):
         markdown = df_sort.to_markdown(index=False)
         formatted = f"```\n{markdown}\n```"
         await ctx.send(formatted)
+
+    @commands.command()
+    async def addShitters(self, ctx, arg):
+        self.bad = self.bad + "\n" + arg
+        gd.write_txt("data/bad.txt", self.bad)
+        await ctx.send("Added: " +  arg)
+
+
+    @commands.command()
+    async def shitters(self, ctx):
+        await ctx.send("a".join(self.bad))
+
 
 async def setup(bot):
     await bot.add_cog(Deadlock(bot))

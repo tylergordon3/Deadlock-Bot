@@ -4,12 +4,28 @@ from bs4 import BeautifulSoup
 import json
 import aiohttp
 
+def read_txt(filename):
+    with open (filename, 'r') as file:
+        text = file.read()
+        return text
 
+def write_txt(filename, new):
+    with open (filename, 'w') as file:
+        file.write(new)
+        
+    
 def load_json(filename):
     """ Fetch default config file """
     try:
         with open(filename, encoding='utf8') as data:
             return json.load(data)
+    except FileNotFoundError:
+        raise FileNotFoundError("JSON file wasn't found")
+    
+def dump_json(filename, data):
+    try:
+        with open(filename, 'wb') as file:
+            json.dump(data, file)
     except FileNotFoundError:
         raise FileNotFoundError("JSON file wasn't found")
     
