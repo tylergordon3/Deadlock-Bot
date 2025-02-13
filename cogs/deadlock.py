@@ -1,6 +1,9 @@
 import asyncio
-from discord.ext import commands
 import discord
+from discord import app_commands
+from discord.ext import commands
+from typing import List
+
 
 import tools.initialize as initialize
 import pandas as pd
@@ -9,29 +12,42 @@ import tools.getData as gd
 import tools.useData as ud
 
 ranks, na_leaderboard, eu_leaderboard, hero = initialize.init()
+guild_id = [546868043838390299]
 
 class Deadlock(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.users = gd.load_json("data/users.json")
-        self.bad = gd.read_txt("data/bad.txt")
 
-    @commands.command()
-    async def live(self, ctx, arg1, arg2=0):    
-        print("Sleeping for " + str(arg2*60))
-        await asyncio.sleep(arg2*60)
+    async def live_autocomp(self, 
+        interaction: discord.Interaction, curr: str, 
+        ) -> List[app_commands.Choice[str]]:
+        choices = self.users['discord'] | self.users['all']
+        return [
+            app_commands.Choice(name=choice, value=choice)
+            for choice in choices if curr.lower() in choice.lower()
+        ]
+
+    @app_commands.command(description="Fetch a user's live match displaying ranks of both teams.")
+    @app_commands.autocomplete(choices=live_autocomp)
+    async def live(self, interaction: discord.Interaction, choices: str, delay_minutes: int) :    
+        if (delay_minutes > 10 | delay_minutes < 0) :
+            delay_minutes = 0
+        ctx = interaction.channel
+        print("Sleeping for " + str(delay_minutes*60) + " seconds.")
+        await interaction.response.send_message("Waiting " + str(delay_minutes*60) + " seconds before fetching live match info for: " + choices)
+        await asyncio.sleep(delay_minutes*60)
         print("Back from sleep.")
-        if arg1 in self.users['all']:
-            df_players = gd.getLive(self.users['all'][arg1])
-        elif arg1 in self.users['discord']:
-            df_players = gd.getLive(self.users['discord'][arg1])
+        if choices in self.users['all']:
+            df_players = gd.getLive(self.users['all'][choices])
+        elif choices in self.users['discord']:
+            df_players = gd.getLive(self.users['discord'][choices])
         else:
             df_players == 0
        
         if df_players.empty:
             await ctx.send('Player not found. Check /users for available users.')
         else:
-           
             msg = await ctx.send('Fetching players in game.....')
             team1, team2= await ud.getProfiles(df_players, ranks, na_leaderboard, eu_leaderboard, hero)
             await msg.edit(content='PLAYERS IN GAME:')
@@ -46,27 +62,23 @@ class Deadlock(commands.Cog):
             else:
                 await msg2.edit(content="----------------------------------- LIVESTREAMS -----------------------------------")
                 await ctx.send('\n'.join(lives))
-        print('Live fetch for ' + str(arg1) + ' complete.')
+        print('Live fetch for ' + str(choices) + ' complete.')
 
-    
-    @commands.command()
-    async def users(self, ctx):
+    @app_commands.command(description="Show users available for commands.")
+    async def users(self, interaction: discord.Interaction):
         lst = []
         dlst = []
         for key in self.users['all'].keys():
             lst.append(key)
         for key in self.users['discord'].keys():
             dlst.append(key)
-        await ctx.send("## Users availble for ONLY /live")
-        await ctx.send('\n'.join(lst))
-        await ctx.send("## Users availble for /live & /mates")
-        await ctx.send('\n'.join(dlst))
-
-    @commands.command()
-    async def mates(self, ctx, arg):
-        id = self.users['discord'].get(arg)
+        await interaction.response.send_message("## Users availble for ONLY /live \n" + '\n'.join(lst) + "\n## Users availble for /live & /mates \n" + '\n'.join(dlst))
+      
+    @app_commands.command(description="Display a player's win rates when playing with other discord members.")
+    async def mates(self, interaction: discord.Interaction, user: str):
+        id = self.users['discord'].get(user)
         if id == None:
-            await ctx.send("User does not exist. Use /users to see users.")
+            await interaction.response.send_message("User does not exist. Use /users to see users.")
             return
         req = await gd.getMates(id)
         df = pd.DataFrame(req)
@@ -89,7 +101,7 @@ class Deadlock(commands.Cog):
         df_sort = df_sort.drop(columns=['wins', 'matches_played', 'loss'])
         markdown = df_sort.to_markdown(index=False)
         formatted = f"```\n{markdown}\n```"
-        await ctx.send(formatted)
+        await interaction.response.send_message(formatted)
 
 async def setup(bot):
     await bot.add_cog(Deadlock(bot))

@@ -8,6 +8,8 @@ load_dotenv()
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
+guild_id = [546868043838390299]
+
 
 bot = commands.Bot(command_prefix='/', intents=intents)
 
@@ -25,7 +27,12 @@ async def load_cogs(bot):
 async def setup_hook():
     print(f'We have logged in as {bot.user}')
     await load_cogs(bot)
-    await bot.tree.sync()
+    try:
+        bot.tree.copy_global_to(guild=discord.Object(id=guild_id[0]))
+        sync = await bot.tree.sync(guild=discord.Object(id=guild_id[0]))
+        print(f"Synched {len(sync)} command(s)")
+    except Exception as e:
+        print(e) 
     
 bot.setup_hook = setup_hook
 
