@@ -1,7 +1,7 @@
 import requests
 import pandas as pd
 import json
-
+import os
 import getData as gd
 
 path = "../data"
@@ -9,6 +9,11 @@ path = "../data"
 def get_daily():
     na_leaderboard = requests.get('https://data.deadlock-api.com/v1/leaderboard/NAmerica').json()
     eu_leaderboard = requests.get('https://data.deadlock-api.com/v1/leaderboard/Europe').json()
+
+    files = [f for f in os.listdir("dataDaily/") if f.endswith(".json")]
+    for f in files:
+        path = 'dataDaily' + f[:-5]
+        print(path)
 
 
 
@@ -26,3 +31,4 @@ def get_periodic():
     with open("../data/ranks.json", mode="w", encoding="utf-8") as write_file:
         json.dump(ranks, write_file, indent=4)
     
+get_daily()
