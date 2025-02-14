@@ -7,13 +7,14 @@ import getData as gd
 path = "../data"
 
 def get_daily():
-    na_leaderboard = requests.get('https://data.deadlock-api.com/v1/leaderboard/NAmerica').json()
-    eu_leaderboard = requests.get('https://data.deadlock-api.com/v1/leaderboard/Europe').json()
-
-    files = [f for f in os.listdir("dataDaily/") if f.endswith(".json")]
+    files = [f for f in os.listdir("dataDaily") if f.endswith(".json")]
     for f in files:
-        path = 'dataDaily' + f[:-5]
-        print(path)
+        path = 'dataDaily/' + f
+        region = f[:-5]
+        data = requests.get(f'https://data.deadlock-api.com/v1/leaderboard/{region}')
+        with open(path, mode='w', encoding="utf-8") as write_file:
+            json.dump(data.json(),write_file, indent=4)
+     
 
 
 
