@@ -6,6 +6,7 @@ import getData as gd
 
 def get_daily():
     files = [f for f in os.listdir("dataDaily") if f.endswith(".json")]
+    print('Getting daily NA & EU leaderboards.')
     for f in files:
         path = 'dataDaily/' + f
         region = f[:-5]
@@ -13,6 +14,7 @@ def get_daily():
         with open(path, mode='w', encoding="utf-8") as write_file:
             json.dump(data.json(),write_file, indent=4)
 
+    print('Getting daily hero leaderboards.')
     hero_ids = gd.load_json('data/hero_ids.json')
     for hero in hero_ids:
         id = str(hero['id'])
@@ -30,13 +32,15 @@ def get_periodic():
     hero =  pd.DataFrame(requests.get('https://assets.deadlock-api.com/v2/heroes?only_active=true').json())
     
     df_hero = hero[['id','name']]
-
-    with open("../data/hero_ids.json", mode="w", encoding="utf-8") as write_file:
+    print('Getting static hero data.')
+    with open("data/hero_ids.json", mode="w", encoding="utf-8") as write_file:
         res=df_hero.to_json(orient='records', index=False)
         parse=json.loads(res)
         json.dump(parse, write_file, indent=4)
     
-    with open("../data/ranks.json", mode="w", encoding="utf-8") as write_file:
+    print('Getting static rank data.')
+    with open("data/ranks.json", mode="w", encoding="utf-8") as write_file:
         json.dump(ranks, write_file, indent=4)
     
 get_daily()
+get_periodic()
