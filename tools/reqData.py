@@ -4,8 +4,6 @@ import json
 import os
 import getData as gd
 
-path = "../data"
-
 def get_daily():
     files = [f for f in os.listdir("dataDaily") if f.endswith(".json")]
     for f in files:
@@ -14,7 +12,16 @@ def get_daily():
         data = requests.get(f'https://data.deadlock-api.com/v1/leaderboard/{region}')
         with open(path, mode='w', encoding="utf-8") as write_file:
             json.dump(data.json(),write_file, indent=4)
-     
+
+    hero_ids = gd.load_json('data/hero_ids.json')
+    for hero in hero_ids:
+        id = str(hero['id'])
+        name = hero['name']
+
+        path = 'dataDaily/hero_lb/' + name + '.json'
+        data = requests.get(f'https://data.deadlock-api.com/v1/leaderboard/NAmerica/{id}')
+        with open(path, mode='w', encoding="utf-8") as write_file:
+            json.dump(data.json(), write_file, indent=4)
 
 
 
