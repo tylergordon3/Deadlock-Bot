@@ -1,1 +1,93 @@
-[]
+[
+    {
+        "start_time": 1739560408,
+        "winning_team": 0,
+        "match_id": 32935039,
+        "players": [
+            {
+                "account_id": 1045169707,
+                "team": 0,
+                "abandoned": false,
+                "hero_id": 12
+            },
+            {
+                "account_id": 385814004,
+                "team": 0,
+                "abandoned": false,
+                "hero_id": 10
+            },
+            {
+                "account_id": 461976624,
+                "team": 0,
+                "abandoned": false,
+                "hero_id": 14
+            },
+            {
+                "account_id": 392655626,
+                "team": 0,
+                "abandoned": false,
+                "hero_id": 7
+            },
+            {
+                "account_id": 879554677,
+                "team": 0,
+                "abandoned": false,
+                "hero_id": 6
+            },
+            {
+                "account_id": 63142641,
+                "team": 0,
+                "abandoned": false,
+                "hero_id": 13
+            },
+            {
+                "account_id": 81662458,
+                "team": 1,
+                "abandoned": false,
+                "hero_id": 16
+            },
+            {
+                "account_id": 911856667,
+                "team": 1,
+                "abandoned": false,
+                "hero_id": 60
+            },
+            {
+                "account_id": 316441186,
+                "team": 1,
+                "abandoned": false,
+                "hero_id": 20
+            },
+            {
+                "account_id": 323235963,
+                "team": 1,
+                "abandoned": false,
+                "hero_id": 27
+            },
+            {
+                "account_id": 1122643739,
+                "team": 1,
+                "abandoned": false,
+                "hero_id": 31
+            },
+            {
+                "account_id": 1838303945,
+                "team": 1,
+                "abandoned": false,
+                "hero_id": 17
+            }
+        ],
+        "lobby_id": 101241356587919078,
+        "net_worth_team_0": 197111,
+        "net_worth_team_1": 215846,
+        "duration_s": 0,
+        "spectators": 39,
+        "open_spectator_slots": 10,
+        "objectives_mask_team0": 15873,
+        "objectives_mask_team1": 52737,
+        "match_mode": 1,
+        "game_mode": 1,
+        "match_score": 2531,
+        "region_mode": 1
+    }
+]
