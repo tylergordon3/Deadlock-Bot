@@ -53,7 +53,6 @@ def getLive(id):
     data = live.json()
     players = []
     site = 'https://tracklock.gg/players/'
- 
     if not live.json():
         empty = pd.DataFrame()
         return empty

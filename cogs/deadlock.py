@@ -3,6 +3,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 from typing import List
+import json
 
 
 import tools.initialize as initialize
@@ -43,10 +44,11 @@ class Deadlock(commands.Cog):
         elif choices in self.users['discord']:
             df_players = gd.getLive(self.users['discord'][choices])
         else:
-            df_players == 0
+            df_players = pd.DataFrame()
        
         if df_players.empty:
-            await ctx.send('Player not found. Check /users for available users.')
+            err_msg = 'Player not found, potential reasons: \n- Lobby elo too low\n- Player not in a game\n- Player is in active game but duration of game is less than 3 minutes\n Check /users for available users.'
+            await ctx.send( f"Error during execution:\n```py\n{err_msg}\n```")
         else:
             msg = await ctx.send('Fetching players in game.....')
             team1, team2= await ud.getProfiles(df_players, ranks, na_leaderboard, eu_leaderboard, hero)
