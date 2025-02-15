@@ -1,7 +1,7 @@
 import asyncio
 import discord
 from discord import app_commands
-from discord.ext import commands
+from discord.ext import commands, tasks
 from typing import List
 
 import tools.initialize as initialize
@@ -9,6 +9,7 @@ import pandas as pd
 
 import tools.getData as gd
 import tools.useData as ud
+import tools.reqData as rd
 
 ranks, na_leaderboard, eu_leaderboard, hero = initialize.init()
 guild_id = [546868043838390299]
@@ -17,6 +18,12 @@ class Deadlock(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.users = gd.load_json("data/users.json")
+        self.dataListener.start()
+
+    @tasks.loop(minutes=15)
+    async def dataListener(self):
+        if (rd.checkDataLastUpd(12)):
+            rd.get_daily()
 
     async def live_autocomp(self, 
         interaction: discord.Interaction, curr: str, 
@@ -102,6 +109,14 @@ class Deadlock(commands.Cog):
         markdown = df_sort.to_markdown(index=False)
         formatted = f"```\n{markdown}\n```"
         await interaction.response.send_message(formatted)
+
+    @app_commands.command(description="Fetch a user's live match displaying ranks of both teams.")
+    @app_commands.autocomplete(choices=live_autocomp)
+    async def heros(self, interaction: discord.Interaction, choices: str):
+
+        return
+
+        
 
 async def setup(bot):
     await bot.add_cog(Deadlock(bot))

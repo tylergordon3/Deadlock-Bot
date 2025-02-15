@@ -3,6 +3,24 @@ import pandas as pd
 import json
 import os
 import tools.getData as gd
+import datetime as dt
+
+def checkDataLastUpd(threshold_hrs = 12):
+    last = os.stat('dataDaily/NAmerica.json').st_mtime
+
+    last_datetime = dt.datetime.fromtimestamp(last)
+    curr_datetime = dt.datetime.now()
+    print(f'Current time: {curr_datetime}')
+
+    diff = curr_datetime - last_datetime
+
+    threshold_min = threshold_hrs * 60
+
+    bool = (diff.total_seconds()/60) > threshold_min
+    str = f"Last data update: {diff.total_seconds()/3600} hours ago."
+    bool_str = " Updating data." if bool else " Not updating data."
+    print(str + bool_str)
+    return bool
 
 def get_daily():
     files = [f for f in os.listdir("dataDaily") if f.endswith(".json")]
