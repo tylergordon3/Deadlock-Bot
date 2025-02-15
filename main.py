@@ -1,8 +1,9 @@
 import discord
-
+import datetime as dt
 from discord.ext import commands
 from dotenv import load_dotenv
 import os
+import tools.reqData as rd
 
 load_dotenv()
 intents = discord.Intents.default()
@@ -24,6 +25,18 @@ async def load_cogs(bot):
                 exception = f"{type(e).__name__}: {e}"
                 print(f"Failed to load extension {ext}\n{exception}")
 
+async def checkDataLastUpd(threshold_hrs = 12):
+    last = os.stat('dataDaily/NAmerica.json').st_mtime
+
+    last_datetime = dt.datetime.fromtimestamp(last)
+    curr_datetime = dt.datetime.now()
+
+    diff = curr_datetime - last_datetime
+
+    threshold_min = threshold_hrs * 60
+   
+    return (diff.total_seconds()/60) > threshold_min
+
 async def setup_hook():
     print(f'We have logged in as {bot.user}')
     await load_cogs(bot)
@@ -32,8 +45,11 @@ async def setup_hook():
         sync = await bot.tree.sync(guild=discord.Object(id=guild_id[0]))
         print(f"Synched {len(sync)} command(s)")
     except Exception as e:
-        print(e) 
-    
+        print(e)
+    if (await checkDataLastUpd(1)):
+       rd.get_daily()
+
+
 bot.setup_hook = setup_hook
 
 try:

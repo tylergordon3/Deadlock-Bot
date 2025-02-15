@@ -3,8 +3,6 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 from typing import List
-import json
-
 
 import tools.initialize as initialize
 import pandas as pd

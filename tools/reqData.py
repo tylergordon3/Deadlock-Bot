@@ -2,7 +2,7 @@ import requests
 import pandas as pd
 import json
 import os
-import getData as gd
+import tools.getData as gd
 
 def get_daily():
     files = [f for f in os.listdir("dataDaily") if f.endswith(".json")]
@@ -42,5 +42,3 @@ def get_periodic():
     with open("data/ranks.json", mode="w", encoding="utf-8") as write_file:
         json.dump(ranks, write_file, indent=4)
     
-get_daily()
-get_periodic()
