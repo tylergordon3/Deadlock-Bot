@@ -6,10 +6,11 @@ from typing import List
 
 import tools.initialize as initialize
 import pandas as pd
-
 import tools.getData as gd
 import tools.useData as ud
 import tools.reqData as rd
+import os
+import re
 
 ranks, na_leaderboard, eu_leaderboard, hero = initialize.init()
 guild_id = [546868043838390299]
@@ -19,11 +20,24 @@ class Deadlock(commands.Cog):
         self.bot = bot
         self.users = gd.load_json("data/users.json")
         self.dataListener.start()
+        Deadlock.loadHeroJson(self)
+
+    def loadHeroJson(self):
+        path = 'dataDaily/hero_lb/'
+        files = [f for f in os.listdir(path)]
+        all = []
+        for f in files:
+            data = gd.load_json(path + f)
+            hero = f[:-5]
+            pull = [(d['account_name'], d['rank']) for d in data['entries']]
+            all.append({hero:pull})
+        self.herolb = all
 
     @tasks.loop(hours=12)
     async def dataListener(self):
         if (rd.checkDataLastUpd(8)):
             rd.get_daily()
+            Deadlock.loadHeroJson()
 
     async def live_autocomp_all(self, 
         interaction: discord.Interaction, curr: str, 
@@ -119,13 +133,25 @@ class Deadlock(commands.Cog):
         formatted = f"```\n{markdown}\n```"
         await interaction.response.send_message(formatted)
 
-    @app_commands.command(description="Fetch a user's live match displaying ranks of both teams.")
+    @app_commands.command(description="Fetch hero leaderboards for user.")
     @app_commands.autocomplete(choices=live_autocomp_disc)
     async def heros(self, interaction: discord.Interaction, choices: str):
-
-        return
-
+        id = self.users['discord'].get(choices)
+        link = f'https://tracklock.gg/players/{id}'
+        html = await gd.getHTML(link)
+        name = html.find('h1', class_ ='font-bold text-2xl text-white').text 
         
+        descrip = []
+        for hero in self.herolb:
+            vals= list(hero.values())[0]
+            for val in vals:
+                if val[0] == name:
+                    descrip.append(str(list(hero.keys())[0]) + ": " + str(val[1]))
+                    break
+        sort_list = sorted(descrip, key=lambda curr: int("".join(filter(str.isdigit, curr))))
+        last_upd = rd.checkLastTime().replace(second=0, microsecond=0)
+        embed = discord.Embed(title=f"{name} Hero Rankings", description="\n".join(sort_list) + f"\n\nAs of {last_upd.ctime()}")
+        await interaction.response.send_message(embed=embed)
 
 async def setup(bot):
     await bot.add_cog(Deadlock(bot))
