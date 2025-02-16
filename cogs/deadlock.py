@@ -20,12 +20,12 @@ class Deadlock(commands.Cog):
         self.users = gd.load_json("data/users.json")
         self.dataListener.start()
 
-    @tasks.loop(minutes=15)
+    @tasks.loop(hours=12)
     async def dataListener(self):
-        if (rd.checkDataLastUpd(12)):
+        if (rd.checkDataLastUpd(8)):
             rd.get_daily()
 
-    async def live_autocomp(self, 
+    async def live_autocomp_all(self, 
         interaction: discord.Interaction, curr: str, 
         ) -> List[app_commands.Choice[str]]:
         choices = self.users['discord'] | self.users['all']
@@ -34,8 +34,17 @@ class Deadlock(commands.Cog):
             for choice in choices if curr.lower() in choice.lower()
         ]
 
+    async def live_autocomp_disc(self, 
+        interaction: discord.Interaction, curr: str, 
+        ) -> List[app_commands.Choice[str]]:
+        choices = self.users['discord'] 
+        return [
+            app_commands.Choice(name=choice, value=choice)
+            for choice in choices if curr.lower() in choice.lower()
+        ]
+
     @app_commands.command(description="Fetch a user's live match displaying ranks of both teams.")
-    @app_commands.autocomplete(choices=live_autocomp)
+    @app_commands.autocomplete(choices=live_autocomp_all)
     async def live(self, interaction: discord.Interaction, choices: str, delay_minutes: int) :    
         if (delay_minutes > 10 | delay_minutes < 0) :
             delay_minutes = 0
@@ -82,8 +91,9 @@ class Deadlock(commands.Cog):
         await interaction.response.send_message("## Users availble for ONLY /live \n" + '\n'.join(lst) + "\n## Users availble for /live & /mates \n" + '\n'.join(dlst))
       
     @app_commands.command(description="Display a player's win rates when playing with other discord members.")
-    async def mates(self, interaction: discord.Interaction, user: str):
-        id = self.users['discord'].get(user)
+    @app_commands.autocomplete(choices=live_autocomp_disc)
+    async def mates(self, interaction: discord.Interaction, choices: str):
+        id = self.users['discord'].get(choices)
         if id == None:
             await interaction.response.send_message("User does not exist. Use /users to see users.")
             return
@@ -96,10 +106,9 @@ class Deadlock(commands.Cog):
             df.loc[df['mate_id'] == value, "names"] = key
         df = df.drop(columns=['matches', 'mate_id'])
         df['win %'] = df['wins']/df['matches_played']
-        df['win %'] = (df['win %'] * 100).map('{:.2f}%'.format)
-        
         df_sort = df.sort_values(by='win %', ascending=False)
-
+        df_sort['win %'] = (df_sort['win %'] * 100).map('{:.2f}%'.format)
+    
         df_sort['loss'] = df_sort['matches_played']-df_sort['wins']
         base = "{wins}-{loss}"
         df_sort['W-L'] = [base.format(wins=x, loss=y)
@@ -111,7 +120,7 @@ class Deadlock(commands.Cog):
         await interaction.response.send_message(formatted)
 
     @app_commands.command(description="Fetch a user's live match displaying ranks of both teams.")
-    @app_commands.autocomplete(choices=live_autocomp)
+    @app_commands.autocomplete(choices=live_autocomp_disc)
     async def heros(self, interaction: discord.Interaction, choices: str):
 
         return
