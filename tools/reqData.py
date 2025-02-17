@@ -27,7 +27,7 @@ def checkDataLastUpd(threshold_hrs = 12):
     print(str + bool_str)
     return bool
 
-def get_daily():
+async def get_daily():
     files = [f for f in os.listdir("dataDaily") if f.endswith(".json")]
     print('Getting daily NA & EU leaderboards.')
     for f in files:
@@ -50,7 +50,7 @@ def get_daily():
 
 
 
-def get_periodic():
+async def get_periodic():
     ranks = requests.get('https://assets.deadlock-api.com/v2/ranks').json()
     hero =  pd.DataFrame(requests.get('https://assets.deadlock-api.com/v2/heroes?only_active=true').json())
     

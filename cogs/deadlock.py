@@ -22,7 +22,7 @@ class Deadlock(commands.Cog):
         self.dataListener.start()
         Deadlock.loadHeroJson(self)
 
-    def loadHeroJson(self):
+    async def loadHeroJson(self):
         path = 'dataDaily/hero_lb/'
         files = [f for f in os.listdir(path)]
         all = []
@@ -37,7 +37,7 @@ class Deadlock(commands.Cog):
     async def dataListener(self):
         if (rd.checkDataLastUpd(8)):
             rd.get_daily()
-            Deadlock.loadHeroJson()
+            await Deadlock.loadHeroJson(self)
 
     async def live_autocomp_all(self, 
         interaction: discord.Interaction, curr: str, 
