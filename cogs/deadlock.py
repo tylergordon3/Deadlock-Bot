@@ -20,7 +20,7 @@ class Deadlock(commands.Cog):
         self.bot = bot
         self.users = gd.load_json("data/users.json")
         self.dataListener.start()
-        Deadlock.loadHeroJson(self)
+        
 
     async def loadHeroJson(self):
         path = 'dataDaily/hero_lb/'
@@ -36,7 +36,7 @@ class Deadlock(commands.Cog):
     @tasks.loop(hours=12)
     async def dataListener(self):
         if (rd.checkDataLastUpd(8)):
-            rd.get_daily()
+            await rd.get_daily()
             await Deadlock.loadHeroJson(self)
 
     async def live_autocomp_all(self, 

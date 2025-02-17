@@ -47,6 +47,7 @@ async def get_daily():
         data = requests.get(f'https://data.deadlock-api.com/v1/leaderboard/NAmerica/{id}')
         with open(path, mode='w', encoding="utf-8") as write_file:
             json.dump(data.json(), write_file, indent=4)
+    print("Daily update completed.")
 
 
 
