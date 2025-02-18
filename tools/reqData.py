@@ -11,7 +11,16 @@ def checkLastTime():
     last_datetime = dt.datetime.fromtimestamp(last)
     return last_datetime
 
+def getCurrentDay():
+    curr_datetime = dt.datetime.now()
+
+    year = curr_datetime.year
+    month = curr_datetime.month
+    day = curr_datetime.day
     
+    today_str = "Current day: " + str(month) + "/" + str(day) + "/" + str(year)
+    return today_str
+
 def checkDataLastUpd(threshold_hrs = 12):
     
     curr_datetime = dt.datetime.now()

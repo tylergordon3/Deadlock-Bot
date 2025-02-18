@@ -20,9 +20,10 @@ class Deadlock(commands.Cog):
         self.bot = bot
         self.users = gd.load_json("data/users.json")
         self.dataListener.start()
+        self.herolb = []
         
-
-    async def loadHeroJson(self):
+    async def loadHeroData(self):
+        embeds = []
         path = 'dataDaily/hero_lb/'
         files = [f for f in os.listdir(path)]
         all = []
@@ -31,13 +32,38 @@ class Deadlock(commands.Cog):
             hero = f[:-5]
             pull = [(d['account_name'], d['rank']) for d in data['entries']]
             all.append({hero:pull})
-        self.herolb = all
+
+        link = 'https://tracklock.gg/players/'
+        for user in self.users['discord']:
+            player_link = link + str(self.users['discord'][user])
+            html = await gd.getHTML(player_link)
+            name = html.find('h1', class_ ='font-bold text-2xl text-white').text
+            
+            descrip = []
+            for hero in all:
+                vals= list(hero.values())[0]
+                for val in vals:
+                    if val[0] == name:
+                        descrip.append(str(list(hero.keys())[0]) + ": " + str(val[1]))
+                        break
+            sort_list = sorted(descrip, key=lambda curr: int("".join(filter(str.isdigit, curr))))
+            last_upd = rd.checkLastTime().replace(second=0, microsecond=0)
+            embed = discord.Embed(title=f"{name} Hero Rankings", description="\n".join(sort_list) + f"\n\nAs of {last_upd.ctime()}")
+            embed.set_footer(text="ID: " + str(self.users['discord'][user]))
+            embeds.append(embed)
+        return embeds
+    
+    async def updateHeroDiscLb(self, all_hero_lbs):
+        current_dict = gd.load_json('data/hero_disc.json')
+        today = rd.getCurrentDay()
 
     @tasks.loop(hours=12)
     async def dataListener(self):
+        date = rd.getCurrentDay()
+        self.herolb = await Deadlock.loadHeroData(self)
         if (rd.checkDataLastUpd(8)):
             await rd.get_daily()
-            await Deadlock.loadHeroJson(self)
+            self.herolb = await Deadlock.loadHeroData(self)
 
     async def live_autocomp_all(self, 
         interaction: discord.Interaction, curr: str, 
@@ -136,22 +162,14 @@ class Deadlock(commands.Cog):
     @app_commands.command(description="Fetch hero leaderboards for user.")
     @app_commands.autocomplete(choices=live_autocomp_disc)
     async def heros(self, interaction: discord.Interaction, choices: str):
-        id = self.users['discord'].get(choices)
-        link = f'https://tracklock.gg/players/{id}'
-        html = await gd.getHTML(link)
-        name = html.find('h1', class_ ='font-bold text-2xl text-white').text 
-        
-        descrip = []
-        for hero in self.herolb:
-            vals= list(hero.values())[0]
-            for val in vals:
-                if val[0] == name:
-                    descrip.append(str(list(hero.keys())[0]) + ": " + str(val[1]))
-                    break
-        sort_list = sorted(descrip, key=lambda curr: int("".join(filter(str.isdigit, curr))))
-        last_upd = rd.checkLastTime().replace(second=0, microsecond=0)
-        embed = discord.Embed(title=f"{name} Hero Rankings", description="\n".join(sort_list) + f"\n\nAs of {last_upd.ctime()}")
-        await interaction.response.send_message(embed=embed)
+        for embed in self.herolb:
+            print(str(self.users['discord'][choices]))
+            print(str(embed.footer))
+            if (str(self.users['discord'][choices]) in str(embed.footer)):
+                    await interaction.response.send_message(embed=embed)
+                    return
+        await interaction.response.send_message("Not found!")
+                
 
 async def setup(bot):
     await bot.add_cog(Deadlock(bot))
