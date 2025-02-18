@@ -18,7 +18,7 @@ def getCurrentDay():
     month = curr_datetime.month
     day = curr_datetime.day
     
-    today_str = "Current day: " + str(month) + "/" + str(day) + "/" + str(year)
+    today_str = str(month) + "/" + str(day) + "/" + str(year)
     return today_str
 
 def checkDataLastUpd(threshold_hrs = 12):

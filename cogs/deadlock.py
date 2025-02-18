@@ -32,7 +32,7 @@ class Deadlock(commands.Cog):
             hero = f[:-5]
             pull = [(d['account_name'], d['rank']) for d in data['entries']]
             all.append({hero:pull})
-
+        await Deadlock.updateHeroDiscLb(self, all)
         link = 'https://tracklock.gg/players/'
         for user in self.users['discord']:
             player_link = link + str(self.users['discord'][user])
@@ -53,13 +53,43 @@ class Deadlock(commands.Cog):
             embeds.append(embed)
         return embeds
     
-    async def updateHeroDiscLb(self, all_hero_lbs):
+    async def load(self, id, all):
+        link = 'https://tracklock.gg/players/' + id
+        html = await gd.getHTML(link)
+        name = html.find('h1', class_ ='font-bold text-2xl text-white').text
+        ranks = []
+        for hero in all:
+            vals = list(hero.values())[0]
+            for val in vals:
+                    if val[0] == name:
+                        ranks.append({str(list(hero.keys())[0]): str(val[1])})
+                        break
+        print("Load ranks: " + str(ranks))
+        return ranks
+
+    async def updateHeroDiscLb(self, all):
         current_dict = gd.load_json('data/hero_disc.json')
         today = rd.getCurrentDay()
-
+       
+        for player in current_dict:
+            # print current_dict[player] --> {'311616544': [{'Lady Geist': {'2/17/2025': 35}}, {'Abrams': {'2/17/2025': 45}}]}
+            player_dict = current_dict[player]
+            id = list(player_dict.keys())[0]
+            today_ranks = await Deadlock.load(self, id, all)
+            for char_dict in player_dict[id]:
+                # print(char_dict) --> {'Lady Geist': {'2/17/2025': 35}} , {'Abrams': {'2/17/2025': 45}}
+                name = list(char_dict.keys())[0]
+                records = char_dict[name]
+                # print(records) --> {'2/15/2025': 35, '2/16/2025': 41}
+                dates_entered = list(records.keys())
+                # print(dates_entered) --> ['2/15/2025', '2/16/2025']
+                if today in dates_entered:
+                    print("Today already entered for " + name)
+                else:
+                    print("Entering today for " + name)
+                 
     @tasks.loop(hours=12)
     async def dataListener(self):
-        date = rd.getCurrentDay()
         self.herolb = await Deadlock.loadHeroData(self)
         if (rd.checkDataLastUpd(8)):
             await rd.get_daily()
