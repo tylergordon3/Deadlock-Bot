@@ -21,9 +21,8 @@ class Deadlock(commands.Cog):
         self.users = gd.load_json("data/users.json")
         self.dataListener.start()
         self.herolb = []
-        
+
     async def loadHeroData(self):
-        embeds = []
         path = 'dataDaily/hero_lb/'
         files = [f for f in os.listdir(path)]
         all = []
@@ -32,13 +31,74 @@ class Deadlock(commands.Cog):
             hero = f[:-5]
             pull = [(d['account_name'], d['rank']) for d in data['entries']]
             all.append({hero:pull})
-        await Deadlock.updateHeroDiscLb(self, all)
+        return all
+    
+    async def getRanksToday(self, all_lb):
         link = 'https://tracklock.gg/players/'
-        for user in self.users['discord']:
-            player_link = link + str(self.users['discord'][user])
-            html = await gd.getHTML(player_link)
+        disc_users = self.users['discord']
+        today_ranks = {}
+        for user in disc_users:
+            user_link = link + str(disc_users[user])
+            html = await gd.getHTML(user_link)
             name = html.find('h1', class_ ='font-bold text-2xl text-white').text
-            
+            for hero_lb in all_lb:
+                lb_players = list(hero_lb.values())[0]
+                for player in lb_players:
+                    if player[0] == name:
+                        hero = str(list(hero_lb.keys())[0])
+                        # today_ranks is list of dicts -> each dict is username mapped to list of ranks
+                        if player[0] not in today_ranks.keys():
+                            today_ranks[player[0]] = { hero : player[1]}
+                        else:
+                            if player[1] not in list(today_ranks[player[0]].keys()):
+                                today_ranks[player[0]][hero] = player[1]
+                            else:
+                                print(f"getRanksToday::Error {player[1]} already in {today_ranks[player[0]][hero]}")
+        return today_ranks              
+    
+    async def update(self, today_ranks):
+        discDict = gd.load_json('data/hero_disc.json')
+        today = rd.getCurrentDay()
+        needUpdate = []
+        for player in discDict:
+            # print current_dict[player] --> {'311616544': [{'Lady Geist': {'2/17/2025': 35}}, {'Abrams': {'2/17/2025': 45}}]}
+            name = await gd.getTracklockUser(player, self.users['discord'])
+            try:
+                player_rank_today = today_ranks[name]
+            except:
+                break
+                
+            player_dict = discDict[player]
+            id = list(player_dict.keys())[0]
+            charactersNeedUpdate = []
+        
+            checker = [k for d in player_dict[id] for k in d.keys()]
+            print(f"Checker: {checker}")
+
+
+            for char_dict in player_dict[id]:
+                # print(char_dict) --> {'Lady Geist': {'2/17/2025': 35}} , {'Abrams': {'2/17/2025': 45}}
+                name = list(char_dict.keys())[0]
+                records = char_dict[name]
+                # print(records) --> {'2/15/2025': 35, '2/16/2025': 41}
+                dates_entered = list(records.keys())
+                # print(dates_entered) --> ['2/15/2025', '2/16/2025']
+                if today in dates_entered:
+                    print("Today already entered for " + name)
+                else:
+                    print("Entering today for " + name)
+                    charactersNeedUpdate.append(name)
+            needUpdate.append({id:charactersNeedUpdate})
+        print(needUpdate)
+        return needUpdate
+       
+    async def heroLeaderboards(self):
+        # all_leaderboards -> List of lists containing hero leaderboard as tuples
+        all_leaderboards = await Deadlock.loadHeroData(self)
+        today_ranks = await Deadlock.getRanksToday(self, all_leaderboards)
+        await Deadlock.update(self, today_ranks)
+   
+    '''
             descrip = []
             for hero in all:
                 vals= list(hero.values())[0]
@@ -58,15 +118,17 @@ class Deadlock(commands.Cog):
         html = await gd.getHTML(link)
         name = html.find('h1', class_ ='font-bold text-2xl text-white').text
         ranks = []
+        print(f"Loading for {name} : {link}")
         for hero in all:
             vals = list(hero.values())[0]
             for val in vals:
                     if val[0] == name:
+                        print(f"Val0: {val[0]}")
                         ranks.append({str(list(hero.keys())[0]): str(val[1])})
                         break
-        print("Load ranks: " + str(ranks))
+        print(f"Loaded ranks for {name} " + str(ranks))
         return ranks
-
+    
     async def updateHeroDiscLb(self, all):
         current_dict = gd.load_json('data/hero_disc.json')
         today = rd.getCurrentDay()
@@ -87,13 +149,13 @@ class Deadlock(commands.Cog):
                     print("Today already entered for " + name)
                 else:
                     print("Entering today for " + name)
-                 
+    '''   
     @tasks.loop(hours=12)
     async def dataListener(self):
-        self.herolb = await Deadlock.loadHeroData(self)
+        self.herolb = await Deadlock.heroLeaderboards(self)
         if (rd.checkDataLastUpd(8)):
             await rd.get_daily()
-            self.herolb = await Deadlock.loadHeroData(self)
+            self.herolb = await Deadlock.heroLeaderboards(self)
 
     async def live_autocomp_all(self, 
         interaction: discord.Interaction, curr: str, 
@@ -112,7 +174,7 @@ class Deadlock(commands.Cog):
             app_commands.Choice(name=choice, value=choice)
             for choice in choices if curr.lower() in choice.lower()
         ]
-
+    
     @app_commands.command(description="Fetch a user's live match displaying ranks of both teams.")
     @app_commands.autocomplete(choices=live_autocomp_all)
     async def live(self, interaction: discord.Interaction, choices: str, delay_minutes: int) :    

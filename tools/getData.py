@@ -4,6 +4,14 @@ from bs4 import BeautifulSoup
 import json
 import aiohttp
 
+
+async def getTracklockUser(user, disc_users):
+    link = 'https://tracklock.gg/players/'
+    user_link = link + str(disc_users[user])
+    html = await getHTML(user_link)
+    name = html.find('h1', class_ ='font-bold text-2xl text-white').text
+    return name
+
 def read_txt(filename):
     with open (filename, 'r') as file:
         text = file.read()
