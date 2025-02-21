@@ -3,6 +3,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands, tasks
 from typing import List
+import json
 
 import tools.initialize as initialize
 import pandas as pd
@@ -20,7 +21,7 @@ class Deadlock(commands.Cog):
         self.bot = bot
         self.users = gd.load_json("data/users.json")
         self.dataListener.start()
-        self.herolb = []
+        #self.herolb = []
 
     async def loadHeroData(self):
         path = 'dataDaily/hero_lb/'
@@ -38,9 +39,11 @@ class Deadlock(commands.Cog):
         disc_users = self.users['discord']
         today_ranks = {}
         for user in disc_users:
+            print(f"Getting rank today for: {user}")
             user_link = link + str(disc_users[user])
             html = await gd.getHTML(user_link)
             name = html.find('h1', class_ ='font-bold text-2xl text-white').text
+            
             for hero_lb in all_lb:
                 lb_players = list(hero_lb.values())[0]
                 for player in lb_players:
@@ -59,51 +62,48 @@ class Deadlock(commands.Cog):
     async def update(self, today_ranks):
         discDict = gd.load_json('data/hero_disc.json')
         today = rd.getCurrentDay()
-        needUpdate = []
         for player in discDict:
-            # print current_dict[player] --> {'311616544': [{'Lady Geist': {'2/17/2025': 35}}, {'Abrams': {'2/17/2025': 45}}]}
             name = await gd.getTracklockUser(player, self.users['discord'])
             try:
                 player_rank_today = today_ranks[name]
             except:
                 break
-                
             player_dict = discDict[player]
             id = list(player_dict.keys())[0]
-            charactersNeedUpdate = []
-        
-            checker = [k for d in player_dict[id] for k in d.keys()]
-            print(f"Checker: {checker}")
-
-
-            for char_dict in player_dict[id]:
-                # print(char_dict) --> {'Lady Geist': {'2/17/2025': 35}} , {'Abrams': {'2/17/2025': 45}}
-                name = list(char_dict.keys())[0]
-                records = char_dict[name]
-                # print(records) --> {'2/15/2025': 35, '2/16/2025': 41}
-                dates_entered = list(records.keys())
-                # print(dates_entered) --> ['2/15/2025', '2/16/2025']
-                if today in dates_entered:
-                    print("Today already entered for " + name)
+            currData = player_dict[id]
+            for hero in player_rank_today:
+                hero_data_dict = currData['hero']
+                if hero in hero_data_dict:
+                    record = hero_data_dict[hero]
+                    if today not in hero_data_dict[hero]:
+                        record[today] = player_rank_today[hero]
+                        print(f"For {name}, {hero} rank {player_rank_today[hero]} updated in dict for {today}")
+                    else:
+                        print(f"For {name}, {hero} rank {player_rank_today[hero]} already in dict for {today}")
                 else:
-                    print("Entering today for " + name)
-                    charactersNeedUpdate.append(name)
-            needUpdate.append({id:charactersNeedUpdate})
-        print(needUpdate)
-        return needUpdate
+                    print(f"For {name}, {hero} rank {player_rank_today[hero]} not in json yet.")
+                    hero_data_dict[hero] = {f"{today}" : player_rank_today[hero]}
+
+        with open('data/hero_disc.json', mode='w', encoding="utf-8") as write_file:
+            json.dump(discDict,write_file, indent=4)
        
     async def heroLeaderboards(self):
         # all_leaderboards -> List of lists containing hero leaderboard as tuples
+        print(f"Getting hero leaderboards - all.")
         all_leaderboards = await Deadlock.loadHeroData(self)
+        print(f"Getting today's hero ranks.")
         today_ranks = await Deadlock.getRanksToday(self, all_leaderboards)
+        print(f"Updating today's hero rank data.")
         await Deadlock.update(self, today_ranks)
    
     @tasks.loop(hours=12)
     async def dataListener(self):
-        self.herolb = await Deadlock.loadHeroData(self)
+        await Deadlock.heroLeaderboards(self)
+        # self.herolb = await Deadlock.heroLeaderboards(self)
         if (rd.checkDataLastUpd(8)):
             await rd.get_daily()
-            self.herolb = await Deadlock.loadHeroData(self)
+            #self.herolb = await Deadlock.heroLeaderboards(self)
+            await Deadlock.heroLeaderboards(self)
 
     async def live_autocomp_all(self, 
         interaction: discord.Interaction, curr: str, 
@@ -199,17 +199,30 @@ class Deadlock(commands.Cog):
         formatted = f"```\n{markdown}\n```"
         await interaction.response.send_message(formatted)
         
-    '''
+    
     @app_commands.command(description="Fetch hero leaderboards for user.")
     @app_commands.autocomplete(choices=live_autocomp_disc)
     async def heros(self, interaction: discord.Interaction, choices: str):
-        for embed in self.herolb:
-            print(str(self.users['discord'][choices]))
-            print(str(embed.footer))
-            if (str(self.users['discord'][choices]) in str(embed.footer)):
-                    await interaction.response.send_message(embed=embed)
-                    return
-        await interaction.response.send_message("Not found!")'''
+        discDict = gd.load_json('data/hero_disc.json')
+        today = rd.getCurrentDay()
+        name = await gd.getTracklockUser(choices, self.users['discord'])
+
+        player = discDict[choices]
+        id = list(player.keys())[0]
+        heros = player[id]
+        description = ''
+        hero_lst = heros["hero"]
+        for hero in hero_lst:
+            thisHero = hero_lst[hero]
+            if today in thisHero:
+                description = description + f"{hero}: Rank {thisHero[today]}\n"
+            
+
+        if description == "":     
+            await interaction.response.send_message("No ranks")
+        embed = discord.Embed(title=f"{name} Ranks", description=description)
+        embed.set_footer(text=f"As of {today}")     
+        await interaction.response.send_message(embed=embed)
                 
 
 async def setup(bot):
