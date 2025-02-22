@@ -12,7 +12,7 @@ gfreek = 108601750
 durk = 336921993
 
 
-with open('hero.json') as f:
+with open("hero.json") as f:
     d = json.load(f)
     print(d)
 
@@ -31,7 +31,7 @@ worth = []
 for i, val in enumerate(dmatch):
     res.append(val["match_result"])
     worth.append(val["net_worth"])
-   
+
 
 res = np.array(res)
 worth = np.array(worth)
@@ -58,16 +58,15 @@ data = live.json()
 
 players = []
 
-print(type(data[0]['players']))
+print(type(data[0]["players"]))
 
-site = 'https://tracklock.gg/players/'
+site = "https://tracklock.gg/players/"
 
-for player in data[0]['players']:
-    players.append(site + str(player['account_id']))
-
+for player in data[0]["players"]:
+    players.append(site + str(player["account_id"]))
 
 
 if not live.json():
-    print('Player is not in an active game retard!')
+    print("Player is not in an active game retard!")
 else:
-    print('ok')
+    print("ok")

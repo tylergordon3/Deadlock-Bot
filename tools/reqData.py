@@ -6,6 +6,13 @@ import tools.getData as gd
 import datetime as dt
 
 
+def timeSince(start):
+    match_start = dt.datetime.fromtimestamp(start)
+    curr_time = dt.datetime.now()
+    duration = curr_time-match_start
+    durStr = str(duration).split(".")[0]
+    return durStr
+
 def checkLastTime():
     last = os.stat('dataDaily/NAmerica.json').st_mtime
     last_datetime = dt.datetime.fromtimestamp(last)
