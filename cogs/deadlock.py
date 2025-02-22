@@ -21,7 +21,7 @@ class Deadlock(commands.Cog):
         self.bot = bot
         self.users = gd.load_json("data/users.json")
         self.dataListener.start()
-        #self.herolb = []
+        self.liveMessage = ""
 
     async def loadHeroData(self):
         path = 'dataDaily/hero_lb/'
@@ -80,6 +80,9 @@ class Deadlock(commands.Cog):
                         print(f"For {name}, {hero} rank {player_rank_today[hero]} updated in dict for {today}")
                     else:
                         print(f"For {name}, {hero} rank {player_rank_today[hero]} already in dict for {today}")
+                        if record[today] != player_rank_today[hero]:
+                            record[today] = player_rank_today[hero]
+                            print(f"For {name}, {hero} rank {player_rank_today[hero]} being re updated for today")
                 else:
                     print(f"For {name}, {hero} rank {player_rank_today[hero]} not in json yet.")
                     hero_data_dict[hero] = {f"{today}" : player_rank_today[hero]}
@@ -123,6 +126,64 @@ class Deadlock(commands.Cog):
             for choice in choices if curr.lower() in choice.lower()
         ]
     
+    '''
+        Match Id
+        Winning Team if decided
+        Team 0 Net Worth
+        Team 1 Net Worth
+        Team 0 Obj Mask
+        Team 1 Obj Mask
+         cols=['team0NetWorth', 'team1NetWorth', 'spectators', 'team0Objectives', 'team1Objectives']
+    '''
+
+    async def stop(self):
+        Deadlock.liveStatus.stop()
+        self.liveMessage = ""
+        
+
+    '''
+        TEAM 0 -> Yellow Amber Hand
+        TEAM 1 -> Blue Sapphire Flame
+
+        Lane 1 -> purple
+        Lane 2 -> blue
+        Lane 3 -> green
+        Lane 4 -> yellow
+    '''
+    def get_bool(mask):
+        core=bool(mask & (1 << 0))
+        tier1_lane1=bool(mask & (1 << 1))
+        tier1_lane2=bool(mask & (1 << 2))
+        tier1_lane3=bool(mask & (1 << 3))
+        tier1_lane4=bool(mask & (1 << 4))
+        tier2_lane1=bool(mask & (1 << 5))
+        tier2_lane2=bool(mask & (1 << 6))
+        tier2_lane3=bool(mask & (1 << 7))
+        tier2_lane4=bool(mask & (1 << 8))
+        titan=bool(mask & (1 << 9))
+        titan_shield_generator_1=bool(mask & (1 << 10))
+        titan_shield_generator_2=bool(mask & (1 << 11))
+        barrack_boss_lane1=bool(mask & (1 << 12))
+        barrack_boss_lane2=bool(mask & (1 << 13))
+        barrack_boss_lane3=bool(mask & (1 << 14))
+        barrack_boss_lane4=bool(mask & (1 << 15))
+        g = tier1_lane1 + tier1_lane2 + tier1_lane3 + tier1_lane4
+        w = tier2_lane1 + tier2_lane2 + tier2_lane3 + tier2_lane4
+        baseg = barrack_boss_lane1 + barrack_boss_lane2 + barrack_boss_lane3 + barrack_boss_lane4
+        shrine = titan_shield_generator_1 + titan_shield_generator_2
+        obj= f"Guardians: {g}/4 | Walkers: {w}/4 | Base Guards: {baseg}/4 | Shrines: {shrine}/2 | Titan Weak: {not titan}"
+        return obj
+
+    @tasks.loop(minutes=1)
+    async def liveStatus(self, msg, id):
+        liveData = gd.getLiveLoop(id)
+        if liveData == "":
+            await Deadlock.stop(self)
+        else:
+            print("Running live loop.")
+            #Deadlock.get_bool(liveData[3])
+            await msg.edit(content=f"Amber Hand\nNet Worth: {liveData[0]:,d}\nObjectives: {Deadlock.get_bool(liveData[3])}\n\nSapphire Flame\nNet Worth: {liveData[1]:,d}\nObjectives: {Deadlock.get_bool(liveData[4])}\n\nStartTime: {liveData[5]}\nSpectators: {liveData[2]}") 
+        
     @app_commands.command(description="Fetch a user's live match displaying ranks of both teams.")
     @app_commands.autocomplete(choices=live_autocomp_all)
     async def live(self, interaction: discord.Interaction, choices: str, delay_minutes: int) :    
@@ -134,8 +195,10 @@ class Deadlock(commands.Cog):
         await asyncio.sleep(delay_minutes*60)
         print("Back from sleep.")
         if choices in self.users['all']:
+            id = self.users['all'][choices]
             df_players = gd.getLive(self.users['all'][choices])
         elif choices in self.users['discord']:
+            id = self.users['discord'][choices]
             df_players = gd.getLive(self.users['discord'][choices])
         else:
             df_players = pd.DataFrame()
@@ -159,7 +222,10 @@ class Deadlock(commands.Cog):
                 await msg2.edit(content="----------------------------------- LIVESTREAMS -----------------------------------")
                 await ctx.send('\n'.join(lives))
         print('Live fetch for ' + str(choices) + ' complete.')
-
+        msg = await ctx.send('Grabbing additional match data.')
+        if not Deadlock.liveStatus.is_running():
+            Deadlock.liveStatus.start(self, msg, id)
+        
     @app_commands.command(description="Show users available for commands.")
     async def users(self, interaction: discord.Interaction):
         lst = []

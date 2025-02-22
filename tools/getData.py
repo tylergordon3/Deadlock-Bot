@@ -53,10 +53,28 @@ async def getMates(id):
             if r.status == 200:
                 return await r.json()
 
-
+def getLiveLoop(id):
+        active = "https://data.deadlock-api.com/v1/active-matches?account_id=" + str(id)
+        live = requests.get(active)
+        
+        if not live.json():
+            empty = ""
+            return empty
+        data = live.json()
+        colsData = [data[0]['net_worth_team_0'],
+            data[0]['net_worth_team_1'],
+            data[0]['spectators'],
+            data[0]["objectives_mask_team0"],
+            data[0]["objectives_mask_team1"],
+            data[0]["start_time"]]
+       
+        
+        return colsData
 
 def getLive(id):
+   
     active = "https://data.deadlock-api.com/v1/active-matches?account_id=" + str(id)
+    
     live = requests.get(active)
     data = live.json()
     players = []
@@ -72,6 +90,7 @@ def getLive(id):
             players.append([tracklock,team,hero])
 
     df_players = pd.DataFrame(players)
+
     df_players.columns= ['link', 'team', 'hero_id']
     return df_players
 
