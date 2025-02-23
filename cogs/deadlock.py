@@ -112,9 +112,9 @@ class Deadlock(commands.Cog):
 
     @tasks.loop(hours=12)
     async def dataListener(self):
-        await Deadlock.heroLeaderboards(self)
+        # await Deadlock.heroLeaderboards(self)
         # self.herolb = await Deadlock.heroLeaderboards(self)
-        if rd.checkDataLastUpd(8):
+        if rd.checkDataLastUpd(6):
             await rd.get_daily()
             # self.herolb = await Deadlock.heroLeaderboards(self)
             await Deadlock.heroLeaderboards(self)
@@ -167,47 +167,107 @@ class Deadlock(commands.Cog):
         Lane 4 -> yellow
     """
 
-    def get_bool(mask):
-        core = bool(mask & (1 << 0))
-        tier1_lane1 = bool(mask & (1 << 1))
-        tier1_lane2 = bool(mask & (1 << 2))
-        tier1_lane3 = bool(mask & (1 << 3))
-        tier1_lane4 = bool(mask & (1 << 4))
-        tier2_lane1 = bool(mask & (1 << 5))
-        tier2_lane2 = bool(mask & (1 << 6))
-        tier2_lane3 = bool(mask & (1 << 7))
-        tier2_lane4 = bool(mask & (1 << 8))
-        titan = bool(mask & (1 << 9))
-        titan_shield_generator_1 = bool(mask & (1 << 10))
-        titan_shield_generator_2 = bool(mask & (1 << 11))
-        barrack_boss_lane1 = bool(mask & (1 << 12))
-        barrack_boss_lane2 = bool(mask & (1 << 13))
-        barrack_boss_lane3 = bool(mask & (1 << 14))
-        barrack_boss_lane4 = bool(mask & (1 << 15))
-        g = tier1_lane1 + tier1_lane2 + tier1_lane3 + tier1_lane4
-        w = tier2_lane1 + tier2_lane2 + tier2_lane3 + tier2_lane4
-        baseg = (
-            barrack_boss_lane1
-            + barrack_boss_lane2
-            + barrack_boss_lane3
-            + barrack_boss_lane4
+    def formatObjective(val, team):
+        match team:
+            case "AH":
+                match val:
+                    case 0:
+                        return ":white_small_square:"
+                    case 1:
+                        return ":small_orange_diamond:"
+            case "SF":
+                match val:
+                    case 0:
+                        return ":white_small_square:"
+                    case 1:
+                        return ":small_blue_diamond:"
+
+    # Guardians Circle :blue_circle:
+    # Walker Diamond :large_blue_diamond:
+    # Base Guardians Square :blue_square:
+    # :small_blue_diamond:
+
+    def get_bool(ah_mask, bs_mask):
+        # core = bool(mask & (1 << 0))
+        ah_tier1_lane1 = Deadlock.formatObjective(bool(ah_mask & (1 << 1)), "AH")
+        ah_tier1_lane2 = Deadlock.formatObjective(bool(ah_mask & (1 << 2)), "AH")
+        ah_tier1_lane3 = Deadlock.formatObjective(bool(ah_mask & (1 << 3)), "AH")
+        ah_tier1_lane4 = Deadlock.formatObjective(bool(ah_mask & (1 << 4)), "AH")
+        ah_tier2_lane1 = Deadlock.formatObjective(bool(ah_mask & (1 << 5)), "AH")
+        ah_tier2_lane2 = Deadlock.formatObjective(bool(ah_mask & (1 << 6)), "AH")
+        ah_tier2_lane3 = Deadlock.formatObjective(bool(ah_mask & (1 << 7)), "AH")
+        ah_tier2_lane4 = Deadlock.formatObjective(bool(ah_mask & (1 << 8)), "AH")
+        ah_titan = Deadlock.formatObjective(bool(ah_mask & (1 << 9)), "AH")
+        ah_shield1 = Deadlock.formatObjective(bool(ah_mask & (1 << 10)), "AH")
+        ah_shield2 = Deadlock.formatObjective(bool(ah_mask & (1 << 11)), "AH")
+        ah_barrack_boss_lane1 = Deadlock.formatObjective(
+            bool(ah_mask & (1 << 12)), "AH"
         )
-        shrine = titan_shield_generator_1 + titan_shield_generator_2
-        obj = f"Guardians: {g}/4 | Walkers: {w}/4 | Base Guards: {baseg}/4 | Shrines: {shrine}/2 | Titan Weak: {not titan}"
-        return obj
+        ah_barrack_boss_lane2 = Deadlock.formatObjective(
+            bool(ah_mask & (1 << 13)), "AH"
+        )
+        ah_barrack_boss_lane3 = Deadlock.formatObjective(
+            bool(ah_mask & (1 << 14)), "AH"
+        )
+        ah_barrack_boss_lane4 = Deadlock.formatObjective(
+            bool(ah_mask & (1 << 15)), "AH"
+        )
+
+        bs_tier1_lane1 = Deadlock.formatObjective(bool(bs_mask & (1 << 1)), "SF")
+        bs_tier1_lane2 = Deadlock.formatObjective(bool(bs_mask & (1 << 2)), "SF")
+        bs_tier1_lane3 = Deadlock.formatObjective(bool(bs_mask & (1 << 3)), "SF")
+        bs_tier1_lane4 = Deadlock.formatObjective(bool(bs_mask & (1 << 4)), "SF")
+        bs_tier2_lane1 = Deadlock.formatObjective(bool(bs_mask & (1 << 5)), "SF")
+        bs_tier2_lane2 = Deadlock.formatObjective(bool(bs_mask & (1 << 6)), "SF")
+        bs_tier2_lane3 = Deadlock.formatObjective(bool(bs_mask & (1 << 7)), "SF")
+        bs_tier2_lane4 = Deadlock.formatObjective(bool(bs_mask & (1 << 8)), "SF")
+        bs_titan = Deadlock.formatObjective(bool(bs_mask & (1 << 9)), "SF")
+        bs_shield1 = Deadlock.formatObjective(bool(bs_mask & (1 << 10)), "SF")
+        bs_shield2 = Deadlock.formatObjective(bool(bs_mask & (1 << 11)), "SF")
+        bs_barrack_boss_lane1 = Deadlock.formatObjective(
+            bool(bs_mask & (1 << 12)), "SF"
+        )
+        bs_barrack_boss_lane2 = Deadlock.formatObjective(
+            bool(bs_mask & (1 << 13)), "SF"
+        )
+        bs_barrack_boss_lane3 = Deadlock.formatObjective(
+            bool(bs_mask & (1 << 14)), "SF"
+        )
+        bs_barrack_boss_lane4 = Deadlock.formatObjective(
+            bool(bs_mask & (1 << 15)), "SF"
+        )
+
+        str = (
+            f"\n         {bs_titan}     \n"
+            f"      {bs_shield1}{bs_shield2}    \n"
+            f"{bs_barrack_boss_lane1}{bs_barrack_boss_lane2}{bs_barrack_boss_lane3}{bs_barrack_boss_lane4}\n"
+            f"{bs_tier2_lane1}{bs_tier2_lane2}{bs_tier2_lane3}{bs_tier2_lane4}\n"
+            f"{bs_tier1_lane1}{bs_tier1_lane2}{bs_tier1_lane3}{bs_tier1_lane4}\n"
+            f"\n"
+            f"{ah_tier1_lane4}{ah_tier1_lane3}{ah_tier1_lane2}{ah_tier1_lane1}\n"
+            f"{ah_tier2_lane4}{ah_tier2_lane3}{ah_tier2_lane2}{ah_tier2_lane1}\n"
+            f"{ah_barrack_boss_lane4}{ah_barrack_boss_lane3}{ah_barrack_boss_lane2}{ah_barrack_boss_lane1}\n"
+            f"      {ah_shield2}{ah_shield1}    \n"
+            f"         {ah_titan}      "
+        )
+        return str
 
     @tasks.loop(minutes=1)
     async def liveStatus(self, msg, id):
         liveData = gd.getLiveLoop(id)
         if liveData == "":
             print("LiveData returned empty, stopping loop.")
+            await msg.edit(content=msg.content + "\nGame has concluded.")
             await Deadlock.stop(self)
         else:
             print("\nRunning live loop.")
             start_time = liveData[5]
             match_duration = rd.timeSince(start_time)
-            str = f"Amber Hand\nNet Worth: {liveData[0]:,d}\nObjectives: {Deadlock.get_bool(liveData[3])}\n\nSapphire Flame\nNet Worth: {liveData[1]:,d}\nObjectives: {Deadlock.get_bool(liveData[4])}\n\nDuration: {match_duration}\nSpectators: {liveData[2]}"
-            print(str)
+            str = (
+                f"Duration: {match_duration}\nSpectators: {liveData[2]}\n\nSapphire Flame\nNet Worth: {liveData[1]:,d}\n"
+                + Deadlock.get_bool(liveData[3], liveData[4])
+                + f"\nAmber Hand\nNet Worth: {liveData[0]:,d}"
+            )
             await msg.edit(content=str)
 
     @app_commands.command(
@@ -248,11 +308,11 @@ class Deadlock(commands.Cog):
             )
             await msg.edit(content="PLAYERS IN GAME:")
             await ctx.send(
-                "----------------------------------- TEAM 1 -----------------------------------"
+                "----------------------------------- AMBER HAND -----------------------------------"
             )
             await ctx.send(embeds=team1)
             await ctx.send(
-                "----------------------------------- TEAM 2 -----------------------------------"
+                "----------------------------------- SAPPHIRE FLAME -----------------------------------"
             )
             await ctx.send(embeds=team2)
             msg2 = await ctx.send("Fetching live streams...")
