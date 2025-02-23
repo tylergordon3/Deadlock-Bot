@@ -22,7 +22,6 @@ class Deadlock(commands.Cog):
         self.bot = bot
         self.users = gd.load_json("data/users.json")
         self.dataListener.start()
-        self.liveMessage = ""
 
     async def loadHeroData(self):
         path = "dataDaily/hero_lb/"
@@ -40,10 +39,8 @@ class Deadlock(commands.Cog):
         disc_users = self.users["discord"]
         today_ranks = {}
         for user in disc_users:
+            name = gd.getTracklockUser(user)
             print(f"Getting rank today for: {user}")
-            user_link = link + str(disc_users[user])
-            html = await gd.getHTML(user_link)
-            name = html.find("h1", class_="font-bold text-2xl text-white").text
 
             for hero_lb in all_lb:
                 lb_players = list(hero_lb.values())[0]
@@ -81,16 +78,16 @@ class Deadlock(commands.Cog):
                     if today not in hero_data_dict[hero]:
                         record[today] = player_rank_today[hero]
                         print(
-                            f"For {name}, {hero} rank {player_rank_today[hero]} updated in dict for {today}"
+                            f"For {name}, {hero} rank {player_rank_today[hero]} dict entry added, {today}"
                         )
                     else:
                         print(
-                            f"For {name}, {hero} rank {player_rank_today[hero]} already in dict for {today}"
+                            f"For {name}, {hero} already in dict for {today}. Current Rank: {record[today]}"
                         )
                         if record[today] != player_rank_today[hero]:
                             record[today] = player_rank_today[hero]
                             print(
-                                f"For {name}, {hero} rank {player_rank_today[hero]} being re updated for today"
+                                f"For {name}, {hero} rank {record[today]} has been updated to: {player_rank_today[hero]}"
                             )
                 else:
                     print(
@@ -103,20 +100,17 @@ class Deadlock(commands.Cog):
 
     async def heroLeaderboards(self):
         # all_leaderboards -> List of lists containing hero leaderboard as tuples
-        print(f"Getting hero leaderboards - all.")
+        print(f"Loading hero leaderboards - all.")
         all_leaderboards = await Deadlock.loadHeroData(self)
-        print(f"Getting today's hero ranks.")
+        print(f"Loading today's hero ranks.")
         today_ranks = await Deadlock.getRanksToday(self, all_leaderboards)
         print(f"Updating today's hero rank data.")
         await Deadlock.update(self, today_ranks)
 
-    @tasks.loop(hours=12)
+    @tasks.loop(hours=6)
     async def dataListener(self):
-        # await Deadlock.heroLeaderboards(self)
-        # self.herolb = await Deadlock.heroLeaderboards(self)
-        if rd.checkDataLastUpd(6):
+        if rd.checkDataLastUpd(8):
             await rd.get_daily()
-            # self.herolb = await Deadlock.heroLeaderboards(self)
             await Deadlock.heroLeaderboards(self)
 
     async def live_autocomp_all(
@@ -150,12 +144,11 @@ class Deadlock(commands.Cog):
         Team 1 Net Worth
         Team 0 Obj Mask
         Team 1 Obj Mask
-         cols=['team0NetWorth', 'team1NetWorth', 'spectators', 'team0Objectives', 'team1Objectives']
+
     """
 
     async def stop(self):
         Deadlock.liveStatus.stop()
-        self.liveMessage = ""
 
     """
         TEAM 0 -> Yellow Amber Hand
@@ -187,7 +180,7 @@ class Deadlock(commands.Cog):
     # Base Guardians Square :blue_square:
     # :small_blue_diamond:
 
-    def get_bool(ah_mask, bs_mask):
+    def get_bool(ah_mask, sf_mask):
         # core = bool(mask & (1 << 0))
         ah_tier1_lane1 = Deadlock.formatObjective(bool(ah_mask & (1 << 1)), "AH")
         ah_tier1_lane2 = Deadlock.formatObjective(bool(ah_mask & (1 << 2)), "AH")
@@ -213,36 +206,36 @@ class Deadlock(commands.Cog):
             bool(ah_mask & (1 << 15)), "AH"
         )
 
-        bs_tier1_lane1 = Deadlock.formatObjective(bool(bs_mask & (1 << 1)), "SF")
-        bs_tier1_lane2 = Deadlock.formatObjective(bool(bs_mask & (1 << 2)), "SF")
-        bs_tier1_lane3 = Deadlock.formatObjective(bool(bs_mask & (1 << 3)), "SF")
-        bs_tier1_lane4 = Deadlock.formatObjective(bool(bs_mask & (1 << 4)), "SF")
-        bs_tier2_lane1 = Deadlock.formatObjective(bool(bs_mask & (1 << 5)), "SF")
-        bs_tier2_lane2 = Deadlock.formatObjective(bool(bs_mask & (1 << 6)), "SF")
-        bs_tier2_lane3 = Deadlock.formatObjective(bool(bs_mask & (1 << 7)), "SF")
-        bs_tier2_lane4 = Deadlock.formatObjective(bool(bs_mask & (1 << 8)), "SF")
-        bs_titan = Deadlock.formatObjective(bool(bs_mask & (1 << 9)), "SF")
-        bs_shield1 = Deadlock.formatObjective(bool(bs_mask & (1 << 10)), "SF")
-        bs_shield2 = Deadlock.formatObjective(bool(bs_mask & (1 << 11)), "SF")
-        bs_barrack_boss_lane1 = Deadlock.formatObjective(
-            bool(bs_mask & (1 << 12)), "SF"
+        sf_tier1_lane1 = Deadlock.formatObjective(bool(sf_mask & (1 << 1)), "SF")
+        sf_tier1_lane2 = Deadlock.formatObjective(bool(sf_mask & (1 << 2)), "SF")
+        sf_tier1_lane3 = Deadlock.formatObjective(bool(sf_mask & (1 << 3)), "SF")
+        sf_tier1_lane4 = Deadlock.formatObjective(bool(sf_mask & (1 << 4)), "SF")
+        sf_tier2_lane1 = Deadlock.formatObjective(bool(sf_mask & (1 << 5)), "SF")
+        sf_tier2_lane2 = Deadlock.formatObjective(bool(sf_mask & (1 << 6)), "SF")
+        sf_tier2_lane3 = Deadlock.formatObjective(bool(sf_mask & (1 << 7)), "SF")
+        sf_tier2_lane4 = Deadlock.formatObjective(bool(sf_mask & (1 << 8)), "SF")
+        sf_titan = Deadlock.formatObjective(bool(sf_mask & (1 << 9)), "SF")
+        sf_shield1 = Deadlock.formatObjective(bool(sf_mask & (1 << 10)), "SF")
+        sf_shield2 = Deadlock.formatObjective(bool(sf_mask & (1 << 11)), "SF")
+        sf_barrack_boss_lane1 = Deadlock.formatObjective(
+            bool(sf_mask & (1 << 12)), "SF"
         )
-        bs_barrack_boss_lane2 = Deadlock.formatObjective(
-            bool(bs_mask & (1 << 13)), "SF"
+        sf_barrack_boss_lane2 = Deadlock.formatObjective(
+            bool(sf_mask & (1 << 13)), "SF"
         )
-        bs_barrack_boss_lane3 = Deadlock.formatObjective(
-            bool(bs_mask & (1 << 14)), "SF"
+        sf_barrack_boss_lane3 = Deadlock.formatObjective(
+            bool(sf_mask & (1 << 14)), "SF"
         )
-        bs_barrack_boss_lane4 = Deadlock.formatObjective(
-            bool(bs_mask & (1 << 15)), "SF"
+        sf_barrack_boss_lane4 = Deadlock.formatObjective(
+            bool(sf_mask & (1 << 15)), "SF"
         )
 
         str = (
-            f"\n         {bs_titan}     \n"
-            f"      {bs_shield1}{bs_shield2}    \n"
-            f"{bs_barrack_boss_lane1}{bs_barrack_boss_lane2}{bs_barrack_boss_lane3}{bs_barrack_boss_lane4}\n"
-            f"{bs_tier2_lane1}{bs_tier2_lane2}{bs_tier2_lane3}{bs_tier2_lane4}\n"
-            f"{bs_tier1_lane1}{bs_tier1_lane2}{bs_tier1_lane3}{bs_tier1_lane4}\n"
+            f"\n         {sf_titan}     \n"
+            f"      {sf_shield1}{sf_shield2}    \n"
+            f"{sf_barrack_boss_lane1}{sf_barrack_boss_lane2}{sf_barrack_boss_lane3}{sf_barrack_boss_lane4}\n"
+            f"{sf_tier2_lane1}{sf_tier2_lane2}{sf_tier2_lane3}{sf_tier2_lane4}\n"
+            f"{sf_tier1_lane1}{sf_tier1_lane2}{sf_tier1_lane3}{sf_tier1_lane4}\n"
             f"\n"
             f"{ah_tier1_lane4}{ah_tier1_lane3}{ah_tier1_lane2}{ah_tier1_lane1}\n"
             f"{ah_tier2_lane4}{ah_tier2_lane3}{ah_tier2_lane2}{ah_tier2_lane1}\n"
@@ -251,6 +244,12 @@ class Deadlock(commands.Cog):
             f"         {ah_titan}      "
         )
         return str
+
+    """0 'team0NetWorth'
+    1 'team1NetWorth' 
+    2'spectators' 
+    3 'team0Objectives'  
+    4 'team1Objectives']"""
 
     @tasks.loop(minutes=1)
     async def liveStatus(self, msg, id):
