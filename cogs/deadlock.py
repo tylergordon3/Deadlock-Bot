@@ -270,7 +270,7 @@ class Deadlock(commands.Cog):
             )
             await msg.edit(content=str)
 
-    def task_launcher(
+    '''def task_launcher(
         self, msg, id, interval
     ):  # The `args` are the arguments passed into the loop
         """Creates new instances of `tasks.Loop`"""
@@ -285,7 +285,7 @@ class Deadlock(commands.Cog):
     async def start_task(self, msg, id):
         """Command that launches a new task with the arguments given"""
         self.task_launcher(self, msg, id, minutes=1)
-        print("Task started!")
+        print("Task started!")'''
 
     @app_commands.command(
         description="Fetch a user's live match displaying ranks of both teams."
