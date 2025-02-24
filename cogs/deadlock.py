@@ -22,6 +22,7 @@ class Deadlock(commands.Cog):
         self.bot = bot
         self.users = gd.load_json("data/users.json")
         self.dataListener.start()
+        self._tasks = []
 
     async def loadHeroData(self):
         path = "dataDaily/hero_lb/"
@@ -175,13 +176,7 @@ class Deadlock(commands.Cog):
                     case 1:
                         return ":small_blue_diamond:"
 
-    # Guardians Circle :blue_circle:
-    # Walker Diamond :large_blue_diamond:
-    # Base Guardians Square :blue_square:
-    # :small_blue_diamond:
-
     def get_bool(ah_mask, sf_mask):
-        # core = bool(mask & (1 << 0))
         ah_tier1_lane1 = Deadlock.formatObjective(bool(ah_mask & (1 << 1)), "AH")
         ah_tier1_lane2 = Deadlock.formatObjective(bool(ah_mask & (1 << 2)), "AH")
         ah_tier1_lane3 = Deadlock.formatObjective(bool(ah_mask & (1 << 3)), "AH")
@@ -190,7 +185,10 @@ class Deadlock(commands.Cog):
         ah_tier2_lane2 = Deadlock.formatObjective(bool(ah_mask & (1 << 6)), "AH")
         ah_tier2_lane3 = Deadlock.formatObjective(bool(ah_mask & (1 << 7)), "AH")
         ah_tier2_lane4 = Deadlock.formatObjective(bool(ah_mask & (1 << 8)), "AH")
-        ah_titan = Deadlock.formatObjective(bool(ah_mask & (1 << 9)), "AH")
+        if not bool(ah_mask & (1 << 9)):
+            ah_titan = ":red_circle:"
+        else:
+            ah_titan = Deadlock.formatObjective(bool(ah_mask & (1 << 9)), "Ah")
         ah_shield1 = Deadlock.formatObjective(bool(ah_mask & (1 << 10)), "AH")
         ah_shield2 = Deadlock.formatObjective(bool(ah_mask & (1 << 11)), "AH")
         ah_barrack_boss_lane1 = Deadlock.formatObjective(
@@ -214,7 +212,10 @@ class Deadlock(commands.Cog):
         sf_tier2_lane2 = Deadlock.formatObjective(bool(sf_mask & (1 << 6)), "SF")
         sf_tier2_lane3 = Deadlock.formatObjective(bool(sf_mask & (1 << 7)), "SF")
         sf_tier2_lane4 = Deadlock.formatObjective(bool(sf_mask & (1 << 8)), "SF")
-        sf_titan = Deadlock.formatObjective(bool(sf_mask & (1 << 9)), "SF")
+        if not bool(sf_mask & (1 << 9)):
+            sf_titan = ":red_circle:"
+        else:
+            sf_titan = Deadlock.formatObjective(bool(sf_mask & (1 << 9)), "SF")
         sf_shield1 = Deadlock.formatObjective(bool(sf_mask & (1 << 10)), "SF")
         sf_shield2 = Deadlock.formatObjective(bool(sf_mask & (1 << 11)), "SF")
         sf_barrack_boss_lane1 = Deadlock.formatObjective(
@@ -231,7 +232,7 @@ class Deadlock(commands.Cog):
         )
 
         str = (
-            f"\n         {sf_titan}     \n"
+            f"         {sf_titan}     \n"
             f"      {sf_shield1}{sf_shield2}    \n"
             f"{sf_barrack_boss_lane1}{sf_barrack_boss_lane2}{sf_barrack_boss_lane3}{sf_barrack_boss_lane4}\n"
             f"{sf_tier2_lane1}{sf_tier2_lane2}{sf_tier2_lane3}{sf_tier2_lane4}\n"
@@ -268,6 +269,23 @@ class Deadlock(commands.Cog):
                 + f"\nAmber Hand\nNet Worth: {liveData[0]:,d}"
             )
             await msg.edit(content=str)
+
+    def task_launcher(
+        self, msg, id, interval
+    ):  # The `args` are the arguments passed into the loop
+        """Creates new instances of `tasks.Loop`"""
+        # Creating the task
+        new_task = tasks.loop(**interval)(
+            self.liveStatus
+        )  # You can also pass a static interval and/or count
+        # Starting the task
+        new_task.start(msg, id, interval)
+        self._tasks.append(new_task)
+
+    async def start_task(self, msg, id):
+        """Command that launches a new task with the arguments given"""
+        self.task_launcher(self, msg, id, minutes=1)
+        print("Task started!")
 
     @app_commands.command(
         description="Fetch a user's live match displaying ranks of both teams."
@@ -327,6 +345,7 @@ class Deadlock(commands.Cog):
         msg = await ctx.send("Grabbing additional match data.")
         if not Deadlock.liveStatus.is_running():
             Deadlock.liveStatus.start(self, msg, id)
+        # self.start_task(self, msg, id)
 
     @app_commands.command(description="Show users available for commands.")
     async def users(self, interaction: discord.Interaction):
