@@ -40,7 +40,7 @@ class Deadlock(commands.Cog):
         disc_users = self.users["discord"]
         today_ranks = {}
         for user in disc_users:
-            name = gd.getTracklockUser(user, disc_users)
+            name = await gd.getTracklockUser(user, disc_users)
             print(f"Getting rank today for: {user}")
 
             for hero_lb in all_lb:
@@ -49,6 +49,7 @@ class Deadlock(commands.Cog):
                     if player[0] == name:
                         hero = str(list(hero_lb.keys())[0])
                         # today_ranks is list of dicts -> each dict is username mapped to list of ranks
+                        print(f"getRanksToday for {name}")
                         if player[0] not in today_ranks.keys():
                             today_ranks[player[0]] = {hero: player[1]}
                         else:
@@ -58,6 +59,7 @@ class Deadlock(commands.Cog):
                                 print(
                                     f"getRanksToday::Error {player[1]} already in {today_ranks[player[0]][hero]}"
                                 )
+        print(today_ranks)
         return today_ranks
 
     async def update(self, today_ranks):
@@ -66,12 +68,17 @@ class Deadlock(commands.Cog):
         for player in discDict:
             name = await gd.getTracklockUser(player, self.users["discord"])
             try:
-                player_rank_today = today_ranks[name]
+                player_rank_today = today_ranks[player]
             except:
-                break
+                print(
+                    f"Player rank today error in update for Name: {name}, Player: {player}"
+                )
+                continue
+
             player_dict = discDict[player]
             id = list(player_dict.keys())[0]
             currData = player_dict[id]
+            print("Iterating heroes")
             for hero in player_rank_today:
                 hero_data_dict = currData["hero"]
                 if hero in hero_data_dict:
@@ -110,6 +117,8 @@ class Deadlock(commands.Cog):
 
     @tasks.loop(hours=6)
     async def dataListener(self):
+        await rd.get_daily()
+        await Deadlock.heroLeaderboards(self)
         if rd.checkDataLastUpd(8):
             await rd.get_daily()
             await Deadlock.heroLeaderboards(self)
@@ -245,7 +254,6 @@ class Deadlock(commands.Cog):
             f"      {ah_shield2}{ah_shield1}    \n"
             f"         {ah_titan}      "
         )
-        print(ah_titan)
         return str
 
     """0 'team0NetWorth'
