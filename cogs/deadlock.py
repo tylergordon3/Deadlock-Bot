@@ -78,7 +78,6 @@ class Deadlock(commands.Cog):
             player_dict = discDict[player]
             id = list(player_dict.keys())[0]
             currData = player_dict[id]
-            print("Iterating heroes")
             for hero in player_rank_today:
                 hero_data_dict = currData["hero"]
                 if hero in hero_data_dict:
@@ -117,8 +116,6 @@ class Deadlock(commands.Cog):
 
     @tasks.loop(hours=6)
     async def dataListener(self):
-        await rd.get_daily()
-        await Deadlock.heroLeaderboards(self)
         if rd.checkDataLastUpd(8):
             await rd.get_daily()
             await Deadlock.heroLeaderboards(self)
@@ -185,7 +182,7 @@ class Deadlock(commands.Cog):
                     case 1:
                         return ":small_blue_diamond:"
 
-    def get_bool(ah_mask, sf_mask):
+    def get_bool(ah_mask, sf_mask, team):
         ah_tier1_lane1 = Deadlock.formatObjective(bool(ah_mask & (1 << 1)), "AH")
         ah_tier1_lane2 = Deadlock.formatObjective(bool(ah_mask & (1 << 2)), "AH")
         ah_tier1_lane3 = Deadlock.formatObjective(bool(ah_mask & (1 << 3)), "AH")
@@ -241,7 +238,7 @@ class Deadlock(commands.Cog):
             bool(sf_mask & (1 << 15)), "SF"
         )
 
-        str = (
+        str_ah = (
             f"         {sf_titan}     \n"
             f"      {sf_shield1}{sf_shield2}    \n"
             f"{sf_barrack_boss_lane1}{sf_barrack_boss_lane2}{sf_barrack_boss_lane3}{sf_barrack_boss_lane4}\n"
@@ -254,7 +251,23 @@ class Deadlock(commands.Cog):
             f"      {ah_shield2}{ah_shield1}    \n"
             f"         {ah_titan}      "
         )
-        return str
+
+        str_sf = (
+            f"         {ah_titan}     \n"
+            f"      {ah_shield1}{ah_shield2}    \n"
+            f"{ah_barrack_boss_lane1}{ah_barrack_boss_lane2}{ah_barrack_boss_lane3}{ah_barrack_boss_lane4}\n"
+            f"{ah_tier2_lane1}{ah_tier2_lane2}{ah_tier2_lane3}{ah_tier2_lane4}\n"
+            f"{ah_tier1_lane1}{ah_tier1_lane2}{ah_tier1_lane3}{ah_tier1_lane4}\n"
+            f"\n"
+            f"{sf_tier1_lane4}{sf_tier1_lane3}{sf_tier1_lane2}{sf_tier1_lane1}\n"
+            f"{sf_tier2_lane4}{sf_tier2_lane3}{sf_tier2_lane2}{sf_tier2_lane1}\n"
+            f"{sf_barrack_boss_lane4}{sf_barrack_boss_lane3}{sf_barrack_boss_lane2}{sf_barrack_boss_lane1}\n"
+            f"      {sf_shield2}{sf_shield1}    \n"
+            f"         {sf_titan}      "
+        )
+        if team == 1:
+            return str_sf
+        return str_ah
 
     """0 'team0NetWorth'
     1 'team1NetWorth' 
@@ -263,7 +276,7 @@ class Deadlock(commands.Cog):
     4 'team1Objectives']"""
 
     @tasks.loop(minutes=1)
-    async def liveStatus(self, msg, id):
+    async def liveStatus(self, msg, id, team):
         liveData = gd.getLiveLoop(id)
         if liveData == "":
             print("LiveData returned empty, stopping loop.")
@@ -273,10 +286,16 @@ class Deadlock(commands.Cog):
             print("Running live loop.")
             start_time = liveData[5]
             match_duration = rd.timeSince(start_time)
+            if team == 1:
+                enemy = "Amber Hand"
+                usr_team = "Sapphire Flame"
+            else:
+                usr_team = "Amber Hand"
+                enemy = "Sapphire Flame"
             str = (
-                f"Duration: {match_duration}\nSpectators: {liveData[2]}\n\nSapphire Flame\nNet Worth: {liveData[1]:,d}\n"
-                + Deadlock.get_bool(liveData[3], liveData[4])
-                + f"\nAmber Hand\nNet Worth: {liveData[0]:,d}"
+                f"Duration: {match_duration}\nSpectators: {liveData[2]}\n\n{enemy}\nNet Worth: {liveData[1]:,d}\n"
+                + Deadlock.get_bool(liveData[3], liveData[4], team)
+                + f"\n{usr_team}\nNet Worth: {liveData[0]:,d}"
             )
             await msg.edit(content=str)
 
@@ -312,6 +331,11 @@ class Deadlock(commands.Cog):
             err_msg = "Player not found, potential reasons: \n- Lobby elo too low\n- Player not in a game\n- Player is in active game but duration of game is less than 3 minutes\n Check /users for available users."
             await ctx.send(f"Error during execution:\n```py\n{err_msg}\n```")
         else:
+
+            choice_team = df_players.loc[
+                df_players["link"] == f"https://tracklock.gg/players/{id}", "team"
+            ].values[0]
+
             msg = await ctx.send("Fetching players in game.....")
             team1, team2 = await ud.getProfiles(
                 df_players, ranks, na_leaderboard, eu_leaderboard, hero
@@ -334,15 +358,14 @@ class Deadlock(commands.Cog):
                     content="----------------------------------- LIVESTREAMS -----------------------------------"
                 )
                 await ctx.send("\n".join(lives))
-        print("Live fetch for " + str(choices) + " complete.")
-        msg = await ctx.send("Grabbing additional match data.")
-        if not Deadlock.liveStatus.is_running():
-            Deadlock.liveStatus.start(self, msg, id)
-        else:
-            await msg.edit(
-                content="Match data being fetched for another match already."
-            )
-        # self.start_task(self, msg, id)
+            print("Live fetch for " + str(choices) + " complete.")
+            msg = await ctx.send("Grabbing additional match data.")
+            if not Deadlock.liveStatus.is_running():
+                Deadlock.liveStatus.start(self, msg, id, choice_team)
+            else:
+                await msg.edit(
+                    content="Match data being fetched for another match already."
+                )
 
     @app_commands.command(description="Show users available for commands.")
     async def users(self, interaction: discord.Interaction):
