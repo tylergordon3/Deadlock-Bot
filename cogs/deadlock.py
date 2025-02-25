@@ -40,7 +40,7 @@ class Deadlock(commands.Cog):
         disc_users = self.users["discord"]
         today_ranks = {}
         for user in disc_users:
-            name = gd.getTracklockUser(user)
+            name = gd.getTracklockUser(user, disc_users)
             print(f"Getting rank today for: {user}")
 
             for hero_lb in all_lb:
@@ -188,7 +188,7 @@ class Deadlock(commands.Cog):
         if not bool(ah_mask & (1 << 9)):
             ah_titan = ":red_circle:"
         else:
-            ah_titan = Deadlock.formatObjective(bool(ah_mask & (1 << 9)), "Ah")
+            ah_titan = Deadlock.formatObjective(bool(ah_mask & (1 << 9)), "AH")
         ah_shield1 = Deadlock.formatObjective(bool(ah_mask & (1 << 10)), "AH")
         ah_shield2 = Deadlock.formatObjective(bool(ah_mask & (1 << 11)), "AH")
         ah_barrack_boss_lane1 = Deadlock.formatObjective(
@@ -212,6 +212,7 @@ class Deadlock(commands.Cog):
         sf_tier2_lane2 = Deadlock.formatObjective(bool(sf_mask & (1 << 6)), "SF")
         sf_tier2_lane3 = Deadlock.formatObjective(bool(sf_mask & (1 << 7)), "SF")
         sf_tier2_lane4 = Deadlock.formatObjective(bool(sf_mask & (1 << 8)), "SF")
+
         if not bool(sf_mask & (1 << 9)):
             sf_titan = ":red_circle:"
         else:
@@ -244,6 +245,7 @@ class Deadlock(commands.Cog):
             f"      {ah_shield2}{ah_shield1}    \n"
             f"         {ah_titan}      "
         )
+        print(ah_titan)
         return str
 
     """0 'team0NetWorth'
@@ -257,10 +259,10 @@ class Deadlock(commands.Cog):
         liveData = gd.getLiveLoop(id)
         if liveData == "":
             print("LiveData returned empty, stopping loop.")
-            await msg.edit(content=msg.content + "\nGame has concluded.")
+            await msg.edit(content="Game has concluded.")
             await Deadlock.stop(self)
         else:
-            print("\nRunning live loop.")
+            print("Running live loop.")
             start_time = liveData[5]
             match_duration = rd.timeSince(start_time)
             str = (
@@ -269,23 +271,6 @@ class Deadlock(commands.Cog):
                 + f"\nAmber Hand\nNet Worth: {liveData[0]:,d}"
             )
             await msg.edit(content=str)
-
-    '''def task_launcher(
-        self, msg, id, interval
-    ):  # The `args` are the arguments passed into the loop
-        """Creates new instances of `tasks.Loop`"""
-        # Creating the task
-        new_task = tasks.loop(**interval)(
-            self.liveStatus
-        )  # You can also pass a static interval and/or count
-        # Starting the task
-        new_task.start(msg, id, interval)
-        self._tasks.append(new_task)
-
-    async def start_task(self, msg, id):
-        """Command that launches a new task with the arguments given"""
-        self.task_launcher(self, msg, id, minutes=1)
-        print("Task started!")'''
 
     @app_commands.command(
         description="Fetch a user's live match displaying ranks of both teams."
@@ -345,6 +330,10 @@ class Deadlock(commands.Cog):
         msg = await ctx.send("Grabbing additional match data.")
         if not Deadlock.liveStatus.is_running():
             Deadlock.liveStatus.start(self, msg, id)
+        else:
+            await msg.edit(
+                content="Match data being fetched for another match already."
+            )
         # self.start_task(self, msg, id)
 
     @app_commands.command(description="Show users available for commands.")
