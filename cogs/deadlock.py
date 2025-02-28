@@ -59,7 +59,6 @@ class Deadlock(commands.Cog):
                                 print(
                                     f"getRanksToday::Error {player[1]} already in {today_ranks[player[0]][hero]}"
                                 )
-        print(today_ranks)
         return today_ranks
 
     async def update(self, today_ranks):
@@ -116,6 +115,8 @@ class Deadlock(commands.Cog):
 
     @tasks.loop(hours=6)
     async def dataListener(self):
+        # await rd.get_daily()
+        # await Deadlock.heroLeaderboards(self)
         if rd.checkDataLastUpd(8):
             await rd.get_daily()
             await Deadlock.heroLeaderboards(self)
@@ -239,31 +240,31 @@ class Deadlock(commands.Cog):
         )
 
         str_ah = (
-            f"         {sf_titan}     \n"
-            f"      {sf_shield1}{sf_shield2}    \n"
-            f"{sf_barrack_boss_lane1}{sf_barrack_boss_lane2}{sf_barrack_boss_lane3}{sf_barrack_boss_lane4}\n"
-            f"{sf_tier2_lane1}{sf_tier2_lane2}{sf_tier2_lane3}{sf_tier2_lane4}\n"
-            f"{sf_tier1_lane1}{sf_tier1_lane2}{sf_tier1_lane3}{sf_tier1_lane4}\n"
+            f"          {sf_titan}     \n"
+            f"\t {sf_shield1}\t{sf_shield2}    \n"
+            f"{sf_barrack_boss_lane1}\t{sf_barrack_boss_lane3}\t{sf_barrack_boss_lane4}\n"
+            f"{sf_tier2_lane1}\t{sf_tier2_lane3}\t{sf_tier2_lane4}\n"
+            f"{sf_tier1_lane1}\t{sf_tier1_lane3}\t{sf_tier1_lane4}\n"
             f"\n"
-            f"{ah_tier1_lane4}{ah_tier1_lane3}{ah_tier1_lane2}{ah_tier1_lane1}\n"
-            f"{ah_tier2_lane4}{ah_tier2_lane3}{ah_tier2_lane2}{ah_tier2_lane1}\n"
-            f"{ah_barrack_boss_lane4}{ah_barrack_boss_lane3}{ah_barrack_boss_lane2}{ah_barrack_boss_lane1}\n"
-            f"      {ah_shield2}{ah_shield1}    \n"
+            f"{ah_tier1_lane4}\t{ah_tier1_lane3}\t{ah_tier1_lane1}\n"
+            f"{ah_tier2_lane4}\t{ah_tier2_lane3}\t{ah_tier2_lane1}\n"
+            f"{ah_barrack_boss_lane4}\t{ah_barrack_boss_lane3}\t{ah_barrack_boss_lane1}\n"
+            f"\t {ah_shield2}\t{ah_shield1}\n"
             f"         {ah_titan}      "
         )
 
         str_sf = (
-            f"         {ah_titan}     \n"
-            f"      {ah_shield1}{ah_shield2}    \n"
-            f"{ah_barrack_boss_lane1}{ah_barrack_boss_lane2}{ah_barrack_boss_lane3}{ah_barrack_boss_lane4}\n"
-            f"{ah_tier2_lane1}{ah_tier2_lane2}{ah_tier2_lane3}{ah_tier2_lane4}\n"
-            f"{ah_tier1_lane1}{ah_tier1_lane2}{ah_tier1_lane3}{ah_tier1_lane4}\n"
+            f"          {ah_titan}     \n"
+            f"\t {ah_shield1}\t{ah_shield2}\n"
+            f"{ah_barrack_boss_lane1}\t{ah_barrack_boss_lane3}\t{ah_barrack_boss_lane4}\n"
+            f"{ah_tier2_lane1}\t{ah_tier2_lane3}\t{ah_tier2_lane4}\n"
+            f"{ah_tier1_lane1}\t{ah_tier1_lane3}\t{ah_tier1_lane4}\n"
             f"\n"
-            f"{sf_tier1_lane4}{sf_tier1_lane3}{sf_tier1_lane2}{sf_tier1_lane1}\n"
-            f"{sf_tier2_lane4}{sf_tier2_lane3}{sf_tier2_lane2}{sf_tier2_lane1}\n"
-            f"{sf_barrack_boss_lane4}{sf_barrack_boss_lane3}{sf_barrack_boss_lane2}{sf_barrack_boss_lane1}\n"
-            f"      {sf_shield2}{sf_shield1}    \n"
-            f"         {sf_titan}      "
+            f"{sf_tier1_lane4}\t{sf_tier1_lane3}\t{sf_tier1_lane1}\n"
+            f"{sf_tier2_lane4}\t{sf_tier2_lane3}\t{sf_tier2_lane1}\n"
+            f"{sf_barrack_boss_lane4}\t{sf_barrack_boss_lane3}\t{sf_barrack_boss_lane1}\n"
+            f"\t {sf_shield2}\t{sf_shield1}\n"
+            f"          {sf_titan}      "
         )
         if team == 1:
             return str_sf

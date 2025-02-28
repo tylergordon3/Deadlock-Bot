@@ -1,2986 +1,2536 @@
 {
     "entries": [
         {
-            "account_name": "Commander843",
-            "rank": 1,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
             "account_name": "OgJeremy",
-            "rank": 2,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 1,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "certified (FNS arc)",
-            "rank": 3,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 2,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Double_T",
-            "rank": 4,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 3,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "EnigmaGG",
-            "rank": 5,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 4,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Ajax",
+            "rank": 5,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Rat (real) (rip solo lane)",
             "rank": 6,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "PixelSB",
-            "rank": 7,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Rat (real)",
-            "rank": 8,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "the nega chin",
-            "rank": 9,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Moon",
-            "rank": 10,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 7,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "PixelSB",
+            "rank": 8,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Shelbs",
-            "rank": 11,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 9,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Justyn",
-            "rank": 12,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Slug",
-            "rank": 13,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "\u30ad\u30f3\u30b0\u30ae\u30c9\u30e9",
-            "rank": 14,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Bizzono",
-            "rank": 15,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "GranolaGuy",
-            "rank": 16,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "intendednull",
-            "rank": 17,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "thetrackballgamer",
-            "rank": 18,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Slice And Dice",
-            "rank": 18,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "VanWic",
-            "rank": 20,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 10,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "(\uc7a5 \uc218 \ud601) 2",
-            "rank": 21,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 11,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "DCphatson",
-            "rank": 22,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "GranolaGuy",
+            "rank": 12,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "\u30ad\u30f3\u30b0\u30ae\u30c9\u30e9",
+            "rank": 13,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Bizzono",
+            "rank": 14,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Slice And Dice",
+            "rank": 15,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "intendednull",
+            "rank": 16,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "eggnogdog",
-            "rank": 23,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 17,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Speed Bump",
+            "account_name": ":sunglasses:",
+            "rank": 18,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "thetrackballgamer",
+            "rank": 19,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Slug",
+            "rank": 20,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "GurglingAlly77249",
+            "rank": 21,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "VanWic",
+            "rank": 22,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "eatachair",
+            "rank": 23,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "DCphatson",
             "rank": 24,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "McLovin",
             "rank": 25,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "TheJinx",
+            "rank": 26,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Speed Bump",
+            "rank": 26,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "automuting",
-            "rank": 26,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "eatachair",
-            "rank": 27,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 28,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "CoalHub",
-            "rank": 28,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 29,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Halosheep",
-            "rank": 29,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 30,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Noodle",
-            "rank": 30,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "BeNice2Me",
             "rank": 31,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "DrPupper_RG",
-            "rank": 32,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Contra",
-            "rank": 33,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "simp for mommy mcginnis",
-            "rank": 34,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Hardy",
-            "rank": 35,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Bif",
-            "rank": 36,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "trash",
-            "rank": 37,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Xunae",
-            "rank": 38,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "EMPIRE---",
-            "rank": 38,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "edson",
-            "rank": 40,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Varrick",
-            "rank": 41,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Sprodmen",
-            "rank": 42,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Fara",
-            "rank": 43,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 32,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "DrPupper_RG",
+            "rank": 33,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Contra",
+            "rank": 34,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Smokezound",
-            "rank": 44,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 35,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "EMPIRE---",
+            "rank": 36,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Bif",
+            "rank": 37,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "BeNice2Me",
+            "rank": 38,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "trash",
+            "rank": 39,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "VeilWalkers SOIREE",
-            "rank": 45,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 40,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "zonekilla1",
-            "rank": 46,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "edson",
+            "rank": 41,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "glutensnake",
-            "rank": 47,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "kadji",
-            "rank": 48,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Mental Minx",
-            "rank": 49,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Xunae",
+            "rank": 42,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Esum",
-            "rank": 50,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 42,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "bottomfragger",
+            "rank": 44,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "simp for mommy mcginnis",
+            "rank": 45,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "glutensnake",
+            "rank": 46,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "kadji",
+            "rank": 47,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "WOODY",
+            "rank": 48,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "EmptySama",
+            "rank": 49,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Sprodmen",
+            "rank": 49,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Costco Pizza",
             "rank": 51,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "zonekilla1",
+            "rank": 52,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "G",
             "rank": 52,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Crabmander",
-            "rank": 53,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "MRAP Feet Pics",
+            "account_name": "Hardy",
             "rank": 54,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Varrick",
+            "rank": 55,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Yappa",
+            "rank": 56,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "El Chodeo",
-            "rank": 55,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Drpostman",
-            "rank": 56,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "\ud83d\udc97\u239b\u239dMranthony2\u23a0\u239e\ud83d\udc97",
             "rank": 57,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "pastry",
+            "account_name": "Mental Minx",
             "rank": 58,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "elephant thumb",
-            "rank": 59,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Borreta",
-            "rank": 60,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Skelly",
-            "rank": 61,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Wave Surfer",
-            "rank": 61,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "TINGA",
-            "rank": 61,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "One eyed Joel",
-            "rank": 61,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Atomikc",
-            "rank": 65,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Echoes",
-            "rank": 66,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 59,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "S3RIOUS",
-            "rank": 67,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Drpostman",
+            "rank": 60,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Crabmander",
+            "rank": 61,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "MRAP Feet Pics",
+            "rank": 62,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "pastry",
+            "rank": 63,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "elephant thumb",
+            "rank": 64,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Skelly",
+            "rank": 65,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Wave Surfer",
+            "rank": 66,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "One eyed Joel",
+            "rank": 66,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Demoman",
+            "rank": 68,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Kaysick",
-            "rank": 68,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 69,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "St. Mostov",
-            "rank": 68,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "pie_dragon22",
+            "account_name": "sickmasternick",
             "rank": 70,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "devio",
-            "rank": 71,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "AL\u00e3N",
             "rank": 71,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "ragebaiter",
-            "rank": 73,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Luci_343",
-            "rank": 74,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Cleft Palate Boy",
-            "rank": 75,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "NotSoBadRad",
-            "rank": 76,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "sickmasternick",
-            "rank": 77,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Remulasce",
-            "rank": 78,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "JustKushNGames420",
-            "rank": 78,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Soulkeeperx",
-            "rank": 80,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "[OS] xTheMarksmanx",
-            "rank": 81,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Furaidochikin",
-            "rank": 82,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Motorbreath",
-            "rank": 82,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Kylespark",
-            "rank": 84,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "ThorsPride",
-            "rank": 85,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "St. Mostov",
+            "rank": 71,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Dyxan",
-            "rank": 86,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 73,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Demoman",
-            "rank": 87,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Kurby",
-            "rank": 88,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "[Purdue] Element",
-            "rank": 89,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "fr0stal",
-            "rank": 90,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "GalacticSnowGoat",
-            "rank": 91,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Talimorbusketronti",
+            "rank": 74,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Bunz",
-            "rank": 92,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 75,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "MAIKELELELELELEELELELELELELEL",
-            "rank": 93,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Borreta",
+            "rank": 76,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "DR34D | YouTube",
-            "rank": 94,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "devio",
+            "rank": 76,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "JonSpider",
-            "rank": 95,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Atomikc",
+            "rank": 78,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "JDragonX",
-            "rank": 96,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Luci_343",
+            "rank": 78,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Misato Katsuragi",
-            "rank": 97,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Cleft Palate Boy",
+            "rank": 80,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "pubmaster",
-            "rank": 98,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Remulasce",
+            "rank": 81,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "mel0n",
-            "rank": 99,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "ThorsPride",
+            "rank": 82,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "DoubleJeremy",
-            "rank": 100,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Soulkeeperx",
+            "rank": 82,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "stanley the cactus",
-            "rank": 101,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "TINGA",
+            "rank": 84,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Silvrre",
-            "rank": 102,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "DorDalo",
+            "rank": 85,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "WaseCp",
-            "rank": 103,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "S3RIOUS",
+            "rank": 85,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Mirage",
-            "rank": 104,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "pie_dragon22",
+            "rank": 87,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Jukebox",
-            "rank": 105,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "JustKushNGames420",
+            "rank": 88,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Derek",
-            "rank": 106,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 89,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Sorin Markov",
-            "rank": 106,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "NotSoBadRad",
+            "rank": 90,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Stolen_Joke",
-            "rank": 108,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "[OS] xTheMarksmanx",
+            "rank": 91,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Pine",
-            "rank": 109,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "pubmaster",
+            "rank": 92,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Rusky Rat",
-            "rank": 110,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "\ud83d\udc97\u239b\u239dMranthony2\u23a0\u239e\ud83d\udc97",
+            "rank": 93,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Corgwn",
-            "rank": 111,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "[Purdue] Element",
+            "rank": 94,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Leeko",
-            "rank": 112,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Kylespark",
+            "rank": 95,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Rick Sanchez",
-            "rank": 112,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "ragebaiter",
+            "rank": 95,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Shayem",
-            "rank": 114,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Furaidochikin",
+            "rank": 97,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Grumyum",
-            "rank": 115,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "fr0stal",
+            "rank": 98,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Auditour",
-            "rank": 116,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "MAIKELELELELELEELELELELELELEL",
+            "rank": 99,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Kokobunji",
-            "rank": 117,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "stanley the cactus",
+            "rank": 100,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "I heard ya like mudkipz",
-            "rank": 118,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Motorbreath",
+            "rank": 101,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Asixlol",
-            "rank": 119,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "DoubleJeremy",
+            "rank": 102,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "GalacticSnowGoat",
+            "rank": 103,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "JonSpider",
+            "rank": 104,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "The Shark Terrorist",
-            "rank": 119,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 105,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "The real tobi kadachi",
-            "rank": 121,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Meeks",
-            "rank": 122,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Burned By Hellfire",
-            "rank": 123,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "kNyne_ OFF THE MEDS",
-            "rank": 124,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "\u2b50ALYX\u2b50:3",
-            "rank": 125,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Krma",
-            "rank": 126,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Slicefire",
-            "rank": 127,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Gangdalf",
-            "rank": 128,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "skywalk",
-            "rank": 129,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Venta",
-            "rank": 129,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Elementalist",
-            "rank": 131,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "NasTaz",
-            "rank": 132,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "BadPulp",
-            "rank": 133,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Squishums",
-            "rank": 134,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Kurby",
+            "rank": 106,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Dr Probe",
-            "rank": 135,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 107,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "J1mmyKillZ",
-            "rank": 135,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "WaseCp",
+            "rank": 107,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Mirage",
+            "rank": 109,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Hord",
+            "rank": 110,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "JDragonX",
+            "rank": 111,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Misato Katsuragi",
+            "rank": 112,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Silvrre",
+            "rank": 113,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Auditour",
+            "rank": 114,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "BOT GENERAL \"CULON\" GARCIA",
+            "rank": 115,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Pine",
+            "rank": 116,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Burned By Hellfire",
+            "rank": 117,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Rusky Rat",
+            "rank": 118,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "The real tobi kadachi",
+            "rank": 119,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Rick Sanchez",
+            "rank": 120,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Krma",
+            "rank": 121,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "skywalk",
+            "rank": 122,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Corgwn",
+            "rank": 122,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Stolen_Joke",
+            "rank": 124,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "kNyne_ OFF THE MEDS",
+            "rank": 125,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "\u2b50ALYX\u2b50:3",
+            "rank": 126,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "I heard ya like mudkipz",
+            "rank": 127,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Meeks",
+            "rank": 128,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Asixlol",
+            "rank": 129,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Shayem",
+            "rank": 130,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Sorin Markov",
+            "rank": 131,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Jukebox",
+            "rank": 132,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Grumyum",
+            "rank": 133,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "TTVSpitfirePls",
+            "rank": 134,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Goh",
             "rank": 135,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Reiknneas BloodFallen",
+            "account_name": "Elementalist",
+            "rank": 136,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "NasTaz",
+            "rank": 137,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Kokobunji",
             "rank": 138,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "TTVSpitfirePls",
-            "rank": 139,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "SmackThisMan",
-            "rank": 140,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "(Matts) THE CUP",
+            "rank": 138,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Gangdalf",
+            "rank": 140,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Slicefire",
             "rank": 141,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Baglez",
-            "rank": 142,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Squishums",
+            "rank": 141,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "elvaen",
+            "account_name": "BadPulp",
             "rank": 143,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Gayman",
-            "rank": 144,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Fatrick97",
-            "rank": 145,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Blue Shift",
-            "rank": 146,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "gobrewers96",
-            "rank": 147,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "phido mode!",
-            "rank": 147,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "chicken aint nothin but a bird",
-            "rank": 149,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "plus_one",
-            "rank": 150,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "SOFTY",
-            "rank": 150,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "@BakedBobbyB",
-            "rank": 152,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Ticklish Asshole",
-            "rank": 153,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "GodEmp",
-            "rank": 153,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "DededeMain",
-            "rank": 155,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "RangerDangr1167",
-            "rank": 156,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "+_)(*&^%$#@!",
-            "rank": 157,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "max",
-            "rank": 158,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "The Gelatinous Overlord",
-            "rank": 159,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "sock",
-            "rank": 160,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "KDannXII",
-            "rank": 161,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "NewAznGamer",
-            "rank": 162,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Kumo Sodas",
-            "rank": 163,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "horsP",
-            "rank": 164,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Mr.Spooky",
-            "rank": 165,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Alcatraz",
-            "rank": 165,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Bubbabbread",
-            "rank": 167,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Useless_Milkers",
-            "rank": 167,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Traxex",
-            "rank": 169,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Alfie Solomons",
-            "rank": 170,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Kryptoknight",
-            "rank": 171,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "KPorter",
-            "rank": 172,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "qgray",
-            "rank": 173,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "roach",
-            "rank": 174,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "KayxGee1",
-            "rank": 174,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "CommandmentZero",
-            "rank": 176,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 144,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Tom",
-            "rank": 177,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Ticklish Asshole",
+            "rank": 145,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Anthro",
-            "rank": 178,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Reiknneas BloodFallen",
+            "rank": 145,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "K\u00fdrie El\u00e9ison",
-            "rank": 179,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Blue Shift",
+            "rank": 147,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "J1mmyKillZ",
+            "rank": 148,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "elvaen",
+            "rank": 149,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Fatrick97",
+            "rank": 150,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Venta",
+            "rank": 151,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Useless_Milkers",
+            "rank": 151,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "gobrewers96",
+            "rank": 153,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "winterwanning",
+            "rank": 153,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "phido mode!",
+            "rank": 153,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "SmackThisMan",
+            "rank": 156,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Baglez",
+            "rank": 157,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "RangerDangr1167",
+            "rank": 157,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "SOFTY",
+            "rank": 159,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "iKarma-",
-            "rank": 180,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 160,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "DarthMaterK",
-            "rank": 181,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Bubbabbread",
+            "rank": 160,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Wat3rStone",
-            "rank": 182,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "chicken aint nothin but a bird",
+            "rank": 162,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Glarftopus",
-            "rank": 182,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "GodEmp",
+            "rank": 163,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "DartDaArcher",
-            "rank": 184,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Kumo Sodas",
+            "rank": 164,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "kekplank",
-            "rank": 185,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Gayman",
+            "rank": 165,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "SurpriseDonut",
-            "rank": 186,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "max",
+            "rank": 166,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Ape Tea",
-            "rank": 186,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "shaftian",
-            "rank": 188,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "domefastMulberry845",
-            "rank": 189,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "lightning",
-            "rank": 190,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Skippy The Magnificent",
-            "rank": 191,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Jared",
-            "rank": 192,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Cold Storage",
-            "rank": 193,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "spiral",
-            "rank": 194,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "AyeCruzin",
-            "rank": 195,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "DaxGotThrax",
-            "rank": 195,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "HypE",
-            "rank": 197,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "BIGHEAD",
-            "rank": 198,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "[BR] Rey The Pastel Puppygirl",
-            "rank": 199,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Doc",
-            "rank": 200,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "CJRodgers",
-            "rank": 201,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "benpeke",
-            "rank": 202,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Alicia",
-            "rank": 202,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "The Furious Fatty",
-            "rank": 202,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "FROSODA",
-            "rank": 205,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "digit",
-            "rank": 206,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Lite Pyro",
-            "rank": 207,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Xight808-TTV",
-            "rank": 208,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "rabscootle",
-            "rank": 209,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Suparmon",
-            "rank": 209,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "GRIFFIN XVI",
-            "rank": 211,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Jordan",
-            "rank": 212,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "AestheticsGamer",
-            "rank": 213,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "MrPunchingBag",
-            "rank": 213,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "HunteronaLoop",
-            "rank": 213,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Kel",
-            "rank": 216,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "CAB00SE",
-            "rank": 217,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Rednick",
-            "rank": 218,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Tytocracy",
-            "rank": 219,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Nutpac",
-            "rank": 220,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Birb Daddy",
-            "rank": 221,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "TENACIOUs_D",
-            "rank": 222,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "s3v",
-            "rank": 223,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "drooglas",
-            "rank": 224,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "shlond poofa",
-            "rank": 225,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Dante_Sparda",
-            "rank": 226,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Kenny Kawaguchi",
-            "rank": 226,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "2013 KennyT",
-            "rank": 228,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Bustin Raider",
-            "rank": 228,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Trozz",
-            "rank": 230,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Whos_who",
-            "rank": 231,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Wild One",
-            "rank": 232,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "JG Wentworth",
-            "rank": 232,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "ANDYSON79",
-            "rank": 234,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "@BakedBobbyB",
+            "rank": 167,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "ohmeqa",
-            "rank": 235,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 167,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Jynkz \u30c4",
-            "rank": 236,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "shaftian",
+            "rank": 169,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "xx_pipebombexpert",
-            "rank": 236,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "K\u00fdrie El\u00e9ison",
+            "rank": 170,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Snazzy",
-            "rank": 238,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "sock",
+            "rank": 171,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "HunteronaLoop",
+            "rank": 172,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "horsP",
+            "rank": 173,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "AyeCruzin",
+            "rank": 174,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "DededeMain",
+            "rank": 175,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Alcatraz",
+            "rank": 176,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "NewAznGamer",
+            "rank": 176,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Cold Storage",
+            "rank": 178,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Tom",
+            "rank": 179,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Alfie Solomons",
+            "rank": 180,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Kryptoknight",
+            "rank": 181,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Traxex",
+            "rank": 182,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "KayxGee1",
+            "rank": 183,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Wat3rStone",
+            "rank": 184,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "drooglas",
+            "rank": 185,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "GarfieldOnAcid",
+            "rank": 186,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "PooPMan( \u0360\u00b0 \u035f\u0296 \u0361\u00b0)",
+            "rank": 187,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Ninebreaker",
+            "rank": 188,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "DarthMaterK",
+            "rank": 189,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "+_)(*&^%$#@!",
+            "rank": 190,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "DartDaArcher",
+            "rank": 191,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "domefastMulberry845",
+            "rank": 192,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "GRIFFIN XVI",
+            "rank": 193,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Skippy The Magnificent",
+            "rank": 194,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "qgray",
+            "rank": 195,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "UhOhSpaghttiO",
+            "rank": 196,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "The Gelatinous Overlord",
+            "rank": 197,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Mr.Spooky",
+            "rank": 198,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Anthro",
+            "rank": 199,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "DaxGotThrax",
+            "rank": 200,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "KPorter",
+            "rank": 201,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Jared",
+            "rank": 202,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "digit",
+            "rank": 203,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Jordan",
+            "rank": 204,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "MrPunchingBag",
+            "rank": 205,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "The Furious Fatty",
+            "rank": 206,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "lightning",
+            "rank": 206,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "SurpriseDonut",
+            "rank": 208,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Nutpac",
+            "rank": 209,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Birb Daddy",
+            "rank": 209,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "spiral",
+            "rank": 211,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "BIGHEAD",
+            "rank": 211,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "CJRodgers",
+            "rank": 213,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "FROSODA",
+            "rank": 213,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "[BR] Rey The Pastel Puppygirl",
+            "rank": 215,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "rabscootle",
+            "rank": 216,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Occult Coalition Agent",
-            "rank": 239,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 216,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "muffiN",
-            "rank": 240,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Ape Tea",
+            "rank": 218,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Rafiki",
-            "rank": 241,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Whos_who",
+            "rank": 219,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Ingeniero Trevor Briones Jantes",
-            "rank": 241,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Kel",
+            "rank": 220,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "JohnnyWalk'emDown",
-            "rank": 243,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "T3K",
-            "rank": 244,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "DunsparceFan",
-            "rank": 245,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Pinkzaza\u2622",
-            "rank": 245,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "famous dog",
-            "rank": 247,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Sergeant Salami",
-            "rank": 248,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Pope",
-            "rank": 249,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Player288725692",
-            "rank": 250,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "UnwantedOrphans",
-            "rank": 251,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Fabio",
-            "rank": 252,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "HowL",
-            "rank": 252,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "ShadowMonarch",
-            "rank": 254,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Taelmin",
-            "rank": 255,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Ninjaboy271",
-            "rank": 256,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "The Curious Pyro",
-            "rank": 257,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "TENACIOUs_D",
+            "rank": 221,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Kosonati",
-            "rank": 257,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 221,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "HMS Surprise",
-            "rank": 259,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Glarftopus",
+            "rank": 223,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "DonaldSlump",
-            "rank": 259,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "s3v",
+            "rank": 224,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Shweex",
-            "rank": 261,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Dante_Sparda",
+            "rank": 224,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "HavocHound",
-            "rank": 261,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "shlond poofa",
+            "rank": 226,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Fushizi",
-            "rank": 261,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Reimuu",
-            "rank": 264,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Eggplant From Space",
-            "rank": 265,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "DIPDOPE",
-            "rank": 265,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "BoiHowdi",
-            "rank": 267,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Latch",
-            "rank": 268,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Cyrus Amory",
-            "rank": 268,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Silent",
-            "rank": 268,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "muscle fish",
-            "rank": 271,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Blahaj Blast",
-            "rank": 271,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Azot\u2606Punk",
-            "rank": 273,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "LinkL1nk",
-            "rank": 273,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "SaintWalnut",
-            "rank": 275,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Wallfish",
-            "rank": 276,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Bamm Boom",
-            "rank": 276,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "\ud83d\udc99\ud83d\udc9b\ud83d\udc97",
-            "rank": 278,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Dr. Chim Richaldson",
-            "rank": 279,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Kenny Kawaguchi",
+            "rank": 227,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Delvin",
-            "rank": 279,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 228,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Gamer",
-            "rank": 281,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "benpeke",
+            "rank": 229,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "kentmansly",
-            "rank": 281,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Trozz",
+            "rank": 229,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "TheLangdaddy",
-            "rank": 283,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Wild One",
+            "rank": 231,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "MOTH_MERCHANT",
-            "rank": 283,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Latch",
+            "rank": 232,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Whiskey",
-            "rank": 285,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "ANDYSON79",
+            "rank": 233,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "ToodTTV",
-            "rank": 286,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "StoicFlower",
+            "rank": 233,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Sircole",
-            "rank": 287,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "UnwantedOrphans",
+            "rank": 235,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Werber Von Fett",
-            "rank": 288,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "HowL",
+            "rank": 236,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "OldBayAllDay",
-            "rank": 288,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Jynkz \u30c4",
+            "rank": 237,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Jenny and the Bets",
-            "rank": 290,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Player288725692",
+            "rank": 238,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "XDCoyote",
-            "rank": 290,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Bustin Raider",
+            "rank": 239,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Justis",
-            "rank": 292,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "T3K",
+            "rank": 240,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Brootkin",
-            "rank": 292,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "JG Wentworth",
+            "rank": 240,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "LadyChupas",
-            "rank": 294,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "DunsparceFan",
+            "rank": 242,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "I<3ANIMEDADS",
-            "rank": 295,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Ingeniero Trevor Briones Jantes",
+            "rank": 243,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "bob",
-            "rank": 295,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "LinkL1nk",
+            "rank": 243,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Xx_GUCC1GANG_xX",
-            "rank": 297,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "cicc-o",
-            "rank": 298,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Footsoldier",
-            "rank": 299,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "SacredGarou",
-            "rank": 299,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "LT",
-            "rank": 301,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Snazzy",
+            "rank": 245,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "jimbokroneus",
-            "rank": 301,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 246,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Koshka XO Fake",
-            "rank": 303,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Sergeant Salami",
+            "rank": 247,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "OverUsedTissue",
-            "rank": 303,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "TheLangdaddy",
+            "rank": 247,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Not a scout",
-            "rank": 305,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Tytocracy",
+            "rank": 249,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Ruck me til I scrum",
-            "rank": 305,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "MLGhondov6",
+            "rank": 249,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Ghaz",
-            "rank": 307,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "famous dog",
+            "rank": 251,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Two VHS Copies of Goodfellas",
-            "rank": 307,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Rafiki",
+            "rank": 252,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Mixbreed",
-            "rank": 309,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Lite Pyro",
+            "rank": 252,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "ImHighHowAreYou",
-            "rank": 309,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "JohnnyWalk'emDown",
+            "rank": 254,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Bloo Baby",
-            "rank": 311,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "OldBayAllDay",
+            "rank": 255,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Taco King",
-            "rank": 312,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "The Curious Pyro",
+            "rank": 256,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Medic",
-            "rank": 313,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "DonaldSlump",
+            "rank": 257,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Wereinstien",
-            "rank": 314,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Suparmon",
+            "rank": 258,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Glaycie",
-            "rank": 314,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "ShadowMonarch",
+            "rank": 259,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "MKcreation27",
-            "rank": 316,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "BoiHowdi",
+            "rank": 260,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Ninjaboy271",
+            "rank": 261,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "HMS Surprise",
+            "rank": 262,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "SaintWalnut",
+            "rank": 263,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "HavocHound",
+            "rank": 263,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Reimuu",
+            "rank": 265,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Fabio",
+            "rank": 266,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Eggplant From Space",
+            "rank": 266,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "DIPDOPE",
+            "rank": 266,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Don",
-            "rank": 316,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 269,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "rub",
-            "rank": 318,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Fushizi",
+            "rank": 270,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "kaitydids",
-            "rank": 319,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Azot\u2606Punk",
+            "rank": 271,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "gEbster",
-            "rank": 319,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Xight808-TTV",
+            "rank": 272,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "ToodTTV",
+            "rank": 272,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "muscle fish",
+            "rank": 274,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Brootkin",
+            "rank": 274,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Xx_GUCC1GANG_xX",
+            "rank": 276,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "MOTH_MERCHANT",
+            "rank": 277,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Pope",
+            "rank": 278,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Bard",
+            "rank": 279,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "cicc-o",
+            "rank": 280,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Bamm Boom",
+            "rank": 280,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Mixbreed",
+            "rank": 280,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "xx_pipebombexpert",
+            "rank": 283,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Whiskey",
+            "rank": 284,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "OverUsedTissue",
+            "rank": 285,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Sircole",
+            "rank": 286,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Ruck me til I scrum",
+            "rank": 286,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Wallfish",
+            "rank": 288,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Taelmin",
+            "rank": 288,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Dr. Chim Richaldson",
+            "rank": 290,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Silent",
+            "rank": 290,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "WHERES RACHEL",
-            "rank": 321,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 290,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "[LUE] Look, I'm Heterosexual",
-            "rank": 322,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Hornedmarten",
+            "rank": 293,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Trap",
-            "rank": 323,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Cyrus Amory",
+            "rank": 294,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "AFK_Cheddar",
-            "rank": 323,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Blahaj Blast",
+            "rank": 295,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Zuggy",
-            "rank": 325,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Werber Von Fett",
+            "rank": 296,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "ShotFromBehind\u24d2\u24d3\u24d4\u24d5\u24d6\u24d7",
-            "rank": 326,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Gamer",
+            "rank": 297,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Ghaz",
+            "rank": 298,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "muffiN",
+            "rank": 298,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Justis",
+            "rank": 300,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "ImHighHowAreYou",
+            "rank": 301,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "LadyChupas",
+            "rank": 302,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "LT",
+            "rank": 303,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "bob",
+            "rank": 303,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Nic_attack",
-            "rank": 327,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 305,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "the_gero7777",
-            "rank": 328,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Zuggy",
+            "rank": 306,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Superdeduper",
-            "rank": 329,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Shweex",
+            "rank": 307,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "kale_star",
-            "rank": 330,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "SacredGarou",
+            "rank": 307,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "chum chum",
+            "rank": 307,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "kentmansly",
+            "rank": 310,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "\ud83d\udc99\ud83d\udc9b\ud83d\udc97",
+            "rank": 311,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "AFK_Cheddar",
+            "rank": 311,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "[LUE] Look, I'm Heterosexual",
+            "rank": 313,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Koshka XO Fake",
+            "rank": 313,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "XtraKarma",
-            "rank": 331,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 315,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "RaiderFive5",
+            "rank": 316,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Medic",
+            "rank": 317,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Glaycie",
+            "rank": 318,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "R4Z13L",
+            "rank": 319,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Wereinstien",
+            "rank": 320,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "rub",
+            "rank": 320,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "muon",
+            "rank": 322,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "gut",
+            "rank": 323,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "ShotFromBehind\u24d2\u24d3\u24d4\u24d5\u24d6\u24d7",
+            "rank": 324,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "FerreroBrochre",
+            "rank": 324,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Callus",
+            "rank": 326,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "gEbster",
+            "rank": 327,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Two VHS Copies of Goodfellas",
+            "rank": 328,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "R. Kayn",
+            "rank": 329,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "DAGIMAS",
+            "rank": 330,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "free palestine",
-            "rank": 332,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 331,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Frazurbluu",
-            "rank": 333,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 332,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Superdeduper",
+            "rank": 332,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "the_gero7777",
+            "rank": 334,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "blurrycat",
             "rank": 334,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "R4Z13L",
-            "rank": 335,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "REALLYLONGSCHLONG",
+            "rank": 336,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Bucket",
+            "rank": 336,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "TapWater06",
-            "rank": 336,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 338,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "SuperRegularMan",
-            "rank": 337,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "DAGIMAS",
-            "rank": 338,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "BossMan",
             "rank": 339,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "sucroseSaboteur",
+            "account_name": "hawkesmith",
             "rank": 340,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "FerreroBrochre",
+            "account_name": "Trap",
             "rank": 340,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "cowboy",
+            "account_name": "Not a scout",
             "rank": 342,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "LORDMIKEY",
+            "rank": 343,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Efonicals",
+            "rank": 344,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "BigWhite1995",
+            "rank": 345,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "DandelionGod",
+            "rank": 346,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "He'sOne...(Hundred)\u00ae\u2122",
+            "rank": 347,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "MrMeeph",
-            "rank": 343,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "R. Kayn",
-            "rank": 344,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Oscat",
-            "rank": 344,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "FrankAbagnale",
-            "rank": 346,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "megalonyx",
-            "rank": 347,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Dr. Pepper Lizard",
             "rank": 348,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "The Insult Machine",
+            "rank": 348,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Zeycuryay",
             "rank": 348,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Old [SUS] Man Jenkins",
-            "rank": 350,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 351,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Gunter",
-            "rank": 350,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Waki",
+            "account_name": "Abby!!",
             "rank": 352,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Milton Stromboni",
-            "rank": 353,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "DandelionGod",
-            "rank": 353,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "BigWhite1995",
-            "rank": 355,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "LORDMIKEY",
-            "rank": 356,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "BB",
-            "rank": 356,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Jbleezy",
-            "rank": 356,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "muon",
-            "rank": 359,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "FakeGamer",
-            "rank": 359,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "RaiderFive5",
-            "rank": 359,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Beyond",
-            "rank": 362,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "baX",
-            "rank": 363,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "$ sudo rm -rf --no-preserve-root",
-            "rank": 363,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "vim",
-            "rank": 365,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "cmjames212",
-            "rank": 366,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Dessie",
-            "rank": 367,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Callus",
-            "rank": 368,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Efonicals",
-            "rank": 369,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "JohnnyWalkEmDown",
-            "rank": 370,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Chivalrous_Echo",
-            "rank": 371,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "36cymbals",
-            "rank": 371,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "The Clippiest",
-            "rank": 373,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "hawkesmith",
-            "rank": 374,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "The Insult Machine",
-            "rank": 375,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "whitebread",
-            "rank": 375,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Assaultboy",
-            "rank": 377,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "President of Zynbabwe",
-            "rank": 377,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "klecoz",
-            "rank": 379,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Sateevuh",
-            "rank": 380,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Mr. Morton, CEO of Caber Corp\u2122",
-            "rank": 381,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Sean",
-            "rank": 382,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "He'sOne...(Hundred)\u00ae\u2122",
-            "rank": 383,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Unsalted_Soup",
-            "rank": 383,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Tronald Dump",
-            "rank": 385,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Beanaweina",
-            "rank": 386,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "CuttBheeks",
-            "rank": 387,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Bucket",
-            "rank": 388,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "skell",
-            "rank": 389,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Mincono",
-            "rank": 390,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Yosticus",
-            "rank": 391,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 353,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "( . Y . )",
-            "rank": 392,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Dr. Pepper Lizard",
+            "rank": 354,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "kriticallee",
-            "rank": 393,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "BB",
+            "rank": 355,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Revisionary",
-            "rank": 394,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Beyond",
+            "rank": 356,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "LegionsGrave",
-            "rank": 395,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "cmjames212",
+            "rank": 357,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Shaun",
-            "rank": 396,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Tronald Dump",
+            "rank": 357,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "em0sh",
-            "rank": 397,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "megalonyx",
+            "rank": 359,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "President of Zynbabwe",
+            "rank": 359,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Waki",
+            "rank": 359,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "XDCoyote",
+            "rank": 362,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "whitebread",
+            "rank": 362,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "JohnnyWalkEmDown",
+            "rank": 364,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "36cymbals",
+            "rank": 365,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "The Clippiest",
+            "rank": 366,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "$ sudo rm -rf --no-preserve-root",
+            "rank": 367,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "vim",
+            "rank": 367,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "BossMan",
+            "rank": 369,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "klecoz",
+            "rank": 370,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Mr. Morton, CEO of Caber Corp\u2122",
+            "rank": 371,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Sean",
+            "rank": 372,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "FrankAbagnale",
+            "rank": 373,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Minopartanoos",
+            "rank": 374,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Gunter",
+            "rank": 374,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Dessie",
+            "rank": 376,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "cbk22",
+            "rank": 377,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "CuttBheeks",
+            "rank": 378,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Sateevuh",
+            "rank": 379,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "skell",
+            "rank": 380,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Beanaweina",
+            "rank": 381,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "PussyBigPussy",
+            "rank": 382,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "FemboyKilo",
+            "rank": 382,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "n00bln8tr",
+            "rank": 384,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "( . Y . )",
+            "rank": 385,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Chivalrous_Echo",
+            "rank": 386,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Revisionary",
+            "rank": 387,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "kriticallee",
+            "rank": 387,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Jbleezy",
+            "rank": 389,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Shaun",
+            "rank": 390,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "JRoc",
+            "rank": 390,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Mincono",
+            "rank": 392,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "A_1972_Nova",
+            "rank": 393,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "DrB0ND",
+            "rank": 394,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "em0sh",
+            "rank": 395,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Assaultboy",
+            "rank": 396,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Ichneum",
+            "rank": 397,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "iDjentz",
             "rank": 398,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "badmatchmaking",
-            "rank": 399,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "REALLYLONGSCHLONG",
-            "rank": 400,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Red",
-            "rank": 401,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Gunslinger",
-            "rank": 402,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 399,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Nomadicalist",
+            "rank": 400,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "25 Centaggedon",
+            "rank": 401,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Tartrazine",
             "rank": 402,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "FemboyKilo",
-            "rank": 404,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "The Southener",
-            "rank": 404,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "cbk22",
-            "rank": 406,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "25 Centaggedon",
-            "rank": 407,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "IDK_WTF",
+            "rank": 402,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "eleyan",
+            "rank": 404,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Slingblade",
+            "rank": 405,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Salty-train",
+            "rank": 406,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Name 01",
             "rank": 407,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "n00bln8tr",
-            "rank": 409,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Nomadicalist",
-            "rank": 409,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "A_1972_Nova",
-            "rank": 409,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "JRoc",
-            "rank": 412,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "OmniMachine",
-            "rank": 413,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "iDjentz",
-            "rank": 414,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Mahkus",
-            "rank": 415,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "DrB0ND",
-            "rank": 416,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
-        },
-        {
-            "account_name": "Minopartanoos",
-            "rank": 417,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "DayBreak",
-            "rank": 418,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 408,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "The White Mamba",
-            "rank": 419,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Bosp",
+            "rank": 408,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "BreakingK",
-            "rank": 420,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 410,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "Maynard kbm",
+            "rank": 411,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "anhonestmouse",
-            "rank": 421,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 412,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "_____^1/^7SANDERS",
-            "rank": 422,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "Red",
+            "rank": 413,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
-            "account_name": "Ichneum",
-            "rank": 423,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "account_name": "FakeGamer",
+            "rank": 413,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "The White Mamba",
+            "rank": 415,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "OmniMachine",
+            "rank": 415,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "|\u0259rsatz|",
+            "rank": 417,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": "badmatchmaking",
+            "rank": 418,
+            "top_hero_ids": [],
+            "badge_level": null
+        },
+        {
+            "account_name": ":|",
+            "rank": 419,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Zeus1734",
-            "rank": 424,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 420,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Little_cupcake_man",
-            "rank": 425,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 421,
+            "top_hero_ids": [],
+            "badge_level": null
         },
         {
             "account_name": "Mayo",
-            "rank": 426,
-            "badge_level": 0,
-            "ranked_rank": 0,
-            "ranked_subrank": 0
+            "rank": 422,
+            "top_hero_ids": [],
+            "badge_level": null
         }
     ]
 }

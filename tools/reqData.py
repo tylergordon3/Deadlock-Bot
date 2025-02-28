@@ -9,14 +9,16 @@ import datetime as dt
 def timeSince(start):
     match_start = dt.datetime.fromtimestamp(start)
     curr_time = dt.datetime.now()
-    duration = curr_time-match_start
+    duration = curr_time - match_start
     durStr = str(duration).split(".")[0]
     return durStr
 
+
 def checkLastTime():
-    last = os.stat('dataDaily/NAmerica.json').st_mtime
+    last = os.stat("dataDaily/NAmerica.json").st_mtime
     last_datetime = dt.datetime.fromtimestamp(last)
     return last_datetime
+
 
 def getCurrentDay():
     curr_datetime = dt.datetime.now()
@@ -24,61 +26,68 @@ def getCurrentDay():
     year = curr_datetime.year
     month = curr_datetime.month
     day = curr_datetime.day
-    
+
     today_str = str(month) + "/" + str(day) + "/" + str(year)
     return today_str
 
-def checkDataLastUpd(threshold_hrs = 12):
-    
+
+def checkDataLastUpd(threshold_hrs=12):
+
     curr_datetime = dt.datetime.now()
-    print(f'Current time: {curr_datetime}')
+    print(f"Current time: {curr_datetime}")
     last_datetime = checkLastTime()
     diff = curr_datetime - last_datetime
 
     threshold_min = threshold_hrs * 60
 
-    bool = (diff.total_seconds()/60) > threshold_min
+    bool = (diff.total_seconds() / 60) > threshold_min
     str = f"Last data update: {diff.total_seconds()/3600:.2f} hours ago."
     bool_str = " Updating data." if bool else " Not updating data."
     print(str + bool_str)
     return bool
 
+
 async def get_daily():
     files = [f for f in os.listdir("dataDaily") if f.endswith(".json")]
-    print('Getting daily NA & EU leaderboards.')
+    print("Getting daily NA & EU leaderboards.")
     for f in files:
-        path = 'dataDaily/' + f
+        path = "dataDaily/" + f
         region = f[:-5]
-        data = requests.get(f'https://data.deadlock-api.com/v1/leaderboard/{region}')
-        with open(path, mode='w', encoding="utf-8") as write_file:
-            json.dump(data.json(),write_file, indent=4)
+        data = requests.get(f"https://api.deadlock-api.com/v1/leaderboard/{region}")
 
-    print('Getting daily hero leaderboards.')
-    hero_ids = gd.load_json('data/hero_ids.json')
+        with open(path, mode="w", encoding="utf-8") as write_file:
+            json.dump(data.json(), write_file, indent=4)
+
+    print("Getting daily hero leaderboards.")
+    hero_ids = gd.load_json("data/hero_ids.json")
     for hero in hero_ids:
-        id = str(hero['id'])
-        name = hero['name']
+        id = str(hero["id"])
+        name = hero["name"]
 
-        path = 'dataDaily/hero_lb/' + name + '.json'
-        data = requests.get(f'https://data.deadlock-api.com/v1/leaderboard/NAmerica/{id}')
-        with open(path, mode='w', encoding="utf-8") as write_file:
+        path = "dataDaily/hero_lb/" + name + ".json"
+        data = requests.get(
+            f"https://data.deadlock-api.com/v1/leaderboard/NAmerica/{id}"
+        )
+        with open(path, mode="w", encoding="utf-8") as write_file:
             json.dump(data.json(), write_file, indent=4)
     print("Daily update completed.")
 
 
-
 async def get_periodic():
-    ranks = requests.get('https://assets.deadlock-api.com/v2/ranks').json()
-    hero =  pd.DataFrame(requests.get('https://assets.deadlock-api.com/v2/heroes?only_active=true').json())
-    
-    df_hero = hero[['id','name']]
-    print('Getting static hero data.')
+    ranks = requests.get("https://assets.deadlock-api.com/v2/ranks").json()
+    hero = pd.DataFrame(
+        requests.get(
+            "https://assets.deadlock-api.com/v2/heroes?only_active=true"
+        ).json()
+    )
+
+    df_hero = hero[["id", "name"]]
+    print("Getting static hero data.")
     with open("data/hero_ids.json", mode="w", encoding="utf-8") as write_file:
-        res=df_hero.to_json(orient='records', index=False)
-        parse=json.loads(res)
+        res = df_hero.to_json(orient="records", index=False)
+        parse = json.loads(res)
         json.dump(parse, write_file, indent=4)
-    
-    print('Getting static rank data.')
+
+    print("Getting static rank data.")
     with open("data/ranks.json", mode="w", encoding="utf-8") as write_file:
         json.dump(ranks, write_file, indent=4)
-    

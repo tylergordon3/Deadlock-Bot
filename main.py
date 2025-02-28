@@ -4,6 +4,7 @@ from discord.ext import commands
 from dotenv import load_dotenv
 import os
 import tools.reqData as rd
+import traceback
 
 load_dotenv()
 intents = discord.Intents.default()
@@ -12,21 +13,27 @@ intents.message_content = True
 guild_id = [546868043838390299]
 
 
-bot = commands.Bot(command_prefix='/', intents=intents)
+bot = commands.Bot(command_prefix="/", intents=intents)
+
 
 async def load_cogs(bot):
-    for file in os.listdir('cogs'):
+    for file in os.listdir("cogs"):
         if file.endswith(".py"):
             ext = file[:-3]
-            try: 
+            try:
                 await bot.load_extension(f"cogs.{ext}")
                 print(f"Loaded extension '{ext}'")
             except Exception as e:
                 exception = f"{type(e).__name__}: {e}"
-                print(f"Failed to load extension {ext}\n{exception}")
+                error_data = " ".join(
+                    traceback.format_exception(type(e), e, e.__traceback__)
+                )
+                print(f"Error during execution:\n{error_data[:1000]}\n")
+                # print(f"Failed to load extension {ext}\n{exception}")
+
 
 async def setup_hook():
-    print(f'We have logged in as {bot.user}')
+    print(f"We have logged in as {bot.user}")
     await load_cogs(bot)
     try:
         bot.tree.copy_global_to(guild=discord.Object(id=guild_id[0]))
@@ -35,10 +42,10 @@ async def setup_hook():
     except Exception as e:
         print(e)
 
+
 bot.setup_hook = setup_hook
 
 try:
-    bot.run(os.environ.get('DISCORD_BOT_TOKEN'))
+    bot.run(os.environ.get("DISCORD_BOT_TOKEN"))
 except Exception as e:
-    print(f"Error when logging in: {e}")   
-    
+    print(f"Error when logging in: {e}")
