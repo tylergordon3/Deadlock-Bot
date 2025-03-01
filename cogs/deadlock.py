@@ -49,7 +49,6 @@ class Deadlock(commands.Cog):
                     if player[0] == name:
                         hero = str(list(hero_lb.keys())[0])
                         # today_ranks is list of dicts -> each dict is username mapped to list of ranks
-                        print(f"getRanksToday for {name}")
                         if player[0] not in today_ranks.keys():
                             today_ranks[player[0]] = {hero: player[1]}
                         else:
@@ -69,9 +68,7 @@ class Deadlock(commands.Cog):
             try:
                 player_rank_today = today_ranks[player]
             except:
-                print(
-                    f"Player rank today error in update for Name: {name}, Player: {player}"
-                )
+                print(f"No Leaderboard: Name: {name}, Player: {player}")
                 continue
 
             player_dict = discDict[player]
@@ -87,9 +84,6 @@ class Deadlock(commands.Cog):
                             f"For {name}, {hero} rank {player_rank_today[hero]} dict entry added, {today}"
                         )
                     else:
-                        print(
-                            f"For {name}, {hero} already in dict for {today}. Current Rank: {record[today]}"
-                        )
                         if record[today] != player_rank_today[hero]:
                             record[today] = player_rank_today[hero]
                             print(
@@ -434,12 +428,12 @@ class Deadlock(commands.Cog):
             thisHero = hero_lst[hero]
             if today in thisHero:
                 description = description + f"{hero}: Rank {thisHero[today]}\n"
-
         if description == "":
             await interaction.response.send_message("No ranks")
-        embed = discord.Embed(title=f"{name} Ranks", description=description)
-        embed.set_footer(text=f"As of {today}")
-        await interaction.response.send_message(embed=embed)
+        else:
+            embed = discord.Embed(title=f"{name} Ranks", description=description)
+            embed.set_footer(text=f"As of {today}")
+            await interaction.response.send_message(embed=embed)
 
 
 async def setup(bot):

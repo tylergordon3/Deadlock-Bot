@@ -32,11 +32,15 @@ def getCurrentDay():
 
 
 def checkDataLastUpd(threshold_hrs=12):
+    nadict = gd.load_json("dataDaily/NAmerica.json")
+
+    update = dt.datetime.strptime(nadict["upd"], "%Y-%m-%d %H:%M:%S")
 
     curr_datetime = dt.datetime.now()
     print(f"Current time: {curr_datetime}")
-    last_datetime = checkLastTime()
-    diff = curr_datetime - last_datetime
+    print(f"Last Update Time: {update}")
+    # last_datetime = checkLastTime()
+    diff = curr_datetime - update
 
     threshold_min = threshold_hrs * 60
 
@@ -49,14 +53,19 @@ def checkDataLastUpd(threshold_hrs=12):
 
 async def get_daily():
     files = [f for f in os.listdir("dataDaily") if f.endswith(".json")]
+    today = dt.datetime.now()
+    today = dt.datetime.strftime(today, "%Y-%m-%d %H:%M:%S")
+
+    #  "2025-02-28 21:55:06.540840"
     print("Getting daily NA & EU leaderboards.")
     for f in files:
         path = "dataDaily/" + f
         region = f[:-5]
         data = requests.get(f"https://api.deadlock-api.com/v1/leaderboard/{region}")
-
+        data_json = data.json()
+        data_json["upd"] = today
         with open(path, mode="w", encoding="utf-8") as write_file:
-            json.dump(data.json(), write_file, indent=4)
+            json.dump(data_json, write_file, indent=4)
 
     print("Getting daily hero leaderboards.")
     hero_ids = gd.load_json("data/hero_ids.json")
@@ -68,8 +77,10 @@ async def get_daily():
         data = requests.get(
             f"https://data.deadlock-api.com/v1/leaderboard/NAmerica/{id}"
         )
+        data_json = data.json()
+        data_json["upd"] = today
         with open(path, mode="w", encoding="utf-8") as write_file:
-            json.dump(data.json(), write_file, indent=4)
+            json.dump(data_json, write_file, indent=4)
     print("Daily update completed.")
 
 
@@ -83,6 +94,7 @@ async def get_periodic():
 
     df_hero = hero[["id", "name"]]
     print("Getting static hero data.")
+
     with open("data/hero_ids.json", mode="w", encoding="utf-8") as write_file:
         res = df_hero.to_json(orient="records", index=False)
         parse = json.loads(res)
