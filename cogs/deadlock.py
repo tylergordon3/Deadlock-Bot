@@ -268,7 +268,7 @@ class Deadlock(commands.Cog):
                 enemy = "Sapphire Flame"
             str = (
                 f"Duration: {match_duration}\nSpectators: {liveData[2]}\n\n{enemy}\nNet Worth: {liveData[1]:,d}\n"
-                + self.get_bool(liveData[3], liveData[4], team)
+                + Deadlock.get_bool(liveData[3], liveData[4], team)
                 + f"\n{usr_team}\nNet Worth: {liveData[0]:,d}"
             )
             await msg.edit(content=str)
