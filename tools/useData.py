@@ -32,7 +32,6 @@ def makeEmbedRanked(lb, ranks, hero, region, rank_imgs, acc_name, account, hero_
     subrank = str(badge)[-1]
     rank = ranks[ranks["tier"] == int(ranked_rank)].iloc[0]["name"]
 
-    # sub_rank = lb.iloc[0]["ranked_subrank"]
     img_url = getImgUrl(rank_imgs, int(ranked_rank), int(subrank))
     description = (
         "\n"

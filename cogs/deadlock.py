@@ -36,7 +36,6 @@ class Deadlock(commands.Cog):
         return all
 
     async def getRanksToday(self, all_lb):
-        link = "https://tracklock.gg/players/"
         disc_users = self.users["discord"]
         today_ranks = {}
         for user in disc_users:
@@ -139,16 +138,6 @@ class Deadlock(commands.Cog):
             if curr.lower() in choice.lower()
         ]
 
-    """
-        Match Id
-        Winning Team if decided
-        Team 0 Net Worth
-        Team 1 Net Worth
-        Team 0 Obj Mask
-        Team 1 Obj Mask
-
-    """
-
     async def stop(self):
         Deadlock.liveStatus.stop()
 
@@ -179,11 +168,9 @@ class Deadlock(commands.Cog):
 
     def get_bool(ah_mask, sf_mask, team):
         ah_tier1_lane1 = Deadlock.formatObjective(bool(ah_mask & (1 << 1)), "AH")
-        ah_tier1_lane2 = Deadlock.formatObjective(bool(ah_mask & (1 << 2)), "AH")
         ah_tier1_lane3 = Deadlock.formatObjective(bool(ah_mask & (1 << 3)), "AH")
         ah_tier1_lane4 = Deadlock.formatObjective(bool(ah_mask & (1 << 4)), "AH")
         ah_tier2_lane1 = Deadlock.formatObjective(bool(ah_mask & (1 << 5)), "AH")
-        ah_tier2_lane2 = Deadlock.formatObjective(bool(ah_mask & (1 << 6)), "AH")
         ah_tier2_lane3 = Deadlock.formatObjective(bool(ah_mask & (1 << 7)), "AH")
         ah_tier2_lane4 = Deadlock.formatObjective(bool(ah_mask & (1 << 8)), "AH")
         if not bool(ah_mask & (1 << 9)):
@@ -195,9 +182,6 @@ class Deadlock(commands.Cog):
         ah_barrack_boss_lane1 = Deadlock.formatObjective(
             bool(ah_mask & (1 << 12)), "AH"
         )
-        ah_barrack_boss_lane2 = Deadlock.formatObjective(
-            bool(ah_mask & (1 << 13)), "AH"
-        )
         ah_barrack_boss_lane3 = Deadlock.formatObjective(
             bool(ah_mask & (1 << 14)), "AH"
         )
@@ -206,11 +190,9 @@ class Deadlock(commands.Cog):
         )
 
         sf_tier1_lane1 = Deadlock.formatObjective(bool(sf_mask & (1 << 1)), "SF")
-        sf_tier1_lane2 = Deadlock.formatObjective(bool(sf_mask & (1 << 2)), "SF")
         sf_tier1_lane3 = Deadlock.formatObjective(bool(sf_mask & (1 << 3)), "SF")
         sf_tier1_lane4 = Deadlock.formatObjective(bool(sf_mask & (1 << 4)), "SF")
         sf_tier2_lane1 = Deadlock.formatObjective(bool(sf_mask & (1 << 5)), "SF")
-        sf_tier2_lane2 = Deadlock.formatObjective(bool(sf_mask & (1 << 6)), "SF")
         sf_tier2_lane3 = Deadlock.formatObjective(bool(sf_mask & (1 << 7)), "SF")
         sf_tier2_lane4 = Deadlock.formatObjective(bool(sf_mask & (1 << 8)), "SF")
 
@@ -222,9 +204,6 @@ class Deadlock(commands.Cog):
         sf_shield2 = Deadlock.formatObjective(bool(sf_mask & (1 << 11)), "SF")
         sf_barrack_boss_lane1 = Deadlock.formatObjective(
             bool(sf_mask & (1 << 12)), "SF"
-        )
-        sf_barrack_boss_lane2 = Deadlock.formatObjective(
-            bool(sf_mask & (1 << 13)), "SF"
         )
         sf_barrack_boss_lane3 = Deadlock.formatObjective(
             bool(sf_mask & (1 << 14)), "SF"
@@ -276,7 +255,7 @@ class Deadlock(commands.Cog):
         if liveData == "":
             print("LiveData returned empty, stopping loop.")
             await msg.edit(content="Game has concluded.")
-            await Deadlock.stop(self)
+            await self.stop(self)
         else:
             print("Running live loop.")
             start_time = liveData[5]
@@ -289,7 +268,7 @@ class Deadlock(commands.Cog):
                 enemy = "Sapphire Flame"
             str = (
                 f"Duration: {match_duration}\nSpectators: {liveData[2]}\n\n{enemy}\nNet Worth: {liveData[1]:,d}\n"
-                + Deadlock.get_bool(liveData[3], liveData[4], team)
+                + self.get_bool(liveData[3], liveData[4], team)
                 + f"\n{usr_team}\nNet Worth: {liveData[0]:,d}"
             )
             await msg.edit(content=str)
