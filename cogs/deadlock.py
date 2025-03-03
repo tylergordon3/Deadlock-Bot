@@ -396,23 +396,27 @@ class Deadlock(commands.Cog):
     async def heros(self, interaction: discord.Interaction, choices: str):
         discDict = gd.load_json("data/hero_disc.json")
         today = rd.getCurrentDay()
-        name = await gd.getTracklockUser(choices, self.users["discord"])
-
-        player = discDict[choices]
-        id = list(player.keys())[0]
-        heros = player[id]
-        description = ""
-        hero_lst = heros["hero"]
-        for hero in hero_lst:
-            thisHero = hero_lst[hero]
-            if today in thisHero:
-                description = description + f"{hero}: Rank {thisHero[today]}\n"
-        if description == "":
-            await interaction.response.send_message("No ranks")
-        else:
-            embed = discord.Embed(title=f"{name} Ranks", description=description)
-            embed.set_footer(text=f"As of {today}")
-            await interaction.response.send_message(embed=embed)
+        try:
+            name = await gd.getTracklockUser(choices, self.users["discord"])
+            player = discDict[choices]
+            id = list(player.keys())[0]
+            heros = player[id]
+            description = ""
+            hero_lst = heros["hero"]
+            for hero in hero_lst:
+                thisHero = hero_lst[hero]
+                if today in thisHero:
+                    description = description + f"{hero}: Rank {thisHero[today]}\n"
+            if description == "":
+                await interaction.response.send_message("No ranks")
+            else:
+                embed = discord.Embed(title=f"{name} Ranks", description=description)
+                embed.set_footer(text=f"As of {today}")
+                await interaction.response.send_message(embed=embed)
+        except:
+            await interaction.response.send_message(
+                "No ranks - error with info entered."
+            )
 
 
 async def setup(bot):
