@@ -255,7 +255,7 @@ class Deadlock(commands.Cog):
         if liveData == "":
             print("LiveData returned empty, stopping loop.")
             await msg.edit(content="Game has concluded.")
-            await self.stop(self)
+            await Deadlock.stop(self)
         else:
             print("Running live loop.")
             start_time = liveData[5]
@@ -302,7 +302,7 @@ class Deadlock(commands.Cog):
             df_players = pd.DataFrame()
 
         if df_players.empty:
-            err_msg = "Player not found, potential reasons: \n- Lobby elo too low\n- Player not in a game\n- Player is in active game but duration of game is less than 3 minutes\n Check /users for available users."
+            err_msg = "Player not found, potential reasons: \n- Match is not in top 200 active matches\n- Player not in a game\n- Player is in active game but duration of game is less than 3 minutes\n Check /users for available users."
             await ctx.send(f"Error during execution:\n```py\n{err_msg}\n```")
         else:
 
@@ -315,23 +315,23 @@ class Deadlock(commands.Cog):
                 df_players, ranks, na_leaderboard, eu_leaderboard, hero
             )
             await msg.edit(content="PLAYERS IN GAME:")
-            await ctx.send(
-                "----------------------------------- AMBER HAND -----------------------------------"
-            )
+            # await ctx.send(
+            #    "----------------------------------- AMBER HAND -----------------------------------"
+            # )
             await ctx.send(embeds=team1)
-            await ctx.send(
-                "----------------------------------- SAPPHIRE FLAME -----------------------------------"
-            )
+            # await ctx.send(
+            #    "----------------------------------- SAPPHIRE FLAME -----------------------------------"
+            # )
             await ctx.send(embeds=team2)
             msg2 = await ctx.send("Fetching live streams...")
             lives = gd.getTwitchLive(df_players.get("link"))
             if not lives:
                 await msg2.edit(content="No one is streaming in this lobby.")
             else:
-                await msg2.edit(
-                    content="----------------------------------- LIVESTREAMS -----------------------------------"
-                )
-                await ctx.send("\n".join(lives))
+                # await msg2.edit(
+                #    content="----------------------------------- LIVESTREAMS -----------------------------------"
+                # )
+                await msg2.edit("\n".join(lives))
             print("Live fetch for " + str(choices) + " complete.")
             msg = await ctx.send("Grabbing additional match data.")
             if not Deadlock.liveStatus.is_running():
