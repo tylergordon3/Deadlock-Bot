@@ -255,7 +255,7 @@ class Deadlock(commands.Cog):
         liveData = gd.getLiveLoop(id)
         if liveData == "":
             print("LiveData returned empty, stopping loop.")
-            await msg.edit(content="Game has concluded.", embed=msg.embeds)
+            await msg.edit(content="Game has concluded.")
             await Deadlock.stop(self)
         else:
             start_time = liveData[5]
