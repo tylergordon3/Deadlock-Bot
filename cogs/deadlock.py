@@ -213,32 +213,33 @@ class Deadlock(commands.Cog):
         )
 
         str_ah = (
-            f"          {sf_titan}     \n"
-            f"\t {sf_shield1}\t{sf_shield2}    \n"
-            f"{sf_barrack_boss_lane1}\t{sf_barrack_boss_lane3}\t{sf_barrack_boss_lane4}\n"
-            f"{sf_tier2_lane1}\t{sf_tier2_lane3}\t{sf_tier2_lane4}\n"
-            f"{sf_tier1_lane1}\t{sf_tier1_lane3}\t{sf_tier1_lane4}\n"
+            f"\u3000\u2007\u2007{sf_titan}\n"
+            f"\u3000{sf_shield1}\u3000{sf_shield2}\n"
+            f"{sf_barrack_boss_lane1}\u3000{sf_barrack_boss_lane3}\u3000{sf_barrack_boss_lane4}\n"
+            f"{sf_tier2_lane1}\u3000{sf_tier2_lane3}\u3000{sf_tier2_lane4}\n"
+            f"{sf_tier1_lane1}\u3000{sf_tier1_lane3}\u3000{sf_tier1_lane4}\n"
             f"\n"
-            f"{ah_tier1_lane4}\t{ah_tier1_lane3}\t{ah_tier1_lane1}\n"
-            f"{ah_tier2_lane4}\t{ah_tier2_lane3}\t{ah_tier2_lane1}\n"
-            f"{ah_barrack_boss_lane4}\t{ah_barrack_boss_lane3}\t{ah_barrack_boss_lane1}\n"
-            f"\t {ah_shield2}\t{ah_shield1}\n"
-            f"         {ah_titan}      "
+            f"{ah_tier1_lane4}\u3000{ah_tier1_lane3}\u3000{ah_tier1_lane1}\n"
+            f"{ah_tier2_lane4}\u3000{ah_tier2_lane3}\u3000{ah_tier2_lane1}\n"
+            f"{ah_barrack_boss_lane4}\u3000{ah_barrack_boss_lane3}\u3000{ah_barrack_boss_lane1}\n"
+            f"\u3000{ah_shield2}\u3000{ah_shield1}\n"
+            f"\u3000\u2007\u2007{ah_titan}"
         )
 
         str_sf = (
-            f"          {ah_titan}     \n"
-            f"\t {ah_shield1}\t{ah_shield2}\n"
-            f"{ah_barrack_boss_lane1}\t{ah_barrack_boss_lane3}\t{ah_barrack_boss_lane4}\n"
-            f"{ah_tier2_lane1}\t{ah_tier2_lane3}\t{ah_tier2_lane4}\n"
-            f"{ah_tier1_lane1}\t{ah_tier1_lane3}\t{ah_tier1_lane4}\n"
+            f"\u3000\u2007\u2007{ah_titan}\n"
+            f"\u3000{ah_shield1}\u3000{ah_shield2}\n"
+            f"{ah_barrack_boss_lane1}\u3000{ah_barrack_boss_lane3}\u3000{ah_barrack_boss_lane4}\n"
+            f"{ah_tier2_lane1}\u3000{ah_tier2_lane3}\u3000{ah_tier2_lane4}\n"
+            f"{ah_tier1_lane1}\u3000{ah_tier1_lane3}\u3000{ah_tier1_lane4}\n"
             f"\n"
-            f"{sf_tier1_lane4}\t{sf_tier1_lane3}\t{sf_tier1_lane1}\n"
-            f"{sf_tier2_lane4}\t{sf_tier2_lane3}\t{sf_tier2_lane1}\n"
-            f"{sf_barrack_boss_lane4}\t{sf_barrack_boss_lane3}\t{sf_barrack_boss_lane1}\n"
-            f"\t {sf_shield2}\t{sf_shield1}\n"
-            f"          {sf_titan}      "
+            f"{sf_tier1_lane4}\u3000{sf_tier1_lane3}\u3000{sf_tier1_lane1}\n"
+            f"{sf_tier2_lane4}\u3000{sf_tier2_lane3}\u3000{sf_tier2_lane1}\n"
+            f"{sf_barrack_boss_lane4}\u3000{sf_barrack_boss_lane3}\u3000{sf_barrack_boss_lane1}\n"
+            f"\u3000{sf_shield2}\u3000{sf_shield1}\n"
+            f"\u3000\u2007\u2007{sf_titan}"
         )
+
         if team == 1:
             return str_sf
         return str_ah
@@ -254,12 +255,12 @@ class Deadlock(commands.Cog):
         liveData = gd.getLiveLoop(id)
         if liveData == "":
             print("LiveData returned empty, stopping loop.")
-            await msg.edit(content="Game has concluded.")
+            await msg.edit(content="Game has concluded.", embed=msg.embeds)
             await Deadlock.stop(self)
         else:
-            print("Running live loop.")
             start_time = liveData[5]
             match_duration = rd.timeSince(start_time)
+            print(f"Running live loop at match duration: {match_duration}")
             if team == 1:
                 enemy = "Amber Hand"
                 usr_team = "Sapphire Flame"
@@ -267,11 +268,15 @@ class Deadlock(commands.Cog):
                 usr_team = "Amber Hand"
                 enemy = "Sapphire Flame"
             str = (
-                f"Duration: {match_duration}\nSpectators: {liveData[2]}\n\n{enemy}\nNet Worth: {liveData[1]:,d}\n"
+                f"\nSpectators: {liveData[2]}\n\n{enemy}\nNet Worth: {liveData[1]:,d}\n"
                 + Deadlock.get_bool(liveData[3], liveData[4], team)
                 + f"\n{usr_team}\nNet Worth: {liveData[0]:,d}"
             )
-            await msg.edit(content=str)
+
+            embed = discord.Embed(
+                title=f"Match Duration: {match_duration}", description=str
+            )
+            await msg.edit(content="", embed=embed)
 
     @app_commands.command(
         description="Fetch a user's live match displaying ranks of both teams."
@@ -315,6 +320,7 @@ class Deadlock(commands.Cog):
                 df_players, ranks, na_leaderboard, eu_leaderboard, hero
             )
             await msg.edit(content="PLAYERS IN GAME:")
+
             # await ctx.send(
             #    "----------------------------------- AMBER HAND -----------------------------------"
             # )
@@ -331,7 +337,8 @@ class Deadlock(commands.Cog):
                 # await msg2.edit(
                 #    content="----------------------------------- LIVESTREAMS -----------------------------------"
                 # )
-                await msg2.edit("\n".join(lives))
+                to_send = "\n".join(lives)
+                await msg2.edit(content=to_send)
             print("Live fetch for " + str(choices) + " complete.")
             msg = await ctx.send("Grabbing additional match data.")
             if not Deadlock.liveStatus.is_running():
