@@ -12,6 +12,7 @@ import tools.useData as ud
 import tools.reqData as rd
 import os
 import re
+import datetime
 
 ranks, na_leaderboard, eu_leaderboard, hero = initialize.init()
 guild_id = [546868043838390299]
@@ -106,11 +107,11 @@ class Deadlock(commands.Cog):
         print(f"Updating today's hero rank data.")
         await Deadlock.update(self, today_ranks)
 
-    @tasks.loop(hours=6)
+    @tasks.loop(hours=1)
     async def dataListener(self):
         # await rd.get_daily()
         # await Deadlock.heroLeaderboards(self)
-        if rd.checkDataLastUpd(8):
+        if rd.checkDataLastUpd(4):
             await rd.get_daily()
             await Deadlock.heroLeaderboards(self)
 
@@ -403,6 +404,9 @@ class Deadlock(commands.Cog):
     async def heros(self, interaction: discord.Interaction, choices: str):
         discDict = gd.load_json("data/hero_disc.json")
         today = rd.getCurrentDay()
+        now = datetime.datetime.now().hour
+        await rd.get_daily()
+        await Deadlock.heroLeaderboards(self)
         try:
             name = await gd.getTracklockUser(choices, self.users["discord"])
             player = discDict[choices]
