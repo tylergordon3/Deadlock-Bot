@@ -31,6 +31,20 @@ def getCurrentDay():
     return today_str
 
 
+def checkLastUpd(json):
+    try:
+        update = dt.datetime.strptime(json["upd"], "%Y-%m-%d %H:%M:%S")
+    except:
+        print("checkLastUpd :: error getting last update time.")
+        return
+    now_dt = dt.datetime.now()
+
+    now = dt.datetime.strftime(now_dt, "%Y-%m-%d %H:%M:%S")
+    diff = now - update
+
+    return
+
+
 def checkDataLastUpd(threshold_hrs=12):
     nadict = gd.load_json("dataDaily/NAmerica.json")
 

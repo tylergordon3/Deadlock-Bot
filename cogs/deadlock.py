@@ -12,7 +12,7 @@ import tools.useData as ud
 import tools.reqData as rd
 import os
 import re
-import datetime
+import datetime as dt
 
 ranks, na_leaderboard, eu_leaderboard, hero = initialize.init()
 guild_id = [546868043838390299]
@@ -63,37 +63,41 @@ class Deadlock(commands.Cog):
     async def update(self, today_ranks):
         discDict = gd.load_json("data/hero_disc.json")
         today = rd.getCurrentDay()
+        time = dt.datetime.now()
+        time = dt.datetime.strftime(time, "%Y-%m-%d %H:%M:%S")
+        discDict["upd"] = time
         for player in discDict:
-            name = await gd.getTracklockUser(player, self.users["discord"])
-            try:
-                player_rank_today = today_ranks[player]
-            except:
-                print(f"No Leaderboard: Name: {name}, Player: {player}")
-                continue
+            if player != "upd":
+                name = await gd.getTracklockUser(player, self.users["discord"])
+                try:
+                    player_rank_today = today_ranks[player]
+                except:
+                    print(f"No Leaderboard: Name: {name}, Player: {player}")
+                    continue
 
-            player_dict = discDict[player]
-            id = list(player_dict.keys())[0]
-            currData = player_dict[id]
-            for hero in player_rank_today:
-                hero_data_dict = currData["hero"]
-                if hero in hero_data_dict:
-                    record = hero_data_dict[hero]
-                    if today not in hero_data_dict[hero]:
-                        record[today] = player_rank_today[hero]
-                        print(
-                            f"For {name}, {hero} rank {player_rank_today[hero]} dict entry added, {today}"
-                        )
-                    else:
-                        if record[today] != player_rank_today[hero]:
+                player_dict = discDict[player]
+                id = list(player_dict.keys())[0]
+                currData = player_dict[id]
+                for hero in player_rank_today:
+                    hero_data_dict = currData["hero"]
+                    if hero in hero_data_dict:
+                        record = hero_data_dict[hero]
+                        if today not in hero_data_dict[hero]:
                             record[today] = player_rank_today[hero]
                             print(
-                                f"For {name}, {hero} rank {record[today]} has been updated to: {player_rank_today[hero]}"
+                                f"For {name}, {hero} rank {player_rank_today[hero]} dict entry added, {today}"
                             )
-                else:
-                    print(
-                        f"For {name}, {hero} rank {player_rank_today[hero]} not in json yet."
-                    )
-                    hero_data_dict[hero] = {f"{today}": player_rank_today[hero]}
+                        else:
+                            if record[today] != player_rank_today[hero]:
+                                record[today] = player_rank_today[hero]
+                                print(
+                                    f"For {name}, {hero} rank {record[today]} has been updated to: {player_rank_today[hero]}"
+                                )
+                    else:
+                        print(
+                            f"For {name}, {hero} rank {player_rank_today[hero]} not in json yet."
+                        )
+                        hero_data_dict[hero] = {f"{today}": player_rank_today[hero]}
 
         with open("data/hero_disc.json", mode="w", encoding="utf-8") as write_file:
             json.dump(discDict, write_file, indent=4)
@@ -109,8 +113,8 @@ class Deadlock(commands.Cog):
 
     @tasks.loop(hours=1)
     async def dataListener(self):
-        # await rd.get_daily()
-        # await Deadlock.heroLeaderboards(self)
+        await rd.get_daily()
+        await Deadlock.heroLeaderboards(self)
         if rd.checkDataLastUpd(4):
             await rd.get_daily()
             await Deadlock.heroLeaderboards(self)
@@ -321,23 +325,13 @@ class Deadlock(commands.Cog):
                 df_players, ranks, na_leaderboard, eu_leaderboard, hero
             )
             await msg.edit(content="PLAYERS IN GAME:")
-
-            # await ctx.send(
-            #    "----------------------------------- AMBER HAND -----------------------------------"
-            # )
             await ctx.send(embeds=team1)
-            # await ctx.send(
-            #    "----------------------------------- SAPPHIRE FLAME -----------------------------------"
-            # )
             await ctx.send(embeds=team2)
             msg2 = await ctx.send("Fetching live streams...")
             lives = gd.getTwitchLive(df_players.get("link"))
             if not lives:
                 await msg2.edit(content="No one is streaming in this lobby.")
             else:
-                # await msg2.edit(
-                #    content="----------------------------------- LIVESTREAMS -----------------------------------"
-                # )
                 to_send = "\n".join(lives)
                 await msg2.edit(content=to_send)
             print("Live fetch for " + str(choices) + " complete.")
@@ -404,9 +398,6 @@ class Deadlock(commands.Cog):
     async def heros(self, interaction: discord.Interaction, choices: str):
         discDict = gd.load_json("data/hero_disc.json")
         today = rd.getCurrentDay()
-        now = datetime.datetime.now().hour
-        await rd.get_daily()
-        await Deadlock.heroLeaderboards(self)
         try:
             name = await gd.getTracklockUser(choices, self.users["discord"])
             player = discDict[choices]
