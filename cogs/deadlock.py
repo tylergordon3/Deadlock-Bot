@@ -24,6 +24,7 @@ class Deadlock(commands.Cog):
         self.users = gd.load_json("data/users.json")
         self.dataListener.start()
         self._tasks = []
+        self.path = "/mnt/share"
 
     async def loadHeroData(self):
         path = "dataDaily/hero_lb/"
