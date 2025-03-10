@@ -9,7 +9,7 @@ guild_id = 546868043838390299
 class Admin(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.odysseyCountdown.start()
+        # self.odysseyCountdown.start()
 
     @commands.command()
     async def reload(self, ctx):
