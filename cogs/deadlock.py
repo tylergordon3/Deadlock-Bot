@@ -329,7 +329,7 @@ class Deadlock(commands.Cog):
             await ctx.send(embeds=team1)
             await ctx.send(embeds=team2)
             msg2 = await ctx.send("Fetching live streams...")
-            lives = gd.getTwitchLive(df_players.get("link"))
+            lives = await gd.getTwitchLive(df_players.get("link"))
             if not lives:
                 await msg2.edit(content="No one is streaming in this lobby.")
             else:
