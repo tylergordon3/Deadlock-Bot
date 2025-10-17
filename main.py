@@ -10,7 +10,7 @@ load_dotenv()
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
-guild_id = [546868043838390299]
+
 
 
 bot = commands.Bot(command_prefix="/", intents=intents)
