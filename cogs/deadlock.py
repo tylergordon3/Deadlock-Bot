@@ -15,7 +15,7 @@ import re
 import datetime as dt
 
 ranks, na_leaderboard, eu_leaderboard, hero = initialize.init()
-guild_id = [546868043838390299]
+guild_id = [os.environ.get("GUILD_ID")]
 
 
 class Deadlock(commands.Cog):

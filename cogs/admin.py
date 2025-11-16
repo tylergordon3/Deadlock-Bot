@@ -3,7 +3,7 @@ import os
 import tools.reqData as rd
 import datetime as dt
 
-guild_id = 546868043838390299
+guild_id = 1320225481500659752
 
 
 class Admin(commands.Cog):

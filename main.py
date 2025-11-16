@@ -11,10 +11,8 @@ intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
 
-
-
+guild_id=os.environ.get("GUILD_ID")
 bot = commands.Bot(command_prefix="/", intents=intents)
-
 
 async def load_cogs(bot):
     for file in os.listdir("cogs"):
@@ -29,8 +27,6 @@ async def load_cogs(bot):
                     traceback.format_exception(type(e), e, e.__traceback__)
                 )
                 print(f"Error during execution:\n{error_data[:1000]}\n")
-                # print(f"Failed to load extension {ext}\n{exception}")
-
 
 async def setup_hook():
     print(f"We have logged in as {bot.user}")
@@ -42,10 +38,10 @@ async def setup_hook():
     except Exception as e:
         print(e)
 
-
 bot.setup_hook = setup_hook
 
 try:
+
     bot.run(os.environ.get("DISCORD_BOT_TOKEN"))
 except Exception as e:
     print(f"Error when logging in: {e}")

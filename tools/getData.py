@@ -51,7 +51,8 @@ async def getHTML(link):
 
 
 async def getMates(id):
-    link = f"https://analytics.deadlock-api.com/v2/players/{id}/mate-stats"
+    #76561198271882272
+    link = f"https://api.deadlock-api.com/v1/players/{id}/mate-stats"
     async with aiohttp.ClientSession() as session:
         async with session.get(link) as r:
             if r.status == 200:
