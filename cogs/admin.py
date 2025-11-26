@@ -3,8 +3,7 @@ import os
 import tools.reqData as rd
 import datetime as dt
 
-guild_id = 1320225481500659752
-
+guild_id = os.environ.get("GUILD_ID")
 
 class Admin(commands.Cog):
     def __init__(self, bot):

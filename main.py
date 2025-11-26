@@ -5,13 +5,14 @@ from dotenv import load_dotenv
 import os
 import tools.reqData as rd
 import traceback
+import asyncio
 
 load_dotenv()
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
 
-guild_id=os.environ.get("GUILD_ID")
+GUILD_ID = os.environ.get("GUILD_ID")
 bot = commands.Bot(command_prefix="/", intents=intents)
 
 async def load_cogs(bot):
@@ -32,16 +33,18 @@ async def setup_hook():
     print(f"We have logged in as {bot.user}")
     await load_cogs(bot)
     try:
-        bot.tree.copy_global_to(guild=discord.Object(id=guild_id[0]))
-        sync = await bot.tree.sync(guild=discord.Object(id=guild_id[0]))
+        bot.tree.copy_global_to(guild=discord.Object(id=int(GUILD_ID)))
+        sync = await bot.tree.sync(guild=discord.Object(id=int(GUILD_ID)))
         print(f"Synched {len(sync)} command(s)")
     except Exception as e:
         print(e)
 
 bot.setup_hook = setup_hook
 
-try:
 
+try:
     bot.run(os.environ.get("DISCORD_BOT_TOKEN"))
 except Exception as e:
     print(f"Error when logging in: {e}")
+       
+
