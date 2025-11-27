@@ -310,7 +310,9 @@ class Deadlock(commands.Cog):
             id = self.users["discord"][choices]
             df_players = gd.getLive(self.users["discord"][choices])
         else:
-            df_players = pd.DataFrame()
+            print('Fetching for: ', choices)
+            id = choices
+            df_players = gd.getLive(choices)
 
         if df_players.empty:
             err_msg = "Player not found, potential reasons: \n- Match is not in top 200 active matches\n- Player not in a game\n- Player is in active game but duration of game is less than 3 minutes\n Check /users for available users."

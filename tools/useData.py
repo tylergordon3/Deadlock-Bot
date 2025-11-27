@@ -87,12 +87,15 @@ async def getProfiles(df_players, ranks, na_lb, eu_lb, hero_df):
         else:
             color = "SF"
         html = await gd.getHTML(account)
-        acc_name = html.find("h1", class_="font-bold text-2xl text-white").text
+        acc_name = html.find("title").text
+        pat = '(.*?) - tracklock.gg - Deadlock Stats'
+        match = re.search(pat, acc_name)
+        if match:
+            acc_name = match.group(1)
         na_lb_check = na_lb[na_lb["account_name"] == acc_name]
         eu_lb_check = eu_lb[eu_lb["account_name"] == acc_name]
 
         acc_hero_id = df_players.loc[df_players["link"] == account]["hero_id"].values[0]
-
         hero = hero_df.loc[hero_df["id"] == acc_hero_id]["name"].values[0]
 
         if len(na_lb_check) == 1:

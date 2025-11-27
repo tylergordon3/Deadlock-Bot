@@ -103,34 +103,40 @@ def getLive(id):
     return df_players
 
 
-def getTwitchLive(links):
+async def getTwitchLive(links):
     streams = []
-    for id in links:
-        response = requests.get(id)
-        soup = BeautifulSoup(response.content, "html.parser")
+    async with aiohttp.ClientSession() as session:
+        for url in links:
+            async with session.get(url) as resp:
+                html = await resp.text()
+            soup = BeautifulSoup(html, "html.parser")
 
-        twitch = ""
-        links = soup.find_all("a")
-        for link in links:
-            if "twitch" in link.get("href"):
-                twitch = link.get("href")
+            twitch = ""
+            for a in soup.find_all("a"):
+                href = a.get("href")
+                if href and "twitch" in href:
+                    twitch = href
 
-        if twitch != "":
-            contents = requests.get(twitch).content.decode("utf-8")
-            if "isLiveBroadcast" in contents:
-                streams.append(twitch)
-    print("Returning twitch streams")
+            if twitch:
+                # fetch twitch page
+                async with session.get(twitch) as resp:
+                    twitch_html = await resp.text()
+
+                # detect if live
+                if "isLiveBroadcast" in twitch_html:
+                    streams.append(twitch)
+        print("Returning twitch streams")
     return streams
 
 
 def getHeroLeaderboard(region, hero_id, acc_name):
     match region:
         case "NA":
-            link = "https://data.deadlock-api.com/v1/leaderboard/NAmerica/" + str(
+            link = "https://api.deadlock-api.com/v1/leaderboard/NAmerica/" + str(
                 hero_id
             )
         case "EU":
-            link = "https://data.deadlock-api.com/v1/leaderboard/Europe/" + str(hero_id)
+            link = "https://api.deadlock-api.com/v1/leaderboard/Europe/" + str(hero_id)
 
     response = requests.get(link).json()
     df_hero = pd.DataFrame(response["entries"])

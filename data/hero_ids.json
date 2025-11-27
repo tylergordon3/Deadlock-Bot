@@ -71,6 +71,10 @@
         "id": 20,
         "name": "Ivy"
     },
+     {
+        "id": 21,
+        "name": "Kali"
+    },
     {
         "id": 25,
         "name": "Warden"
@@ -88,8 +92,24 @@
         "name": "Viscous"
     },
     {
+        "id": 38,
+        "name": "Gunslinger"
+    },
+     {
+        "id": 39,
+        "name": "The Boss"
+    },
+    {
+        "id": 47,
+        "name": "Tokamak"
+    },
+    {
         "id": 48,
         "name": "Wrecker"
+    },
+    {
+        "id": 49,
+        "name": "Rutger"
     },
     {
         "id": 50,
@@ -109,7 +129,7 @@
     },
     {
         "id": 60,
-        "name": "THE MAGNIFICENT SINCLAIR"
+        "name": "Sinclair"
     },
     {
         "id": 61,
@@ -118,5 +138,29 @@
     {
         "id": 62,
         "name": "Raven"
+    },
+    {
+        "id": 63,
+        "name": "Mina"
+    },
+    {
+        "id": 64,
+        "name": "Drifter"
+    },
+    {
+        "id": 66,
+        "name": "Victor"
+    },
+    {
+        "id": 67,
+        "name": "Paige"
+    },
+    {
+        "id": 69,
+        "name": "The Doorman"
+    },
+    {
+        "id": 72,
+        "name": "Billy"
     }
 ]
