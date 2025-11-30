@@ -3,6 +3,8 @@ import pandas as pd
 from bs4 import BeautifulSoup
 import json
 import aiohttp
+import asyncio
+import random
 
 
 async def getTracklockUser(user, disc_users):
@@ -12,6 +14,22 @@ async def getTracklockUser(user, disc_users):
     name = html.find("h1", class_="font-bold text-2xl text-white").text
     return name
 
+async def getTracklockUserByID(userID):
+    link = "https://tracklock.gg/players/"
+    user_link = link + str(userID)
+    print(user_link)
+    html = await getHTML(user_link)
+    if html is None:
+        print(f"NoneType for: {user_link}")
+    name = html.find("h1", class_="text-white font-montserrat text-[36px] font-semibold leading-normal").text
+    return name
+
+async def getNameFromSteamID(id):
+    link = "https://steamid.xyz/"
+    user_link = link + str(id)
+    html = await getHTML(user_link)
+    name = html.find("h1", class_="h3 value").text
+    return name
 
 def read_txt(filename):
     with open(filename, "r") as file:
@@ -41,14 +59,31 @@ def dump_json(filename, data):
         raise FileNotFoundError("JSON file wasn't found")
 
 
-async def getHTML(link):
-    async with aiohttp.ClientSession() as session:
-        async with session.get(link) as r:
-            if r.status == 200:
-                content = await r.text()
-                soup = BeautifulSoup(content, "html.parser")
-                return soup
+async def getHTML(link, retries=5, base_delay=1.0):
+    for attempt in range(retries):
+        async with aiohttp.ClientSession() as session:
+            try:
+                async with session.get(link) as r:
+                    # 429 or 5xx → retry
+                    if r.status in (429, 500, 502, 503, 504):
+                        if attempt < retries - 1:
+                            delay = base_delay * (2 ** attempt) + random.uniform(0, 0.2)
+                            await asyncio.sleep(delay)
+                            continue
 
+                    if r.status == 200:
+                        content = await r.text()
+                        return BeautifulSoup(content, "html.parser")
+
+                    # Non-retriable failure
+                    r.raise_for_status()
+            except (aiohttp.ClientError, asyncio.TimeoutError):
+                if attempt < retries - 1:
+                    delay = base_delay * (2 ** attempt) + random.uniform(0, 0.2)
+                    await asyncio.sleep(delay)
+                    continue
+            raise
+    return None  # if all retries fail
 
 async def getMates(id):
     #76561198271882272

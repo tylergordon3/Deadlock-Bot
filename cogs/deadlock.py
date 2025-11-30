@@ -14,7 +14,6 @@ import os
 import re
 import datetime as dt
 
-ranks, na_leaderboard, eu_leaderboard, hero = initialize.init()
 guild_id = [os.environ.get("GUILD_ID")]
 
 
@@ -324,6 +323,7 @@ class Deadlock(commands.Cog):
             ].values[0]
 
             msg = await ctx.send("Fetching players in game.....")
+            ranks, na_leaderboard, eu_leaderboard, hero = initialize.init()
             team1, team2 = await ud.getProfiles(
                 df_players, ranks, na_leaderboard, eu_leaderboard, hero
             )
@@ -423,6 +423,22 @@ class Deadlock(commands.Cog):
                 "No ranks - error with info entered."
             )
 
+    @app_commands.command(description="Update Steam Usernames for saved accounts.")
+    async def refresh(self, interaction: discord.Interaction):
+        path = 'data/user_dict.json'
+        data = gd.load_json(path)
+        await interaction.response.defer(thinking=True)
+        for category in data:
+            keys = list(data[category].keys())
+            results = []
+            for key in keys:
+                results.append(await gd.getNameFromSteamID(key))
+            for key, value in zip(keys, results):
+                data[category][key] = value
+        with open(path, mode="w", encoding="utf-8") as write_file:
+            json.dump(data, write_file, indent=4)
+
+        await interaction.followup.send("Refresh complete!")
 
 async def setup(bot):
     await bot.add_cog(Deadlock(bot))
