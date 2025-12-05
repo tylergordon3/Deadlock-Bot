@@ -350,7 +350,7 @@ class Deadlock(commands.Cog):
     async def users(self, interaction: discord.Interaction):
         lst = []
         dlst = []
-        for key in self.users["all"].keys():
+        for key in self.users["others"].keys():
             lst.append(key)
         for key in self.users["discord"].keys():
             dlst.append(key)
@@ -360,6 +360,12 @@ class Deadlock(commands.Cog):
             + "\n## Users availble for /live & /mates \n"
             + "\n".join(dlst)
         )
+    #@app_commands.command(
+    #    description="Display Deadlock API (not official) MMR for player."
+    #)
+    #@app_commands.autocomplete(choices=live_autocomp_disc)
+    #async def playerMMR(self, interaction: discord.Interaction, choices: str):
+    #    id = self.users["discord"].get(choices)
 
     @app_commands.command(
         description="Display a player's win rates when playing with other discord members."
@@ -390,10 +396,9 @@ class Deadlock(commands.Cog):
             base.format(wins=x, loss=y)
             for x, y in zip(df_sort["wins"], df_sort["loss"])
         ]
-
         df_sort = df_sort.drop(columns=["wins", "matches_played", "loss"])
         markdown = df_sort.to_markdown(index=False)
-        formatted = f"```\n{markdown}\n```"
+        formatted = f"Teammate Stats for: {choices}\n```\n{markdown}\n```"
         await interaction.response.send_message(formatted)
 
     @app_commands.command(description="Fetch hero leaderboards for user.")
@@ -438,6 +443,14 @@ class Deadlock(commands.Cog):
         with open(path, mode="w", encoding="utf-8") as write_file:
             json.dump(data, write_file, indent=4)
 
+        reversed = {
+            section: {v: int(k) for k,v in entries.items()}
+            for section, entries in data.items()
+        }
+        path_OG = 'data/users.json'
+        with open(path_OG, mode="w", encoding="utf-8") as write_file:
+            json.dump(reversed, write_file, indent=4)
+        self.users = gd.load_json("data/users.json")
         await interaction.followup.send("Refresh complete!")
 
 async def setup(bot):
