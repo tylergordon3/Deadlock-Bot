@@ -37,12 +37,13 @@ class Deadlock(commands.Cog):
         return all
 
     async def getRanksToday(self, all_lb):
-        disc_users = self.users["discord"]
+        dict = gd.load_json("data/user_dict.json")
+        disc_users = dict["discord"]
         today_ranks = {}
-        for user in disc_users:
-            name = await gd.getTracklockUser(user, disc_users)
-            print(f"Getting rank today for: {user}")
+        for userID in disc_users:
+            name = await gd.getTracklockUserByID(userID)
 
+            print(f"Getting rank today for: {name}")
             for hero_lb in all_lb:
                 lb_players = list(hero_lb.values())[0]
                 for player in lb_players:
@@ -50,39 +51,57 @@ class Deadlock(commands.Cog):
                         hero = str(list(hero_lb.keys())[0])
                         # today_ranks is list of dicts -> each dict is username mapped to list of ranks
                         if player[0] not in today_ranks.keys():
-                            today_ranks[player[0]] = {hero: player[1]}
+                            today_ranks[userID] = {hero: player[1]}
+                            #today_ranks[player[0]] = {hero: player[1]}
                         else:
                             if player[1] not in list(today_ranks[player[0]].keys()):
-                                today_ranks[player[0]][hero] = player[1]
+                                #today_ranks[player[0]][hero] = player[1]
+                                today_ranks[userID][hero] = player[1]
                             else:
                                 print(
                                     f"getRanksToday::Error {player[1]} already in {today_ranks[player[0]][hero]}"
                                 )
+        print(f'RETURNING TODAY RANKS: {today_ranks}')
         return today_ranks
 
     async def update(self, today_ranks):
+        '''
+        Docstring for update
+        
+        :param self: self
+        :param today_ranks: Dict mapping SteamID to another dict with hero ranks for today
+        '''
         discDict = gd.load_json("data/hero_disc.json")
+        #userDict = gd.load_json("data/user_dict.json")
         today = rd.getCurrentDay()
         time = dt.datetime.now()
         time = dt.datetime.strftime(time, "%Y-%m-%d %H:%M:%S")
         discDict["upd"] = time
-        for player in discDict:
-            if player != "upd":
-                name = await gd.getTracklockUser(player, self.users["discord"])
+        for userID in discDict:
+            if userID != "upd":
+               # name = await gd.getTracklockUser(player, self.users["discord"])
+                name = await gd.getTracklockUserByID(userID)
                 try:
-                    player_rank_today = today_ranks[player]
+                    player_rank_today = today_ranks[userID]
                 except:
-                    print(f"No Leaderboard: Name: {name}, Player: {player}")
+                    print(f"No Leaderboard: Name: {name}, Player: {userID}")
                     continue
 
-                player_dict = discDict[player]
-                id = list(player_dict.keys())[0]
-                currData = player_dict[id]
+                player_dict = discDict[userID]
+                
+                # currData - list of ranks and dates for hero
+                currData = player_dict['hero']
+            
+                # player_rank_today - Dict with hero : rank from today
+                # For each hero ranked today
                 for hero in player_rank_today:
-                    hero_data_dict = currData["hero"]
-                    if hero in hero_data_dict:
-                        record = hero_data_dict[hero]
-                        if today not in hero_data_dict[hero]:
+                    # If hero is in dict of previous data
+                    if hero in currData.keys():
+                        # Get previous data
+                        record = currData[hero]
+
+                        # Check if today has already been grabbed
+                        if today not in currData[hero]:
                             record[today] = player_rank_today[hero]
                             print(
                                 f"For {name}, {hero} rank {player_rank_today[hero]} dict entry added, {today}"
@@ -97,7 +116,7 @@ class Deadlock(commands.Cog):
                         print(
                             f"For {name}, {hero} rank {player_rank_today[hero]} not in json yet."
                         )
-                        hero_data_dict[hero] = {f"{today}": player_rank_today[hero]}
+                        currData[hero] = {f"{today}": player_rank_today[hero]}
 
         with open("data/hero_disc.json", mode="w", encoding="utf-8") as write_file:
             json.dump(discDict, write_file, indent=4)
@@ -113,8 +132,8 @@ class Deadlock(commands.Cog):
 
     @tasks.loop(hours=1)
     async def dataListener(self):
-        # await rd.get_daily()
-        # await Deadlock.heroLeaderboards(self)
+        #await rd.get_daily()
+        #await Deadlock.heroLeaderboards(self)
         if rd.checkDataLastUpd(4):
             await rd.get_daily()
             await Deadlock.heroLeaderboards(self)
@@ -304,7 +323,7 @@ class Deadlock(commands.Cog):
         print("Back from sleep.")
         if choices in self.users["others"]:
             id = self.users["others"][choices]
-            df_players = gd.getLive(self.users["othersl"][choices])
+            df_players = gd.getLive(self.users["others"][choices])
         elif choices in self.users["discord"]:
             id = self.users["discord"][choices]
             df_players = gd.getLive(self.users["discord"][choices])
@@ -404,15 +423,15 @@ class Deadlock(commands.Cog):
     @app_commands.command(description="Fetch hero leaderboards for user.")
     @app_commands.autocomplete(choices=live_autocomp_disc)
     async def heros(self, interaction: discord.Interaction, choices: str):
-        discDict = gd.load_json("data/hero_disc.json")
+        hero_disc = gd.load_json("data/hero_disc.json")
         today = rd.getCurrentDay()
         try:
-            name = await gd.getTracklockUser(choices, self.users["discord"])
-            player = discDict[choices]
-            id = list(player.keys())[0]
-            heros = player[id]
+            userID = self.users['discord'][choices]
+            name = await gd.getTracklockUserByID(userID)
+            heros = hero_disc[str(userID)]
             description = ""
             hero_lst = heros["hero"]
+            
             for hero in hero_lst:
                 thisHero = hero_lst[hero]
                 if today in thisHero:

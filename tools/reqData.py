@@ -75,8 +75,7 @@ async def get_daily():
     for f in files:
         path = "dataDaily/" + f
         region = f[:-5]
-        data = requests.get(f"https://api.deadlock-api.com/v1/leaderboard/{region}")
-        data_json = data.json()
+        data_json = await gd.getWebData(f"https://api.deadlock-api.com/v1/leaderboard/{region}")
         data_json["upd"] = today
         with open(path, mode="w", encoding="utf-8") as write_file:
             json.dump(data_json, write_file, indent=4)
@@ -89,7 +88,7 @@ async def get_daily():
 
         path = "dataDaily/hero_lb/" + name + ".json"
         data = requests.get(
-            f"https://data.deadlock-api.com/v1/leaderboard/NAmerica/{id}"
+            f"https://api.deadlock-api.com/v1/leaderboard/NAmerica/{id}"
         )
         data_json = data.json()
         data_json["upd"] = today
