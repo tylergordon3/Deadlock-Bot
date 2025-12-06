@@ -124,7 +124,7 @@ class Deadlock(commands.Cog):
         interaction: discord.Interaction,
         curr: str,
     ) -> List[app_commands.Choice[str]]:
-        choices = self.users["discord"] | self.users["all"]
+        choices = self.users["discord"] | self.users["others"]
         return [
             app_commands.Choice(name=choice, value=choice)
             for choice in choices
@@ -302,9 +302,9 @@ class Deadlock(commands.Cog):
         )
         await asyncio.sleep(delay_minutes * 60)
         print("Back from sleep.")
-        if choices in self.users["all"]:
-            id = self.users["all"][choices]
-            df_players = gd.getLive(self.users["all"][choices])
+        if choices in self.users["others"]:
+            id = self.users["others"][choices]
+            df_players = gd.getLive(self.users["othersl"][choices])
         elif choices in self.users["discord"]:
             id = self.users["discord"][choices]
             df_players = gd.getLive(self.users["discord"][choices])
