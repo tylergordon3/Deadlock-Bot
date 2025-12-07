@@ -5108,17 +5108,11 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "Gaben",
+            "account_name": "Team Fortress 2",
             "possible_account_ids": [
-                3866889,
-                422345545,
-                42792851,
-                39643725,
-                38839715,
-                101835218,
-                1006191997,
-                114206746,
-                349418697
+                146931880,
+                134263240,
+                220373230
             ],
             "rank": 115,
             "top_hero_ids": [],
@@ -12515,10 +12509,8 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "BIGGBONK",
-            "possible_account_ids": [
-                78126455
-            ],
+            "account_name": "Goof Duna",
+            "possible_account_ids": [],
             "rank": 316,
             "top_hero_ids": [],
             "badge_level": null,
@@ -16429,5 +16421,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2025-12-06 16:00:19"
+    "upd": "2025-12-06 20:05:45"
 }

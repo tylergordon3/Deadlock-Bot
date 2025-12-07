@@ -1,9 +1,13 @@
 {
     "entries": [
         {
-            "account_name": "lb",
+            "account_name": "alias",
             "possible_account_ids": [
-                1227331969
+                11768734,
+                1148154479,
+                96525910,
+                1244715534,
+                1125410591
             ],
             "rank": 1,
             "top_hero_ids": [],
@@ -12580,5 +12584,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2025-12-06 16:00:19"
+    "upd": "2025-12-06 20:05:45"
 }
