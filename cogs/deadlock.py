@@ -41,8 +41,8 @@ class Deadlock(commands.Cog):
         disc_users = dict["discord"]
         today_ranks = {}
         for userID in disc_users:
-            name = await gd.getTracklockUserByID(userID)
-
+            #name = await gd.getTracklockUserByID(userID)
+            name = disc_users[userID]
             print(f"Getting rank today for: {name}")
             for hero_lb in all_lb:
                 lb_players = list(hero_lb.values())[0]
@@ -132,8 +132,8 @@ class Deadlock(commands.Cog):
 
     @tasks.loop(hours=1)
     async def dataListener(self):
-        #await rd.get_daily()
-        #await Deadlock.heroLeaderboards(self)
+        await rd.get_daily()
+        await Deadlock.heroLeaderboards(self)
         if rd.checkDataLastUpd(4):
             await rd.get_daily()
             await Deadlock.heroLeaderboards(self)
@@ -379,12 +379,6 @@ class Deadlock(commands.Cog):
             + "\n## Users availble for /live & /mates \n"
             + "\n".join(dlst)
         )
-    #@app_commands.command(
-    #    description="Display Deadlock API (not official) MMR for player."
-    #)
-    #@app_commands.autocomplete(choices=live_autocomp_disc)
-    #async def playerMMR(self, interaction: discord.Interaction, choices: str):
-    #    id = self.users["discord"].get(choices)
 
     @app_commands.command(
         description="Display a player's win rates when playing with other discord members."
@@ -420,6 +414,28 @@ class Deadlock(commands.Cog):
         formatted = f"Teammate Stats for: {choices}\n```\n{markdown}\n```"
         await interaction.response.send_message(formatted)
 
+    @app_commands.command(description="Fetch all hero ranks")
+    async def ranks (self, interaction: discord.Interaction):
+        await interaction.response.defer(thinking=True)
+        today = rd.getCurrentDay()
+        hero_disc = gd.load_json("data/hero_disc.json")
+        output = ''
+        for key in hero_disc:
+            try:
+                _ = int(key)
+            except:
+                continue
+            name = await gd.getTracklockUserByID(int(key))
+            userHeroDict = hero_disc[key]
+            userHeroDict = userHeroDict['hero']
+            for hero in userHeroDict.keys():
+                hero_ranks = userHeroDict[hero]
+                if today in hero_ranks.keys():
+                    hero_str = f'\n{name} | {hero} | **#{hero_ranks[today]}**'
+                    output += hero_str
+        embed = discord.Embed(title=f"Hero Ranks for {today}", description=output)
+        await interaction.followup.send(embed=embed)
+
     @app_commands.command(description="Fetch hero leaderboards for user.")
     @app_commands.autocomplete(choices=live_autocomp_disc)
     async def heros(self, interaction: discord.Interaction, choices: str):
@@ -439,9 +455,9 @@ class Deadlock(commands.Cog):
             if description == "":
                 await interaction.response.send_message("No ranks")
             else:
-                embed = discord.Embed(title=f"{name} Ranks", description=description)
+                embed = discord.Embed(title=f'{name} Ranks', description=description)
                 embed.set_footer(text=f"As of {today}")
-                await interaction.response.send_message(embed=embed)
+                await interaction.response.send_message(embed=embed)  
         except:
             await interaction.response.send_message(
                 "No ranks - error with info entered."
