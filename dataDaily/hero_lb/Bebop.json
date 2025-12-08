@@ -116,13 +116,8 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "Snub",
-            "possible_account_ids": [
-                179626340,
-                1761622875,
-                326703634,
-                215471739
-            ],
+            "account_name": "Subere",
+            "possible_account_ids": [],
             "rank": 12,
             "top_hero_ids": [],
             "badge_level": null,
@@ -5365,7 +5360,7 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "Fairfax trainee",
+            "account_name": "Official Fairfax Janitor",
             "possible_account_ids": [],
             "rank": 138,
             "top_hero_ids": [],
@@ -9973,9 +9968,11 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "bad (having fun)",
+            "account_name": "mox",
             "possible_account_ids": [
-                43244949
+                46348256,
+                1093345801,
+                185110347
             ],
             "rank": 262,
             "top_hero_ids": [],
@@ -16185,8 +16182,10 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "Nami foot job",
-            "possible_account_ids": [],
+            "account_name": "syrup foot job",
+            "possible_account_ids": [
+                1023533323
+            ],
             "rank": 588,
             "top_hero_ids": [],
             "badge_level": null,
@@ -25445,5 +25444,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2025-12-07 18:50:17"
+    "upd": "2025-12-07 22:51:44"
 }

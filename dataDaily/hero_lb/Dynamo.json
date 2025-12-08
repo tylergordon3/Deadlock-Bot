@@ -911,8 +911,11 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "durpee82",
-            "possible_account_ids": [],
+            "account_name": "schmidley",
+            "possible_account_ids": [
+                989629998,
+                200186210
+            ],
             "rank": 60,
             "top_hero_ids": [],
             "badge_level": null,
@@ -1624,7 +1627,7 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "ANTIHERO",
+            "account_name": "Villain arc",
             "possible_account_ids": [],
             "rank": 95,
             "top_hero_ids": [],
@@ -15082,10 +15085,8 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "BibleCampVictim001",
-            "possible_account_ids": [
-                262098156
-            ],
+            "account_name": "EpsteinsDentistAssistant",
+            "possible_account_ids": [],
             "rank": 569,
             "top_hero_ids": [],
             "badge_level": null,
@@ -19052,5 +19053,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2025-12-07 18:50:17"
+    "upd": "2025-12-07 22:51:44"
 }

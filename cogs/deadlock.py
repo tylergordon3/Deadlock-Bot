@@ -132,8 +132,8 @@ class Deadlock(commands.Cog):
 
     @tasks.loop(hours=1)
     async def dataListener(self):
-        await rd.get_daily()
-        await Deadlock.heroLeaderboards(self)
+        #await rd.get_daily()
+        #await Deadlock.heroLeaderboards(self)
         if rd.checkDataLastUpd(4):
             await rd.get_daily()
             await Deadlock.heroLeaderboards(self)
