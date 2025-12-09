@@ -132,9 +132,11 @@ class Deadlock(commands.Cog):
 
     @tasks.loop(hours=1)
     async def dataListener(self):
-        #await rd.get_daily()
-        #await Deadlock.heroLeaderboards(self)
+        await Deadlock.internal_refresh(self)
+        await rd.get_daily()
+        await Deadlock.heroLeaderboards(self)
         if rd.checkDataLastUpd(4):
+            await Deadlock.internal_refresh(self)
             await rd.get_daily()
             await Deadlock.heroLeaderboards(self)
 
@@ -487,6 +489,38 @@ class Deadlock(commands.Cog):
             json.dump(reversed, write_file, indent=4)
         self.users = gd.load_json("data/users.json")
         await interaction.followup.send("Refresh complete!")
+
+    async def internal_refresh(self):
+        path = 'data/user_dict.json'
+        data = gd.load_json(path)
+        for category in data:
+            keys = list(data[category].keys())
+            results = []
+            for key in keys:
+                results.append(await gd.getNameFromSteamID(key))
+            for key, value in zip(keys, results):
+                data[category][key] = value
+        #with open(path, mode="w", encoding="utf-8") as write_file:
+            #json.dump(data, write_file, indent=4)
+        async def write_json(path, data):
+            await asyncio.to_thread(
+            lambda: json.dump(
+                data,
+                open(path, "w", encoding="utf-8"),
+                ensure_ascii=False
+            )
+        )
+        await write_json(path, data)
+        reversed = {
+            section: {v: int(k) for k,v in entries.items()}
+            for section, entries in data.items()
+        }
+        path_OG = 'data/users.json'
+        #ith open(path_OG, mode="w", encoding="utf-8") as write_file:
+            #json.dump(reversed, write_file, indent=4)
+        await write_json(path_OG, reversed)
+        self.users = gd.load_json("data/users.json")
+        print("Internal refresh complete!")
 
 async def setup(bot):
     await bot.add_cog(Deadlock(bot))
