@@ -438,7 +438,7 @@ class Deadlock(commands.Cog):
             if tup[0] not in used_names:
                 output += f'\n__{tup[0]}__\n'
                 used_names.append(tup[0])
-            output += f'{tup[1]} #{tup[2]}\n'
+            output += f'{tup[1]}: #{tup[2]}\n'
         embed = discord.Embed(title=f"Hero Ranks for {today}", description=output)
         await interaction.followup.send(embed=embed)
 
