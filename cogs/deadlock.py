@@ -40,8 +40,7 @@ class Deadlock(commands.Cog):
         dict = gd.load_json("data/user_dict.json")
         disc_users = dict["discord"]
         today_ranks = {}
-        for userID in disc_users:
-            #name = await gd.getTracklockUserByID(userID)
+        for userID in disc_users.keys():
             name = disc_users[userID]
             print(f"Getting rank today for: {name}")
             for hero_lb in all_lb:
@@ -50,16 +49,14 @@ class Deadlock(commands.Cog):
                     if player[0] == name:
                         hero = str(list(hero_lb.keys())[0])
                         # today_ranks is list of dicts -> each dict is username mapped to list of ranks
-                        if player[0] not in today_ranks.keys():
+                        if userID not in today_ranks.keys():
                             today_ranks[userID] = {hero: player[1]}
-                            #today_ranks[player[0]] = {hero: player[1]}
                         else:
-                            if player[1] not in list(today_ranks[player[0]].keys()):
-                                #today_ranks[player[0]][hero] = player[1]
+                            if hero not in list(today_ranks[userID].keys()):
                                 today_ranks[userID][hero] = player[1]
                             else:
                                 print(
-                                    f"getRanksToday::Error {player[1]} already in {today_ranks[player[0]][hero]}"
+                                    f"getRanksToday::Error {hero} already in {list(today_ranks[userID].keys())}"
                                 )
         print(f'RETURNING TODAY RANKS: {today_ranks}')
         return today_ranks
@@ -72,14 +69,12 @@ class Deadlock(commands.Cog):
         :param today_ranks: Dict mapping SteamID to another dict with hero ranks for today
         '''
         discDict = gd.load_json("data/hero_disc.json")
-        #userDict = gd.load_json("data/user_dict.json")
         today = rd.getCurrentDay()
         time = dt.datetime.now()
         time = dt.datetime.strftime(time, "%Y-%m-%d %H:%M:%S")
         discDict["upd"] = time
         for userID in discDict:
             if userID != "upd":
-               # name = await gd.getTracklockUser(player, self.users["discord"])
                 name = await gd.getTracklockUserByID(userID)
                 try:
                     player_rank_today = today_ranks[userID]
@@ -132,11 +127,11 @@ class Deadlock(commands.Cog):
 
     @tasks.loop(hours=1)
     async def dataListener(self):
-        await Deadlock.internal_refresh(self)
-        await rd.get_daily()
-        await Deadlock.heroLeaderboards(self)
+        #await Deadlock.internal_refresh(self)
+        #await rd.get_daily()
+        #await Deadlock.heroLeaderboards(self)
         if rd.checkDataLastUpd(4):
-            await Deadlock.internal_refresh(self)
+            #await Deadlock.internal_refresh(self)
             await rd.get_daily()
             await Deadlock.heroLeaderboards(self)
 
@@ -422,6 +417,7 @@ class Deadlock(commands.Cog):
         today = rd.getCurrentDay()
         hero_disc = gd.load_json("data/hero_disc.json")
         output = ''
+        tuples = []
         for key in hero_disc:
             try:
                 _ = int(key)
@@ -430,11 +426,19 @@ class Deadlock(commands.Cog):
             name = await gd.getTracklockUserByID(int(key))
             userHeroDict = hero_disc[key]
             userHeroDict = userHeroDict['hero']
+           
             for hero in userHeroDict.keys():
                 hero_ranks = userHeroDict[hero]
                 if today in hero_ranks.keys():
-                    hero_str = f'\n{name} | {hero} | **#{hero_ranks[today]}**'
-                    output += hero_str
+                    hero_tpl = (name, hero, hero_ranks[today])
+                    tuples.append(hero_tpl)
+        sorted_tup = sorted(tuples, key=lambda item: (item[0], item[2]))
+        used_names = []
+        for tup in sorted_tup:
+            if tup[0] not in used_names:
+                output += f'\n__{tup[0]}__\n'
+                used_names.append(tup[0])
+            output += f'{tup[1]} #{tup[2]}\n'
         embed = discord.Embed(title=f"Hero Ranks for {today}", description=output)
         await interaction.followup.send(embed=embed)
 
@@ -500,8 +504,6 @@ class Deadlock(commands.Cog):
                 results.append(await gd.getNameFromSteamID(key))
             for key, value in zip(keys, results):
                 data[category][key] = value
-        #with open(path, mode="w", encoding="utf-8") as write_file:
-            #json.dump(data, write_file, indent=4)
         async def write_json(path, data):
             await asyncio.to_thread(
             lambda: json.dump(
@@ -516,8 +518,6 @@ class Deadlock(commands.Cog):
             for section, entries in data.items()
         }
         path_OG = 'data/users.json'
-        #ith open(path_OG, mode="w", encoding="utf-8") as write_file:
-            #json.dump(reversed, write_file, indent=4)
         await write_json(path_OG, reversed)
         self.users = gd.load_json("data/users.json")
         print("Internal refresh complete!")
