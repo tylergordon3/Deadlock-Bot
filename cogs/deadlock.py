@@ -30,8 +30,10 @@ class Deadlock(commands.Cog):
         files = [f for f in os.listdir(path)]
         all = []
         for f in files:
+            print(f)
             data = gd.load_json(path + f)
             hero = f[:-5]
+            print(f'Hero: {hero}, File: {f}')
             pull = [(d["account_name"], d["rank"]) for d in data["entries"]]
             all.append({hero: pull})
         return all
@@ -127,11 +129,11 @@ class Deadlock(commands.Cog):
 
     @tasks.loop(hours=1)
     async def dataListener(self):
-        #await Deadlock.internal_refresh(self)
-        #await rd.get_daily()
-        #await Deadlock.heroLeaderboards(self)
+       # await Deadlock.internal_refresh(self)
+        await rd.get_daily()
+        await Deadlock.heroLeaderboards(self)
         if rd.checkDataLastUpd(4):
-            #await Deadlock.internal_refresh(self)
+            await Deadlock.internal_refresh(self)
             await rd.get_daily()
             await Deadlock.heroLeaderboards(self)
 

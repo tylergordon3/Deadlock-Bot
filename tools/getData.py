@@ -92,7 +92,7 @@ async def getHTML(link, retries=5, base_delay=1.0):
             raise
     return None  # if all retries fail
 
-async def getWebData(link, retries=5, base_delay=1.0):
+async def getWebData(link, retries=20, base_delay=1.0):
     for attempt in range(retries):
         async with aiohttp.ClientSession() as session:
             try:
