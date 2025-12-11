@@ -5,12 +5,13 @@ import json
 import aiohttp
 import asyncio
 import random
+import tools.getDataAdv as gda
 
 
 async def getTracklockUser(user, disc_users):
     link = "https://tracklock.gg/players/"
     user_link = link + str(disc_users[user])
-    html = await getHTML(user_link)
+    html = await gda.getHTML(user_link)
     if html is None:
         print(f"NoneType for: {user_link}")
     try:
@@ -23,7 +24,7 @@ async def getTracklockUser(user, disc_users):
 async def getTracklockUserByID(userID):
     link = "https://tracklock.gg/players/"
     user_link = link + str(userID)
-    html = await getHTML(user_link)
+    html = await gda.getHTML(user_link)
     try:
         name = html.find("h1", class_="text-white font-montserrat text-[36px] font-semibold leading-normal").text
     except:
