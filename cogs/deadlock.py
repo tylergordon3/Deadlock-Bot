@@ -74,7 +74,10 @@ class Deadlock(commands.Cog):
         discDict["upd"] = time
         for userID in discDict:
             if userID != "upd":
-                name = await gd.getTracklockUserByID(userID)
+                #name = await gd.getTracklockUserByID(userID)
+                user_dict = gd.load_json('data/user_dict.json')
+                user_dict = user_dict['discord']
+                name = user_dict[str(userID)]
                 try:
                     player_rank_today = today_ranks[userID]
                 except:
@@ -127,8 +130,8 @@ class Deadlock(commands.Cog):
     @tasks.loop(hours=1)
     async def dataListener(self):
         #await Deadlock.internal_refresh(self)
-        #await rd.get_daily()
-        #await Deadlock.heroLeaderboards(self)
+        await rd.get_daily()
+        await Deadlock.heroLeaderboards(self)
         if rd.checkDataLastUpd(4):
             await Deadlock.internal_refresh(self)
             await rd.get_daily()
@@ -451,7 +454,7 @@ class Deadlock(commands.Cog):
         today = rd.getCurrentDay()
         try:
             userID = self.users['discord'][choices]
-            name = await gd.getTracklockUserByID(userID)
+            name = choices
             heros = hero_disc[str(userID)]
             description = ""
             hero_lst = heros["hero"]

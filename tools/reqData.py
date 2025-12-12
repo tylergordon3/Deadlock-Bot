@@ -85,7 +85,6 @@ async def get_daily():
     for hero in hero_ids:
         id = str(hero["id"])
         name = hero["name"]
-        print(f'{name}')
         path = "dataDaily/hero_lb/" + name + ".json"
         data = requests.get(
             f"https://api.deadlock-api.com/v1/leaderboard/NAmerica/{id}"
