@@ -415,6 +415,8 @@ class Deadlock(commands.Cog):
         await interaction.response.defer(thinking=True)
         today = rd.getCurrentDay()
         hero_disc = gd.load_json("data/hero_disc.json")
+        disc_users = gd.load_json('data/user_dict.json')
+        disc_users = disc_users['discord']
         output = ''
         tuples = []
         for key in hero_disc:
@@ -422,7 +424,8 @@ class Deadlock(commands.Cog):
                 _ = int(key)
             except:
                 continue
-            name = await gd.getTracklockUserByID(int(key))
+            #name = await gd.getTracklockUserByID(int(key))
+            name = disc_users[key]
             userHeroDict = hero_disc[key]
             userHeroDict = userHeroDict['hero']
            

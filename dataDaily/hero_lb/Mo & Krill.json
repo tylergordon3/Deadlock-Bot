@@ -1831,8 +1831,22 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "Step 3: Racial Slurs",
-            "possible_account_ids": [],
+            "account_name": "Bay Harbor Butcher",
+            "possible_account_ids": [
+                1131269469,
+                1016117704,
+                91943820,
+                167715986,
+                192841954,
+                219021693,
+                1615472745,
+                269519104,
+                1912945282,
+                320339324,
+                321021636,
+                1043270625,
+                384432902
+            ],
             "rank": 47,
             "top_hero_ids": [],
             "badge_level": null,
@@ -7684,8 +7698,26 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "20 days left",
-            "possible_account_ids": [],
+            "account_name": "human",
+            "possible_account_ids": [
+                397690831,
+                1161139269,
+                80456908,
+                153510956,
+                170282838,
+                1224228691,
+                123515906,
+                1478853257,
+                1055639519,
+                202316916,
+                328580303,
+                1741858935,
+                365041704,
+                1828930615,
+                1124812822,
+                1583716933,
+                366531913
+            ],
             "rank": 318,
             "top_hero_ids": [],
             "badge_level": null,
@@ -10284,5 +10316,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2025-12-11 16:31:01"
+    "upd": "2025-12-11 20:41:42"
 }
