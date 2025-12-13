@@ -130,8 +130,8 @@ class Deadlock(commands.Cog):
     @tasks.loop(hours=1)
     async def dataListener(self):
         #await Deadlock.internal_refresh(self)
-        await rd.get_daily()
-        await Deadlock.heroLeaderboards(self)
+        #await rd.get_daily()
+        #await Deadlock.heroLeaderboards(self)
         if rd.checkDataLastUpd(4):
             await Deadlock.internal_refresh(self)
             await rd.get_daily()
@@ -300,6 +300,18 @@ class Deadlock(commands.Cog):
                 title=f"Match Duration: {match_duration}", description=str
             )
             await msg.edit(content="", embed=embed)
+
+    @app_commands.command(
+        description="Get tracklock API mmr"
+    )
+    @app_commands.autocomplete(choices=live_autocomp_all)
+    async def mmr(
+        self, interaction: discord.Interaction, choices: str):
+        id = self.users["discord"].get(choices)
+        api = f'https://api.deadlock-api.com/v1/players{id}/mmr-history'
+        resp = await gd.getHTML(api)
+        print(resp)
+        
 
     @app_commands.command(
         description="Fetch a user's live match displaying ranks of both teams."

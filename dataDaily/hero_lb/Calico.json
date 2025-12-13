@@ -12228,8 +12228,10 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "ThuhBigChud",
-            "possible_account_ids": [],
+            "account_name": "Twitch.tv/ThuhBigA",
+            "possible_account_ids": [
+                485543191
+            ],
             "rank": 508,
             "top_hero_ids": [],
             "badge_level": null,
@@ -13272,5 +13274,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2025-12-12 19:37:58"
+    "upd": "2025-12-12 22:05:01"
 }

@@ -103,7 +103,7 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "BERSERK\u0441\u0443\u043a\u0430 \u0431",
+            "account_name": "/ \u00b0",
             "possible_account_ids": [],
             "rank": 9,
             "top_hero_ids": [],
@@ -7649,8 +7649,12 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "KGB Spy",
-            "possible_account_ids": [],
+            "account_name": "\u30ec\u30bc",
+            "possible_account_ids": [
+                156244367,
+                1514413395,
+                1133638480
+            ],
             "rank": 243,
             "top_hero_ids": [],
             "badge_level": null,
@@ -16896,7 +16900,7 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "Chunky_Ragu",
+            "account_name": "Chunky_Ragu (gucci)",
             "possible_account_ids": [],
             "rank": 705,
             "top_hero_ids": [],
@@ -18086,5 +18090,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2025-12-12 19:37:58"
+    "upd": "2025-12-12 22:05:01"
 }

@@ -333,10 +333,8 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "GenericSoyBoi (Slander)",
-            "possible_account_ids": [
-                1115620324
-            ],
+            "account_name": "GenericSoyBoi (Slander) #FREEABL",
+            "possible_account_ids": [],
             "rank": 14,
             "top_hero_ids": [],
             "badge_level": null,
@@ -6067,8 +6065,12 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "KGB Spy",
-            "possible_account_ids": [],
+            "account_name": "\u30ec\u30bc",
+            "possible_account_ids": [
+                156244367,
+                1514413395,
+                1133638480
+            ],
             "rank": 152,
             "top_hero_ids": [],
             "badge_level": null,
@@ -12491,5 +12493,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2025-12-12 19:37:58"
+    "upd": "2025-12-12 22:05:01"
 }

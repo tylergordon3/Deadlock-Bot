@@ -4719,8 +4719,12 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "KGB Spy",
-            "possible_account_ids": [],
+            "account_name": "\u30ec\u30bc",
+            "possible_account_ids": [
+                156244367,
+                1514413395,
+                1133638480
+            ],
             "rank": 249,
             "top_hero_ids": [],
             "badge_level": null,
@@ -9633,11 +9637,10 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "1738",
+            "account_name": "commando",
             "possible_account_ids": [
-                157627227,
-                182050387,
-                1127874199
+                152397755,
+                191427698
             ],
             "rank": 424,
             "top_hero_ids": [],
@@ -15638,5 +15641,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2025-12-12 19:37:58"
+    "upd": "2025-12-12 22:05:01"
 }
