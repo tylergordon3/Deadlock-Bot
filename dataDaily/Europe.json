@@ -396,8 +396,11 @@
             "ranked_subrank": 6
         },
         {
-            "account_name": "forever young ***",
-            "possible_account_ids": [],
+            "account_name": "ghoul trooper",
+            "possible_account_ids": [
+                407786402,
+                356857243
+            ],
             "rank": 22,
             "top_hero_ids": [
                 3,
@@ -1139,10 +1142,8 @@
             "ranked_subrank": 6
         },
         {
-            "account_name": "reboot",
-            "possible_account_ids": [
-                279932284
-            ],
+            "account_name": "shut down",
+            "possible_account_ids": [],
             "rank": 45,
             "top_hero_ids": [
                 7,
@@ -35446,5 +35447,5 @@
             "ranked_subrank": 6
         }
     ],
-    "upd": "2025-12-12 18:37:58"
+    "upd": "2025-12-12 19:37:58"
 }
