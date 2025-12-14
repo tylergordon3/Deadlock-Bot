@@ -86,13 +86,10 @@ async def get_daily():
         id = str(hero["id"])
         name = hero["name"]
         path = "dataDaily/hero_lb/" + name + ".json"
-        data = requests.get(
-            f"https://api.deadlock-api.com/v1/leaderboard/NAmerica/{id}"
-        )
-        data_json = data.json()
-        data_json["upd"] = today
+        data_json_hero = await gd.getWebData(f"https://api.deadlock-api.com/v1/leaderboard/NAmerica/{id}")
+        data_json_hero["upd"] = today
         with open(path, mode="w", encoding="utf-8") as write_file:
-            json.dump(data_json, write_file, indent=4)
+            json.dump(data_json_hero, write_file, indent=4)
     print("Daily update completed.")
 
 

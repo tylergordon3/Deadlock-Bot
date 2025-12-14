@@ -1069,8 +1069,10 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "How the CITADEL Stole Jungle",
-            "possible_account_ids": [],
+            "account_name": "CITADEL",
+            "possible_account_ids": [
+                1131162604
+            ],
             "rank": 48,
             "top_hero_ids": [],
             "badge_level": null,
@@ -1258,9 +1260,10 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "SABRINA CARPENTER",
+            "account_name": "BOOLINBARRY_COMPTONBARBARIAN",
             "possible_account_ids": [
-                104612435
+                104612435,
+                145415512
             ],
             "rank": 64,
             "top_hero_ids": [],
@@ -24083,5 +24086,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2025-12-14 12:18:21"
+    "upd": "2025-12-14 17:16:01"
 }
