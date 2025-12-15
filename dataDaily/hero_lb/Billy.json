@@ -112,8 +112,23 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "blurence_ ttv",
-            "possible_account_ids": [],
+            "account_name": "blur",
+            "possible_account_ids": [
+                13563754,
+                85201504,
+                85866425,
+                1084141278,
+                37333780,
+                108540562,
+                1101588112,
+                121501714,
+                381013902,
+                898514158,
+                163786581,
+                175092884,
+                876559456,
+                896504275
+            ],
             "rank": 11,
             "top_hero_ids": [],
             "badge_level": null,
@@ -16232,5 +16247,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2025-12-14 17:16:01"
+    "upd": "2025-12-14 20:17:41"
 }

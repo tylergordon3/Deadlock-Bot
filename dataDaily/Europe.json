@@ -730,8 +730,19 @@
             "ranked_subrank": 6
         },
         {
-            "account_name": "sky is falling",
-            "possible_account_ids": [],
+            "account_name": "time",
+            "possible_account_ids": [
+                1508456005,
+                1583964662,
+                254371613,
+                322124629,
+                135943661,
+                379791370,
+                394076913,
+                888897173,
+                1745617490,
+                218186419
+            ],
             "rank": 43,
             "top_hero_ids": [
                 7,
@@ -962,7 +973,7 @@
             "ranked_subrank": 6
         },
         {
-            "account_name": "get buck",
+            "account_name": "evil dirty fucking goblin",
             "possible_account_ids": [],
             "rank": 51,
             "top_hero_ids": [
@@ -3125,7 +3136,7 @@
             "ranked_subrank": 6
         },
         {
-            "account_name": "\u043a\u0430\u043a\u0443\u043b\u044c\u043a\u0430 \u043a\u0430\u043a\u0430\u0448\u0443\u043b",
+            "account_name": "rageekid d-c-b-a-s-ss",
             "possible_account_ids": [],
             "rank": 68,
             "top_hero_ids": [],
@@ -35208,5 +35219,5 @@
             "ranked_subrank": 6
         }
     ],
-    "upd": "2025-12-14 17:16:01"
+    "upd": "2025-12-14 20:17:41"
 }

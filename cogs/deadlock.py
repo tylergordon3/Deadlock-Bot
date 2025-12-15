@@ -130,8 +130,8 @@ class Deadlock(commands.Cog):
     @tasks.loop(hours=1)
     async def dataListener(self):
         #await Deadlock.internal_refresh(self)
-        await rd.get_daily()
-        await Deadlock.heroLeaderboards(self)
+        #await rd.get_daily()
+        #await Deadlock.heroLeaderboards(self)
         if rd.checkDataLastUpd(4):
             await Deadlock.internal_refresh(self)
             await rd.get_daily()
@@ -306,12 +306,99 @@ class Deadlock(commands.Cog):
     )
     @app_commands.autocomplete(choices=live_autocomp_all)
     async def mmr(
-        self, interaction: discord.Interaction, choices: str):
+        self, interaction: discord.Interaction, choices: str, day_input:int):
         id = self.users["discord"].get(choices)
-        api = f'https://api.deadlock-api.com/v1/players{id}/mmr-history'
-        resp = await gd.getHTML(api)
-        print(resp)
+        api = f'https://api.deadlock-api.com/v1/players/{id}/mmr-history'
+        resp = await gd.getWebData(api)
+        df = pd.DataFrame(resp)
+        df = df.drop(columns=['account_id', 'rank'])
+
+        # match id | start time | player score | div | div tier
+        ranks = {
+            "0" : "Obscurus",
+            "1" : "Initiate",
+            "2" : "Seeker",
+            "3" : "Alchemist",
+            "4" : "Arcanist",
+            "5" : "Ritualist",
+            "6" : "Emissary",
+            "7" : "Archon",
+            "8" : "Oracle",
+            "9" : "Phantom",
+            "10" : "Ascendant",
+            "11" : "Eternus"
+        }
+    
+        def to_lines(df):
+            lines = []
+            for _, row in df.iterrows():
+                lines.append(
+                    f" Match: {row['match_id']}, "
+                    f" {row['time']}, "
+                    f" Score: {row['player_score']:.2f}, "
+                    f" {row['rank']} {row['division_tier']}"
+                )
+            return lines
         
+        def chunk_lines(lines, max_chars=3800):
+            pages = []
+            current = ""
+
+            for line in lines:
+                if len(current) + len(line) + 1 > max_chars:
+                    pages.append(current)
+                    current = line + "\n"
+                else:
+                    current += line + "\n"
+
+            if current:
+                pages.append(current)
+
+            return pages
+        
+        class Paginator(discord.ui.View):
+            def __init__(self, pages):
+                super().__init__(timeout=180)
+                self.pages = pages
+                self.index = 0
+
+            async def update(self, interaction):
+                embed = discord.Embed(
+                    title="Match History",
+                    description=self.pages[self.index],
+                    color=discord.Color.blurple()
+                )
+                embed.set_footer(text=f"Page {self.index+1}/{len(self.pages)}")
+                await interaction.response.edit_message(embed=embed, view=self)
+
+            @discord.ui.button(label="⬅️", style=discord.ButtonStyle.secondary)
+            async def prev(self, interaction, button):
+                self.index = (self.index - 1) % len(self.pages)
+                await self.update(interaction)
+
+            @discord.ui.button(label="➡️", style=discord.ButtonStyle.secondary)
+            async def next(self, interaction, button):
+                self.index = (self.index + 1) % len(self.pages)
+                await self.update(interaction)
+
+        
+        df['rank'] = df.apply(lambda x: ranks[str(int(x['division']))], axis=1)
+        df['time'] = df.apply(lambda x: dt.datetime.fromtimestamp(x['start_time']).strftime('%m/%d/%y %H:%M'), axis=1)
+        df['dt_col'] = pd.to_datetime(df['time'])
+        now = dt.datetime.now()
+
+        start_date = now - dt.timedelta(days=day_input)
+        filter_df = df[df['dt_col'] >= start_date]
+        pages = chunk_lines(to_lines(filter_df))
+        view = Paginator(pages)
+        embed = discord.Embed(
+            title="Match History",
+            description=pages[0],
+            color=discord.Color.blurple()
+        )
+        embed.set_footer(text=f"Page 1/{len(pages)}")
+
+        await interaction.response.send_message(embed=embed, view=view)
 
     @app_commands.command(
         description="Fetch a user's live match displaying ranks of both teams."
