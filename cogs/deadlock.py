@@ -304,6 +304,23 @@ class Deadlock(commands.Cog):
             await msg.edit(content="", embed=embed)
 
     @app_commands.command(
+        description="Get MMR Stats"
+    )
+    @app_commands.autocomplete(choices=live_autocomp_all)
+    async def mmrstats(
+        self, interaction: discord.Interaction, choices: str):
+        id = self.users["discord"].get(choices)
+        api = f'https://api.deadlock-api.com/v1/players/{id}/mmr-history'
+        resp = await gd.getWebData(api)
+        df = pd.DataFrame(resp)
+        df = df.drop(columns=['account_id', 'rank'])
+        df['time'] = df.apply(lambda x: dt.datetime.fromtimestamp(x['start_time']).strftime('%Y-%m-%d'), axis=1)
+        all_time_avg = df['division'].mean()
+        print(df)
+        await interaction.response.send_message(all_time_avg)
+        return
+
+    @app_commands.command(
         description="Get tracklock API mmr"
     )
     @app_commands.autocomplete(choices=live_autocomp_all)
@@ -314,7 +331,8 @@ class Deadlock(commands.Cog):
         resp = await gd.getWebData(api)
         df = pd.DataFrame(resp)
         df = df.drop(columns=['account_id', 'rank'])
-
+        
+        
         # match id | start time | player score | div | div tier
         ranks = {
             "0" : "Obscurus",
