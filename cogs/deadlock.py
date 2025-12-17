@@ -142,10 +142,12 @@ class Deadlock(commands.Cog):
         interaction: discord.Interaction,
         curr: str,
     ) -> List[app_commands.Choice[str]]:
+        
         choices = self.users["discord"] | self.users["others"]
+
         return [
             app_commands.Choice(name=choice, value=choice)
-            for choice in choices
+            for choice in sorted(choices)
             if curr.lower() in choice.lower()
         ]
 
@@ -157,7 +159,7 @@ class Deadlock(commands.Cog):
         choices = self.users["discord"]
         return [
             app_commands.Choice(name=choice, value=choice)
-            for choice in choices
+            for choice in sorted(choices)
             if curr.lower() in choice.lower()
         ]
 
