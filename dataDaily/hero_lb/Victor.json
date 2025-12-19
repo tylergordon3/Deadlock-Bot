@@ -9004,10 +9004,8 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "[Bot] endicci",
-            "possible_account_ids": [
-                1106369524
-            ],
+            "account_name": "[Elf] endicci",
+            "possible_account_ids": [],
             "rank": 247,
             "top_hero_ids": [],
             "badge_level": null,
@@ -11629,9 +11627,19 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "House M.D",
+            "account_name": "House",
             "possible_account_ids": [
+                85551619,
+                24202160,
+                1053297953,
+                84374883,
+                51737608,
+                166838200,
                 128166750,
+                182346725,
+                193067791,
+                194985011,
+                198643704,
                 1415897098
             ],
             "rank": 338,
@@ -13763,5 +13771,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2025-12-18 15:26:25"
+    "upd": "2025-12-18 19:55:03"
 }
