@@ -347,10 +347,16 @@ class Deadlock(commands.Cog):
         
         start_date = dt.datetime.now() - dt.timedelta(days=30)
         d30 = df[df['dt_time'] >= start_date]
+        if d30.empty:
+            await interaction.response.send_message(f'User: {choices} has no game data in the past 30 days')
+            return
         [rank_30d, div_30d] = Deadlock.calc_rank(d30['division'].mean())
         
         start_date = dt.datetime.now() - dt.timedelta(days=90)
         d90 = df[df['dt_time'] >= start_date]
+        if d90.empty:
+            await interaction.response.send_message(f'User: {choices} has no game data in the past 30 days')
+            return
         [rank_90d, div_90d] = Deadlock.calc_rank(d90['division'].mean())
 
         all_time_highest_idx = df['division'].idxmax()
