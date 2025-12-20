@@ -438,7 +438,7 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "TTV HyperNovaa22",
+            "account_name": "HyperNovaa22",
             "possible_account_ids": [
                 1112977210
             ],
@@ -5691,8 +5691,10 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "John Yamato",
-            "possible_account_ids": [],
+            "account_name": "John Sinclair",
+            "possible_account_ids": [
+                1094008362
+            ],
             "rank": 273,
             "top_hero_ids": [],
             "badge_level": null,
@@ -5935,5 +5937,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2025-12-19 18:49:51"
+    "upd": "2025-12-19 23:43:55"
 }

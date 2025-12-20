@@ -191,12 +191,8 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "oceans",
-            "possible_account_ids": [
-                72798931,
-                878876985,
-                882050810
-            ],
+            "account_name": "vernacular",
+            "possible_account_ids": [],
             "rank": 18,
             "top_hero_ids": [],
             "badge_level": null,
@@ -5732,7 +5728,7 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "lol imagine blaming your team",
+            "account_name": "lol dont crash out bro its easy",
             "possible_account_ids": [],
             "rank": 238,
             "top_hero_ids": [],
@@ -6810,8 +6806,10 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "Just a loser from NHK",
-            "possible_account_ids": [],
+            "account_name": "Shield Maiden",
+            "possible_account_ids": [
+                145862800
+            ],
             "rank": 307,
             "top_hero_ids": [],
             "badge_level": null,
@@ -8767,5 +8765,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2025-12-19 18:49:51"
+    "upd": "2025-12-19 23:43:55"
 }

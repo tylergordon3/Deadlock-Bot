@@ -4,7 +4,7 @@ from discord import app_commands
 from discord.ext import commands, tasks
 from typing import List
 import json
-
+import math
 import tools.initialize as initialize
 import pandas as pd
 import tools.getData as gd
@@ -299,9 +299,34 @@ class Deadlock(commands.Cog):
             )
 
             embed = discord.Embed(
-                title=f"Match Duration: {match_duration}", description=str
+                title=f"Time since lobby creation: {match_duration}", description=str
             )
             await msg.edit(content="", embed=embed)
+
+    def calc_rank(rank):
+        ranks = {
+            "0" : "Obscurus",
+            "1" : "Initiate",
+            "2" : "Seeker",
+            "3" : "Alchemist",
+            "4" : "Arcanist",
+            "5" : "Ritualist",
+            "6" : "Emissary",
+            "7" : "Archon",
+            "8" : "Oracle",
+            "9" : "Phantom",
+            "10" : "Ascendant",
+            "11" : "Eternus"
+        }
+    
+        # ex rank : 7.939086294416244
+        dec, whole = math.modf(rank)
+
+        rank_name = ranks[str(int(whole))]
+        division = round(6 * dec)
+        if division == 0:
+            division += 1
+        return [rank_name, division]
 
     @app_commands.command(
         description="Get MMR Stats"
@@ -314,11 +339,40 @@ class Deadlock(commands.Cog):
         resp = await gd.getWebData(api)
         df = pd.DataFrame(resp)
         df = df.drop(columns=['account_id', 'rank'])
+
+        df['dt_time'] = df.apply(lambda x: dt.datetime.fromtimestamp(x['start_time']), axis=1)
         df['time'] = df.apply(lambda x: dt.datetime.fromtimestamp(x['start_time']).strftime('%Y-%m-%d'), axis=1)
         all_time_avg = df['division'].mean()
-        print(df)
-        await interaction.response.send_message(all_time_avg)
-        return
+        [rank_all, div_all] = Deadlock.calc_rank(all_time_avg)
+        
+        start_date = dt.datetime.now() - dt.timedelta(days=30)
+        d30 = df[df['dt_time'] >= start_date]
+        [rank_30d, div_30d] = Deadlock.calc_rank(d30['division'].mean())
+        
+        start_date = dt.datetime.now() - dt.timedelta(days=90)
+        d90 = df[df['dt_time'] >= start_date]
+        [rank_90d, div_90d] = Deadlock.calc_rank(d90['division'].mean())
+
+        all_time_highest_idx = df['division'].idxmax()
+        all_time_highest = df.loc[all_time_highest_idx]
+        all_time_div = all_time_highest['division']
+        all_time_div_tier = all_time_highest['division_tier']
+
+        [div_high_name, _] = Deadlock.calc_rank(all_time_div)
+        high_time = all_time_highest['time']
+
+        first_data = df['time'].min()
+        last_data = df['time'].max()
+        message = (
+            f'### Player: {choices}\n'
+            f'Average rank for past month: {rank_30d} {div_30d}\n'
+            f'Average rank for past 3 months: {rank_90d} {div_90d}\n'
+            f'All-time average rank: {rank_all} {div_all}\n'
+            f'All-time highest rank: {div_high_name} {all_time_div_tier} on {high_time}'
+        )
+        embed = discord.Embed(title='MMR Stats', description=message)
+        embed.set_footer(text=f'Data from {first_data} to {last_data}')
+        await interaction.response.send_message(embed=embed) 
 
     @app_commands.command(
         description="Get tracklock API mmr"
@@ -528,8 +582,8 @@ class Deadlock(commands.Cog):
             for x, y in zip(df_sort["wins"], df_sort["loss"])
         ]
         df_sort = df_sort.drop(columns=["wins", "matches_played", "loss"])
-        markdown = df_sort.to_markdown(index=False)
-        formatted = f"Teammate Stats for: {choices}\n```\n{markdown}\n```"
+        #markdown = df_sort.to_markdown(index=False)
+        formatted = f"Teammate Stats for: {choices}\n```\n{df_sort.to_string(index=False)}\n```"
         await interaction.response.send_message(formatted)
 
     @app_commands.command(description="Fetch all hero ranks")

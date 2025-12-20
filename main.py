@@ -41,13 +41,10 @@ async def run_batch():
         print(result.stderr)
 
     print(f"Deploy exited with code {result.returncode}")
-
+    return
 
 async def scheduler():
     await bot.wait_until_ready()
-
-    print("Running batch immediately on startup")
-    await run_batch()
 
     while not bot.is_closed():
         now = dt.datetime.now()
@@ -83,7 +80,8 @@ async def setup_hook():
     await load_cogs(bot)
 
     bot.loop.create_task(scheduler())
-    
+    print(f"Deploy task created.")
+
     try:
         bot.tree.copy_global_to(guild=discord.Object(id=int(GUILD_ID)))
         sync = await bot.tree.sync(guild=discord.Object(id=int(GUILD_ID)))

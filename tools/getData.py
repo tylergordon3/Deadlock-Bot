@@ -143,7 +143,6 @@ def getLiveLoop(id):
         data[0]["objectives_mask_team1"],
         data[0]["start_time"],
     ]
-
     return colsData
 
 
