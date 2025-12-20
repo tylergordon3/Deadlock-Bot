@@ -43,16 +43,25 @@ async def run_batch():
     print(f"Deploy exited with code {result.returncode}")
 
 
-@tasks.loop(hours=1)
-async def hourly_task():
-    print("hourly_task start.")
-    await run_batch()
-
-@hourly_task.before_loop
-async def before_hourly_task():
+async def scheduler():
     await bot.wait_until_ready()
+
     print("Running batch immediately on startup")
     await run_batch()
+
+    while not bot.is_closed():
+        now = dt.datetime.now()
+        print("hourly_task start.")
+
+        await run_batch()
+
+        # Decide interval
+        if now.hour >= 17:  # 5 PM+
+            sleep_seconds = 20 * 60
+        else:
+            sleep_seconds = 60 * 60
+
+        await asyncio.sleep(sleep_seconds)
 
 async def load_cogs(bot):
     for file in os.listdir("cogs"):
@@ -73,7 +82,8 @@ async def setup_hook():
 
     await load_cogs(bot)
 
-    hourly_task.start()
+    bot.loop.create_task(scheduler())
+    
     try:
         bot.tree.copy_global_to(guild=discord.Object(id=int(GUILD_ID)))
         sync = await bot.tree.sync(guild=discord.Object(id=int(GUILD_ID)))
