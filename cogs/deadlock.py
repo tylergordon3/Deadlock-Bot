@@ -371,15 +371,15 @@ class Deadlock(commands.Cog):
         last_data = df['dt_time'].max()
         message = (
             f'### Player: {choices}\n'
-            f'Avg. MMR past month: {rank_30d} {div_30d}\n'
-            f'Avg. MMR past 3 months: {rank_90d} {div_90d}\n'
-            f'All-time avg. MMR: {rank_all} {div_all}\n'
-            f'All-time highest MMR: {div_high_name} {all_time_div_tier} on {high_time}'
+            f'Avg. MMR - 1 mo.: {rank_30d} {div_30d}\n'
+            f'Avg. MMR - 3 mo.: {rank_90d} {div_90d}\n'
+            f'Avg. MMR: {rank_all} {div_all}\n'
+            f'Highest MMR: {div_high_name} {all_time_div_tier} on {high_time}'
         )
         first_str = first_data.strftime(f'%m-%d-%y')
         last_str = last_data.strftime(f'%m-%d-%y')
         embed = discord.Embed(title=f'MMR for {first_str} to {last_str}', description=message)
-        embed.set_footer(text=f'MMR: Exponential moving average of last 50 lobby ranks.')
+        embed.set_footer(text=f'MMR: Exp. moving avg. of last 50 lobbies.')
         await interaction.response.send_message(embed=embed) 
 
 
