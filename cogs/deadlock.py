@@ -365,7 +365,7 @@ class Deadlock(commands.Cog):
         all_time_div_tier = all_time_highest['division_tier']
 
         [div_high_name, _] = Deadlock.calc_rank(all_time_div)
-        high_time = all_time_highest['time']
+        high_time = all_time_highest['dt_time']
 
         first_data = df['dt_time'].min()
         last_data = df['dt_time'].max()
@@ -374,7 +374,7 @@ class Deadlock(commands.Cog):
             f'Avg. MMR - 1 mo.: {rank_30d} {div_30d}\n'
             f'Avg. MMR - 3 mo.: {rank_90d} {div_90d}\n'
             f'Avg. MMR: {rank_all} {div_all}\n'
-            f'Highest MMR: {div_high_name} {all_time_div_tier} on {high_time}'
+            f'Highest MMR: {div_high_name} {all_time_div_tier} on {high_time.strftime(f'%m-%d-%y')}'
         )
         first_str = first_data.strftime(f'%m-%d-%y')
         last_str = last_data.strftime(f'%m-%d-%y')

@@ -3,10 +3,12 @@ import datetime as dt
 from discord.ext import commands, tasks
 from dotenv import load_dotenv
 import os
-import tools.reqData as rd
+from pathlib import Path
 import traceback
 import asyncio
 import subprocess
+import json
+from datetime import date, datetime
 
 load_dotenv()
 intents = discord.Intents.default()
@@ -16,6 +18,9 @@ intents.message_content = True
 SCRIPT_PATH =  "/home/tgordon/cbb-model/deploy.sh"
 SCRIPT_CWD = "/home/tgordon/cbb-model"
 GUILD_ID = os.environ.get("GUILD_ID")
+
+BASE = Path("/home/tgordon")
+TIMES_PATH = BASE / "cbb-model" / "data" / "times.json"
 
 bot = commands.Bot(command_prefix="/", intents=intents)
 
@@ -45,19 +50,32 @@ async def run_batch():
 
 async def scheduler():
     await bot.wait_until_ready()
-
+    with TIMES_PATH.open() as f:
+            TIMES = json.load(f)
+    RESULTS = {
+        date.fromisoformat(k): v
+        for k, v in TIMES.items()
+    }
+    
     while not bot.is_closed():
         now = dt.datetime.now()
-        print("hourly_task start.")
-
+        today = date.today()
         await run_batch()
 
+        time = RESULTS.get(today)
+        
+        game_time = datetime.strptime(time, "%I:%M %p").replace(
+            year=date.today().year,
+            month=date.today().month,
+            day=date.today().day,
+        )
+
         # Decide interval
-        if now.hour >= 17:  # 5 PM+
+        if now >= game_time:  # 5 PM+
             sleep_seconds = 15 * 60
         else:
             sleep_seconds = 60 * 60
-
+        print(f'CBB Refresh Rate: {sleep_seconds} s. for {today} {time}.')
         await asyncio.sleep(sleep_seconds)
 
 async def load_cogs(bot):
