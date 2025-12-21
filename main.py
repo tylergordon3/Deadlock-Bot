@@ -54,7 +54,7 @@ async def scheduler():
 
         # Decide interval
         if now.hour >= 17:  # 5 PM+
-            sleep_seconds = 20 * 60
+            sleep_seconds = 15 * 60
         else:
             sleep_seconds = 60 * 60
 
