@@ -75,7 +75,7 @@ async def scheduler():
             sleep_seconds = 15 * 60
         else:
             sleep_seconds = 60 * 60
-        print(f'CBB Refresh Rate: {sleep_seconds} s. for {today} {time}.')
+        print(f'CBB Refresh Rate: {sleep_seconds/60} min. for {today} {time}.')
         await asyncio.sleep(sleep_seconds)
 
 async def load_cogs(bot):
