@@ -1,7 +1,7 @@
 {
     "entries": [
         {
-            "account_name": "wander 16/32",
+            "account_name": "wander 18/32",
             "possible_account_ids": [],
             "rank": 1,
             "top_hero_ids": [],
@@ -880,13 +880,8 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "juniper",
-            "possible_account_ids": [
-                854151988,
-                100246009,
-                1025387138,
-                271870088
-            ],
+            "account_name": "bales",
+            "possible_account_ids": [],
             "rank": 39,
             "top_hero_ids": [],
             "badge_level": null,
@@ -1542,8 +1537,25 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "Eternal Zen Monk Mental Giga God",
-            "possible_account_ids": [],
+            "account_name": "Talos",
+            "possible_account_ids": [
+                28153112,
+                864430072,
+                176724921,
+                913022836,
+                47438939,
+                47677902,
+                1005447989,
+                72986959,
+                1094628388,
+                340020344,
+                109290970,
+                108809009,
+                122794724,
+                127030423,
+                395357699,
+                135658552
+            ],
             "rank": 84,
             "top_hero_ids": [],
             "badge_level": null,
@@ -2116,7 +2128,7 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "snowcatcher",
+            "account_name": "angelofwires",
             "possible_account_ids": [],
             "rank": 110,
             "top_hero_ids": [],
@@ -8547,9 +8559,12 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "Thunderbird571",
+            "account_name": "wanghaf",
             "possible_account_ids": [
-                252716063
+                900981777,
+                924966788,
+                1157645773,
+                1540046281
             ],
             "rank": 456,
             "top_hero_ids": [],
@@ -9276,5 +9291,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2025-12-21 14:00:31"
+    "upd": "2025-12-21 23:18:22"
 }

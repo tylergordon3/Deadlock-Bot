@@ -12,7 +12,7 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "wander 17/32",
+            "account_name": "wander 18/32",
             "possible_account_ids": [],
             "rank": 2,
             "top_hero_ids": [],
@@ -1448,8 +1448,11 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "crazyfartgoblin67",
-            "possible_account_ids": [],
+            "account_name": "pelican",
+            "possible_account_ids": [
+                189653632,
+                126613868
+            ],
             "rank": 77,
             "top_hero_ids": [],
             "badge_level": null,
@@ -4885,8 +4888,10 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "@froggy_dl now on ttv",
-            "possible_account_ids": [],
+            "account_name": "@froggy_dl",
+            "possible_account_ids": [
+                1445113504
+            ],
             "rank": 250,
             "top_hero_ids": [],
             "badge_level": null,
@@ -9897,7 +9902,7 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "potapeno 27/31",
+            "account_name": "potapeno 29/31",
             "possible_account_ids": [],
             "rank": 446,
             "top_hero_ids": [],
@@ -11518,5 +11523,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2025-12-21 14:00:31"
+    "upd": "2025-12-21 23:18:22"
 }
