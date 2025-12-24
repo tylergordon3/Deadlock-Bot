@@ -20,7 +20,7 @@ SCRIPT_CWD = "/home/tgordon/cbb-model"
 GUILD_ID = os.environ.get("GUILD_ID")
 
 BASE = Path("/home/tgordon")
-TIMES_PATH = BASE / "cbb-model" / "data" / "times.json"
+TIMES_PATH = BASE / "cbb-model" / "data" / "teams" / "times.json"
 
 bot = commands.Bot(command_prefix="/", intents=intents)
 
