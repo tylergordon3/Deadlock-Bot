@@ -63,19 +63,21 @@ async def scheduler():
         await run_batch()
 
         time = RESULTS.get(today)
-        
-        game_time = datetime.strptime(time, "%I:%M %p").replace(
+        if time is None:
+            sleep_seconds = 60 * 60
+            print(f'CBB Bot start time empty, using refresh rate of: {sleep_seconds/60} min.')
+        else:
+            game_time = datetime.strptime(time, "%I:%M %p").replace(
             year=date.today().year,
             month=date.today().month,
             day=date.today().day,
-        )
-
-        # Decide interval
-        if now >= game_time:  # 5 PM+
-            sleep_seconds = 15 * 60
-        else:
-            sleep_seconds = 60 * 60
-        print(f'CBB Refresh Rate: {sleep_seconds/60} min. for {today} {time}.')
+            )
+            # Decide interval
+            if now >= game_time:  # 5 PM+
+                sleep_seconds = 15 * 60
+            else:
+                sleep_seconds = 60 * 60
+            print(f'CBB Refresh Rate: {sleep_seconds/60} min. for {today} {time}.')
         await asyncio.sleep(sleep_seconds)
 
 async def load_cogs(bot):
