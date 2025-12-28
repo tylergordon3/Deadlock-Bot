@@ -1146,8 +1146,13 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "Chinese Princess",
-            "possible_account_ids": [],
+            "account_name": "Brian Griffin",
+            "possible_account_ids": [
+                1230271077,
+                903701214,
+                160280144,
+                855909077
+            ],
             "rank": 45,
             "top_hero_ids": [],
             "badge_level": null,
@@ -4382,5 +4387,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2025-12-27 19:14:30"
+    "upd": "2025-12-27 23:19:44"
 }
