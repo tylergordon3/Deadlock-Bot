@@ -1289,10 +1289,8 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "holiday events",
-            "possible_account_ids": [
-                99396769
-            ],
+            "account_name": "\u304b\u3063\u3071\u5bff\u53f8\u98df\u3079\u653e\u984c",
+            "possible_account_ids": [],
             "rank": 59,
             "top_hero_ids": [],
             "badge_level": null,
@@ -2885,7 +2883,7 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "omero quake",
+            "account_name": "ursus(zen mode)",
             "possible_account_ids": [],
             "rank": 140,
             "top_hero_ids": [],
@@ -4997,29 +4995,13 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "Santa Claus",
+            "account_name": "tek",
             "possible_account_ids": [
-                322284090,
-                342065791,
-                303076946,
-                147900084,
-                50168291,
-                87721473,
-                87947199,
-                10547769,
-                132134568,
-                1134682129,
-                145711617,
-                359680939,
-                839810769,
-                1030445875,
-                1214126847,
-                1224358810,
-                270879676,
-                1092964681,
-                1107711941,
-                1494667314,
-                1889043243
+                488665848,
+                1170911194,
+                119202013,
+                176816212,
+                1269740765
             ],
             "rank": 223,
             "top_hero_ids": [],
@@ -9419,5 +9401,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2025-12-29 11:39:50"
+    "upd": "2025-12-29 21:07:27"
 }

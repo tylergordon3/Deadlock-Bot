@@ -99,7 +99,7 @@ async def setup_hook():
 
     await load_cogs(bot)
 
-    #bot.loop.create_task(scheduler())
+    bot.loop.create_task(scheduler())
     print(f"Deploy task created.")
 
     try:
