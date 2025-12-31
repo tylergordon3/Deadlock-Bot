@@ -74,7 +74,7 @@ async def scheduler():
             )
             # Decide interval
             if now >= game_time:  # 5 PM+
-                sleep_seconds = 15 * 60
+                sleep_seconds = 10 * 60
             else:
                 sleep_seconds = 60 * 60
             print(f'CBB Refresh Rate: {sleep_seconds/60} min. for {today} {time}.')
