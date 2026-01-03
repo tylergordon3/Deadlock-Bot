@@ -97,9 +97,11 @@ async def scheduler():
                 next_run = next_half_hour_mark(now)
                 print(f"Pre-game refresh → 30-min ({next_run.strftime('%H:%M')})")
 
-            print(f'CBB Refresh Rate: {sleep_seconds/60} min. for {today} {time}.')
-        sleep_seconds = max(0, (next_run - now).total_seconds())
-        await asyncio.sleep(sleep_seconds)
+            sleep_seconds = max(0, (next_run - now).total_seconds())
+            now = datetime.now()
+            curr = now.strftime("%H:%M")
+            print(f'{today} {curr} : Next refresh in: {'{0:02.0f} min, {1:02.0f} sec'.format(*divmod(sleep_seconds, 60))}')
+            await asyncio.sleep(sleep_seconds)
 
 async def load_cogs(bot):
     for file in os.listdir("cogs"):
