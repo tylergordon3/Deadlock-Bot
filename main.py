@@ -48,6 +48,21 @@ async def run_batch():
     print(f"Deploy exited with code {result.returncode}")
     return
 
+def next_5_min_mark(now: dt.datetime) -> dt.datetime:
+    """Next HH:00, :05, :10, :15, ..."""
+    minute = (now.minute // 5 + 1) * 5
+    if minute == 60:
+        return (now.replace(minute=0, second=0, microsecond=0)
+                + dt.timedelta(hours=1))
+    return now.replace(minute=minute, second=0, microsecond=0)
+
+def next_half_hour_mark(now: dt.datetime) -> dt.datetime:
+    """Next HH:00 or HH:30"""
+    if now.minute < 30:
+        return now.replace(minute=30, second=0, microsecond=0)
+    return (now.replace(minute=0, second=0, microsecond=0)
+            + dt.timedelta(hours=1))
+
 async def scheduler():
     await bot.wait_until_ready()
     with TIMES_PATH.open() as f:
@@ -64,7 +79,7 @@ async def scheduler():
 
         time = RESULTS.get(today)
         if time is None:
-            sleep_seconds = 60 * 60
+            sleep_seconds = 30 * 60
             print(f'CBB Bot start time empty, using refresh rate of: {sleep_seconds/60} min.')
         else:
             game_time = datetime.strptime(time, "%I:%M %p").replace(
@@ -73,11 +88,17 @@ async def scheduler():
             day=date.today().day,
             )
             # Decide interval
-            if now >= game_time:  # 5 PM+
-                sleep_seconds = 10 * 60
+            if now >= game_time:
+                # After game → every 5 minutes
+                next_run = next_5_min_mark(now)
+                print(f"Post-game refresh → 5-min ({next_run.strftime('%H:%M')})")
             else:
-                sleep_seconds = 60 * 60
+                # Before game → every 30 minutes
+                next_run = next_half_hour_mark(now)
+                print(f"Pre-game refresh → 30-min ({next_run.strftime('%H:%M')})")
+
             print(f'CBB Refresh Rate: {sleep_seconds/60} min. for {today} {time}.')
+        sleep_seconds = max(0, (next_run - now).total_seconds())
         await asyncio.sleep(sleep_seconds)
 
 async def load_cogs(bot):
