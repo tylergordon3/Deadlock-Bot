@@ -446,6 +446,142 @@ class Deadlock(commands.Cog):
                     content="Match data being fetched for another match already."
                 )
 
+    @app_commands.command(description="Show current discord members in-game.")
+    async def ingame(self, interaction: discord.Interaction):
+        await interaction.response.defer(thinking=True)
+        live = []
+        for user in self.users["discord"]:
+            id = self.users["discord"][user]
+            df_players = gd.getLive(id)
+            if not df_players.empty:
+                live.append(f'{user} (ID: {id})')
+
+        for user in self.users["builders"]:
+            id = self.users["builders"][user]
+            df_players = gd.getLive(id)
+            if not df_players.empty:
+                live.append(f'{user} (ID: {id})')
+
+        if len(live) == 0:
+            live.append('No active players.')
+
+        await interaction.followup.send(
+            "### Users in active (top 200) lobbies:\n"
+            + "\n".join(live)
+        )
+
+    PCTS = [1, 5, 10, 25, 50, 75, 90, 95, 99]
+
+    def percentile_from_cutpoints(player_value, percentiles, values):
+        """
+        percentiles: list like [1, 5, 10, 25, 50, 75, 95]
+        values: list of corresponding stat values
+        """
+        # Below lowest
+        if player_value <= values[0]:
+            return percentiles[0]
+
+        # Above highest
+        if player_value >= values[-1]:
+            return percentiles[-1]
+
+        for i in range(len(values) - 1):
+            v0, v1 = values[i], values[i + 1]
+            if v0 <= player_value <= v1:
+                p0, p1 = percentiles[i], percentiles[i + 1]
+                return p0 + (player_value - v0) * (p1 - p0) / (v1 - v0)
+            
+    def player_percentile_for_stat(stat, player_df, pop_df):
+        player_val = player_df.loc["avg", stat]
+        values = pop_df.loc[[f"percentile{p}" for p in Deadlock.PCTS], stat].tolist()
+        return Deadlock.percentile_from_cutpoints(player_val, Deadlock.PCTS, values)
+    
+    def percentile_bar(percentile, width=20):
+        percentile = max(0, min(100, percentile))
+        idx = round((percentile / 100) * (width - 1))
+
+        bar = ["─"] * width
+        bar[idx] = "🔹"
+
+        # Optional median tick
+        bar[width // 2] = "│"
+
+        return f"0% |{''.join(bar)}| 100%"
+    
+    def format_stat(name, player_avg, pop_avg, percentile):
+        badge = (
+            "🔥" if percentile >= 95 else
+            "🟢" if percentile >= 75 else
+            "🟡" if percentile >= 40 else
+            "🔴"
+        )
+
+        bar = Deadlock.percentile_bar(percentile)
+
+        return {
+            "name": name,
+            "value": (
+                f"```{bar}```"
+                f"Avg: **{player_avg:.2f}** • "
+                f"Pop Avg: {pop_avg:.2f} • "
+                f"**{percentile:.1f}th pct** {badge}"
+            )
+        }
+
+    @app_commands.command(description="Calculate torment pulse stats")
+    @app_commands.autocomplete(choices=live_autocomp_disc)
+    async def stats(self, interaction: discord.Interaction, choices: str):
+        await interaction.response.defer(thinking=True)
+        api = f"https://api.deadlock-api.com/v1/analytics/player-stats/metrics"
+        resp = await gd.getWebData(api)
+        data = pd.DataFrame(resp)
+    
+        id = self.users["discord"].get(choices)
+        if id == None:
+            await interaction.response.send_message(
+                "User does not exist. Use /users to see users."
+            )
+            return
+        ''' 'player_damage_taken_per_min', 'net_worth', 'assists',
+       'self_healing_per_min', 'player_healing_per_min', 'healing_per_min',
+       'last_hits', 'healing', 'player_damage', 'player_healing', 'kd',
+       'net_worth_per_min', 'boss_damage_per_min', 'kills', 'crit_shot_rate',
+       'player_damage_per_health', 'neutral_damage', 'neutral_damage_per_min',
+       'denies', 'accuracy', 'kda', 'deaths', 'player_damage_per_min',
+       'self_healing', 'kills_plus_assists', 'boss_damage'] '''
+        
+        # avg, std, p1, p5, p10, p25, p50, p75, p90, p95, p99
+        dict = gd.getStats(id)
+        user_data = pd.DataFrame(dict)
+
+        user_data = user_data.drop(columns=['kills_plus_assists', 'self_healing', 'player_damage_per_health',
+                                            'neutral_damage', 'player_healing', 'boss_damage'])
+        
+        user_data = user_data[['accuracy', 'crit_shot_rate', 'kills', 'deaths', 'kd', 'kda',
+                               'last_hits', 'denies', 'net_worth', 'net_worth_per_min',
+                               'boss_damage_per_min', 'neutral_damage_per_min', 
+                               'player_damage_per_min', 'player_damage_taken_per_min', 'healing_per_min']].copy()
+        #acc = Deadlock.player_percentile_for_stat('accuracy', user_data, data)
+        
+        embed = discord.Embed(
+            title=f"{choices} Performance",
+            description="Your averages compared to the global playerbase",
+            color=0x5865F2
+            )
+
+        for stat in user_data.columns:
+            p_avg = user_data.loc["avg", stat]
+            pop_avg = user_data.loc["percentile50", stat]  # median
+            pct =  Deadlock.player_percentile_for_stat(stat, user_data, data)
+
+            field = Deadlock.format_stat(stat, p_avg, pop_avg, pct)
+            embed.add_field(
+                name=field["name"],
+                value=field["value"],
+                inline=False
+            )
+        await interaction.followup.send(embed=embed)
+    
     @app_commands.command(description="Show users available for commands.")
     async def users(self, interaction: discord.Interaction):
         lst = []

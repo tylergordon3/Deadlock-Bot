@@ -66,6 +66,17 @@ def dump_json(filename, data):
     except FileNotFoundError:
         raise FileNotFoundError("JSON file wasn't found")
 
+def getStats(id):
+    ret = requests.get(
+        "https://api.deadlock-api.com/v1/analytics/player-stats/metrics",
+        params={
+        "account_ids": f"{id}"
+        })
+    if ret.status_code == 200:
+        content = ret.json()
+        return content
+    return None
+
 
 async def getHTML(link, retries=5, base_delay=1.0):
     for attempt in range(retries):
