@@ -8,6 +8,7 @@ import traceback
 import asyncio
 import subprocess
 import json
+import platform
 from datetime import date, datetime
 
 load_dotenv()
@@ -15,12 +16,18 @@ intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
 
-SCRIPT_PATH =  "/home/tgordon/cbb-model/deploy.sh"
-SCRIPT_CWD = "/home/tgordon/cbb-model"
-GUILD_ID = os.environ.get("GUILD_ID")
+IS_PI = platform.system() == "Linux"
 
-BASE = Path("/home/tgordon")
+if IS_PI:
+    BASE = Path("/home/tgord")
+else:
+    BASE = Path("/home/tgordon")
+
+SCRIPT_PATH =  BASE / "cbb-model" / "deploy_pi.sh"
+SCRIPT_CWD = BASE / "cbb-model" 
 TIMES_PATH = BASE / "cbb-model" / "data" / "teams" / "times.json"
+
+GUILD_ID = os.environ.get("GUILD_ID")
 
 bot = commands.Bot(command_prefix="/", intents=intents)
 

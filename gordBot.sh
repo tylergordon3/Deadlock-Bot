@@ -15,7 +15,7 @@ fi
 source "$CONDA_BASE/etc/profile.d/conda.sh"
 
 conda activate deadlock-env || {
-  echo "❌ Conda env 'cbb-env' not found"
+  echo "❌ Conda env 'deadlock-env' not found"
   conda env list
   exit 1
 }
