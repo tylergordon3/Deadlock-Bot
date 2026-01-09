@@ -16,12 +16,17 @@ intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
 
-IS_PI = platform.system() == "Linux"
+def is_wsl() -> bool:
+    try:
+        with open("/proc/version", "r") as f:
+            return "microsoft" in f.read().lower()
+    except FileNotFoundError:
+        return False
+    
+IS_WSL = is_wsl()
+IS_PI = not IS_WSL
 
-if IS_PI:
-    BASE = Path("/home/tgord")
-else:
-    BASE = Path("/home/tgordon")
+BASE = Path("/home/tgordon") if IS_WSL else Path("/home/tgord")
 
 SCRIPT_PATH =  BASE / "cbb-model" / "deploy_pi.sh"
 SCRIPT_CWD = BASE / "cbb-model" 
@@ -84,12 +89,12 @@ async def scheduler():
         today = date.today()
         await run_batch()
 
-        time = RESULTS.get(today)[0]
+        time = RESULTS.get(today)
         if time is None:
             sleep_seconds = 30 * 60
             print(f'CBB Bot start time empty, using refresh rate of: {sleep_seconds/60} min.')
         else:
-            game_time = datetime.strptime(time, "%I:%M %p").replace(
+            game_time = datetime.strptime(time[0], "%I:%M %p").replace(
             year=date.today().year,
             month=date.today().month,
             day=date.today().day,
