@@ -1,8 +1,18 @@
 {
     "entries": [
         {
-            "account_name": "dthd",
-            "possible_account_ids": [],
+            "account_name": "dew",
+            "possible_account_ids": [
+                415335070,
+                432658238,
+                1231863592,
+                476353850,
+                1101897590,
+                1116036753,
+                1531508802,
+                119440786,
+                258822073
+            ],
             "rank": 1,
             "top_hero_ids": [],
             "badge_level": null,
@@ -1368,9 +1378,14 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "Lizard wizard",
+            "account_name": "LizardWizard",
             "possible_account_ids": [
-                133686499
+                917381600,
+                307262353,
+                135931416,
+                57685835,
+                236732199,
+                1630278984
             ],
             "rank": 81,
             "top_hero_ids": [],
@@ -5263,5 +5278,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2026-01-08 19:34:03"
+    "upd": "2026-01-09 00:00:17"
 }

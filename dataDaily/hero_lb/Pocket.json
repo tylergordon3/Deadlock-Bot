@@ -10696,8 +10696,13 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "gameress",
-            "possible_account_ids": [],
+            "account_name": "Av",
+            "possible_account_ids": [
+                263467120,
+                1142998069,
+                1037454118,
+                236448318
+            ],
             "rank": 348,
             "top_hero_ids": [],
             "badge_level": null,
@@ -10705,10 +10710,8 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "The Pursuer",
-            "possible_account_ids": [
-                1189865875
-            ],
+            "account_name": "vintage backpack",
+            "possible_account_ids": [],
             "rank": 351,
             "top_hero_ids": [],
             "badge_level": null,
@@ -12187,5 +12190,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2026-01-08 19:34:03"
+    "upd": "2026-01-09 00:00:17"
 }

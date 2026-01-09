@@ -1265,8 +1265,12 @@
             "ranked_subrank": null
         },
         {
-            "account_name": "Imeanitsjustlikedude",
-            "possible_account_ids": [],
+            "account_name": "Banz",
+            "possible_account_ids": [
+                397932957,
+                1106859340,
+                1039320860
+            ],
             "rank": 63,
             "top_hero_ids": [],
             "badge_level": null,
@@ -12158,5 +12162,5 @@
             "ranked_subrank": null
         }
     ],
-    "upd": "2026-01-08 19:34:03"
+    "upd": "2026-01-09 00:00:17"
 }
