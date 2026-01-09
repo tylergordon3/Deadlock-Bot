@@ -84,7 +84,7 @@ async def scheduler():
         today = date.today()
         await run_batch()
 
-        time = RESULTS.get(today)
+        time = RESULTS.get(today)[0]
         if time is None:
             sleep_seconds = 30 * 60
             print(f'CBB Bot start time empty, using refresh rate of: {sleep_seconds/60} min.')
